@@ -24,5 +24,6 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
     5.在 Link Binary With Libraries 中添加CoreVideo, IOKit, Cocoa, OpenGL, GLUT, libglfw3.a
     6.GLEW 下载源码，并`sudo make GLEW_DEST=/usr/local` && `sudo make GLEW_DEST=/usr/local install`，耐心等待。
     7.Always Search User Paths 调整为 Yes
+    8. 在 Link Binary With Libraries 中添加libGLEW.a
     
 其中也许有的步骤没必要，现在知识不足，先这样吧。
