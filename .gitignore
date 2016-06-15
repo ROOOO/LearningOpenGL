@@ -1,5 +1,4 @@
 !/GL\ Files/
-!/Libs/
 # Compiled Object files
 *.slo
 *.lo
@@ -21,8 +20,7 @@
 # Compiled Static libraries
 *.lai
 *.la
-#*.a
-#*.lib
+# *.a
 
 # Executables
 *.exe
