@@ -8,7 +8,7 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 
     1.安装 CMake。
     2.下载 GLFW 源码并用CMake，选择相应的编译器并编译拿到其中的 .lib 文件。
-    3.设置 Project Properties 的 Lib 和 Include。
+    3.设置 Project Properties 的 Lib 和 Include 的目录，并且设置好 Linker -- Input -- Additional Dependencies 里面的 lib。
 - Mac OS X
 
 参考以下两篇文章：
@@ -25,5 +25,5 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
     6.GLEW 下载源码，并`sudo make GLEW_DEST=/usr/local` && `sudo make GLEW_DEST=/usr/local install`，耐心等待。
     7.Always Search User Paths 调整为 Yes
     8. 在 Link Binary With Libraries 中添加libGLEW.a
-    
+
 其中也许有的步骤没必要，现在知识不足，先这样吧。
