@@ -165,11 +165,11 @@ int main(){
     glBindVertexArray(VAO);
 #ifdef test1
     glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindVertexArray(0);
 #endif
 #ifdef test2
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 #endif
-    glBindVertexArray(0);
 
     glfwSwapBuffers(window);
   }
