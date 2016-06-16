@@ -7,6 +7,8 @@
 #include <iostream>
 #include <stdlib.h>
 
+#define test2
+
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode) {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, GL_TRUE);
@@ -25,7 +27,7 @@ int main(){
 
 	GLFWwindow *window = glfwCreateWindow(800, 600, "LearnOpenGL", nullptr, nullptr);
 	if (window == nullptr) {
-		//std::cout << "Failed to create GLFW window" << std::endl;
+		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		return -1;
 	}
@@ -100,7 +102,7 @@ int main(){
   glGenBuffers(1, &VBO);
   glGenVertexArrays(1, &VAO);
   
-#if 0
+#ifdef test1
   
   GLfloat vertices[] = {
     -0.5f, -0.5f, 0.0f,
@@ -118,7 +120,8 @@ int main(){
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
 
-#else
+#endif
+#ifdef test2
 
   GLfloat vertices2[] = {
     0.5f, 0.5f, 0.0f,
@@ -160,8 +163,12 @@ int main(){
     
     glUseProgram(shaderProgram);
     glBindVertexArray(VAO);
-//    glDrawArrays(GL_TRIANGLES, 0, 3);
+#ifdef test1
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+#endif
+#ifdef test2
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+#endif
     glBindVertexArray(0);
 
     glfwSwapBuffers(window);
