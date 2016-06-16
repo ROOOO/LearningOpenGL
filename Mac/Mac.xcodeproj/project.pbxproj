@@ -15,10 +15,27 @@
 		3C86EDB41D1029E400D83A25 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
 		3C86EDBB1D1055F500D83A25 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB51D102A1300D83A25 /* libglfw3.a */; };
 		3C86EDBD1D1055FF00D83A25 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
+		3CC16A811D12D3430080F62C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC16A801D12D3430080F62C /* main.cpp */; };
+		3CC16A821D12E0970080F62C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CC16A831D12E09C0080F62C /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CC16A841D12E0A70080F62C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CC16A851D12E0AB0080F62C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CC16A861D12E0BA0080F62C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CC16A881D12E0ED0080F62C /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CC16A891D12E1070080F62C /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3C86ED9C1D1021CA00D83A25 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3CC16A771D12D3090080F62C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -39,6 +56,9 @@
 		3C86EDB31D1029E400D83A25 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		3C86EDB51D102A1300D83A25 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		3C86EDBC1D1055FF00D83A25 /* libGLEW.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGLEW.a; path = ../../../../../usr/local/lib/libGLEW.a; sourceTree = "<group>"; };
+		3CC16A791D12D3090080F62C /* EX_GS_HT_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_HT_1; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC16A801D12D3430080F62C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../../Files/Exercises/Getting Start/Hello_Triangle/1/main.cpp"; sourceTree = "<group>"; tabWidth = 2; };
+		3CC16A871D12E0ED0080F62C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../Libs/libglfw3.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +76,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CC16A761D12D3090080F62C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC16A891D12E1070080F62C /* libGLEW.a in Frameworks */,
+				3CC16A881D12E0ED0080F62C /* libglfw3.a in Frameworks */,
+				3CC16A861D12E0BA0080F62C /* CoreVideo.framework in Frameworks */,
+				3CC16A851D12E0AB0080F62C /* IOKit.framework in Frameworks */,
+				3CC16A841D12E0A70080F62C /* Cocoa.framework in Frameworks */,
+				3CC16A831D12E09C0080F62C /* GLUT.framework in Frameworks */,
+				3CC16A821D12E0970080F62C /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3C86ED951D1021CA00D83A25 = {
 			isa = PBXGroup;
 			children = (
-				3C86EDBE1D1056FD00D83A25 /* New Group */,
+				3CC16A871D12E0ED0080F62C /* libglfw3.a */,
 				3C86EDBC1D1055FF00D83A25 /* libGLEW.a */,
 				3C86EDB51D102A1300D83A25 /* libglfw3.a */,
 				3C86EDB31D1029E400D83A25 /* GLUT.framework */,
@@ -71,6 +105,7 @@
 				3C86EDAD1D1029D000D83A25 /* IOKit.framework */,
 				3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */,
 				3C86EDA81D1021D500D83A25 /* Getting Start */,
+				3CC16A7A1D12D3090080F62C /* EX_GS_HT_1 */,
 				3C86ED9F1D1021CA00D83A25 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				3C86ED9E1D1021CA00D83A25 /* Mac */,
+				3CC16A791D12D3090080F62C /* EX_GS_HT_1 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,11 +127,12 @@
 			name = "Getting Start";
 			sourceTree = "<group>";
 		};
-		3C86EDBE1D1056FD00D83A25 /* New Group */ = {
+		3CC16A7A1D12D3090080F62C /* EX_GS_HT_1 */ = {
 			isa = PBXGroup;
 			children = (
+				3CC16A801D12D3430080F62C /* main.cpp */,
 			);
-			name = "New Group";
+			path = EX_GS_HT_1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +155,23 @@
 			productReference = 3C86ED9E1D1021CA00D83A25 /* Mac */;
 			productType = "com.apple.product-type.tool";
 		};
+		3CC16A781D12D3090080F62C /* EX_GS_HT_1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC16A7D1D12D3090080F62C /* Build configuration list for PBXNativeTarget "EX_GS_HT_1" */;
+			buildPhases = (
+				3CC16A751D12D3090080F62C /* Sources */,
+				3CC16A761D12D3090080F62C /* Frameworks */,
+				3CC16A771D12D3090080F62C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_HT_1;
+			productName = EX_GS_HT_1;
+			productReference = 3CC16A791D12D3090080F62C /* EX_GS_HT_1 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -128,6 +182,9 @@
 				ORGANIZATIONNAME = King;
 				TargetAttributes = {
 					3C86ED9D1D1021CA00D83A25 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3CC16A781D12D3090080F62C = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
@@ -145,6 +202,7 @@
 			projectRoot = "";
 			targets = (
 				3C86ED9D1D1021CA00D83A25 /* Mac */,
+				3CC16A781D12D3090080F62C /* EX_GS_HT_1 */,
 			);
 		};
 /* End PBXProject section */
@@ -155,6 +213,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C86EDAA1D10221500D83A25 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC16A751D12D3090080F62C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC16A811D12D3430080F62C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +328,24 @@
 			};
 			name = Release;
 		};
+		3CC16A7E1D12D3090080F62C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CC16A7F1D12D3090080F62C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -279,6 +363,15 @@
 			buildConfigurations = (
 				3C86EDA61D1021CA00D83A25 /* Debug */,
 				3C86EDA71D1021CA00D83A25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CC16A7D1D12D3090080F62C /* Build configuration list for PBXNativeTarget "EX_GS_HT_1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC16A7E1D12D3090080F62C /* Debug */,
+				3CC16A7F1D12D3090080F62C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

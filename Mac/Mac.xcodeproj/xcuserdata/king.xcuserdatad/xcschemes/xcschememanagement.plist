@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EX_GS_HT_1.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3C86ED9D1D1021CA00D83A25</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CC16A781D12D3090080F62C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
