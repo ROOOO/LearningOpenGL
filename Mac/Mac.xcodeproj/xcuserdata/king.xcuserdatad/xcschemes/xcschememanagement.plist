@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>EX_GS_HT_3.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>3CC16A8E1D12F71B0080F62C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CC700B11D14149F00A21FAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
