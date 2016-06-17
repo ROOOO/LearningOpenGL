@@ -8,7 +8,6 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 
     1.安装 CMake。
     2.下载 GLFW 源码并用CMake，选择相应的编译器并编译拿到其中的 .lib 文件。
-    ~~3.设置 Project Properties 的 Lib 和 Include 的目录，并且设置好 Linker -- Input -- Additional Dependencies 里面的 lib。
     3.新建 Project 后，在 Tools/Win 文件夹中用 SetVS.py 设置一下。
 
 - Mac OS X
