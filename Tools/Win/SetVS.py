@@ -18,7 +18,7 @@ class SetVS:
     libAndInclude = """
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>D:\Projects\OpenGL\LearningOpenGL\Libs\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs\</LibraryPath>
+    <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs\;$(IncludePath)</LibraryPath>
   </PropertyGroup>"""
     pattern = re.compile(r'<PropertyGroup />', re.S)
     find = re.findall(pattern, self.file)
