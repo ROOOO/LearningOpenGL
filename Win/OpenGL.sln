@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Getting Start", "OpenGL\Ope
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ex_GS_HT_1", "Ex_GS_HT_1\Ex_GS_HT_1.vcxproj", "{8A6DB04C-A0A0-4FE7-8CAE-9FD1077D56B9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EX_GS_HT_3", "EX_GS_HT_3\EX_GS_HT_3.vcxproj", "{C5396818-82CB-41F1-ACEB-5604BE151060}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EX_GS_HT_2", "EX_GS_HT_2\EX_GS_HT_2.vcxproj", "{944E711F-B7B6-487A-9A19-DE944C52A6C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +25,14 @@ Global
 		{8A6DB04C-A0A0-4FE7-8CAE-9FD1077D56B9}.Debug|Win32.Build.0 = Debug|Win32
 		{8A6DB04C-A0A0-4FE7-8CAE-9FD1077D56B9}.Release|Win32.ActiveCfg = Release|Win32
 		{8A6DB04C-A0A0-4FE7-8CAE-9FD1077D56B9}.Release|Win32.Build.0 = Release|Win32
+		{C5396818-82CB-41F1-ACEB-5604BE151060}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C5396818-82CB-41F1-ACEB-5604BE151060}.Debug|Win32.Build.0 = Debug|Win32
+		{C5396818-82CB-41F1-ACEB-5604BE151060}.Release|Win32.ActiveCfg = Release|Win32
+		{C5396818-82CB-41F1-ACEB-5604BE151060}.Release|Win32.Build.0 = Release|Win32
+		{944E711F-B7B6-487A-9A19-DE944C52A6C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{944E711F-B7B6-487A-9A19-DE944C52A6C8}.Debug|Win32.Build.0 = Debug|Win32
+		{944E711F-B7B6-487A-9A19-DE944C52A6C8}.Release|Win32.ActiveCfg = Release|Win32
+		{944E711F-B7B6-487A-9A19-DE944C52A6C8}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
