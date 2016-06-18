@@ -40,6 +40,33 @@
 		3CC700C21D141AE200A21FAC /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
 		3CC700C31D1455A400A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
 		3CC700C71D14DD4200A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CC700DE1D152E8000A21FAC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700DC1D152E6200A21FAC /* main.cpp */; };
+		3CC700DF1D152E9300A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CC700E01D152EF000A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CC700E11D152EF300A21FAC /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
+		3CC700E21D152EF700A21FAC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CC700E31D152EFC00A21FAC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CC700E41D152F0200A21FAC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CC700E51D152F0600A21FAC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CC700E61D152F1800A21FAC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CC701001D1530C800A21FAC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700FF1D1530C800A21FAC /* main.cpp */; };
+		3CC701041D1530E100A21FAC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC701031D1530E100A21FAC /* main.cpp */; };
+		3CC701051D15312800A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CC701061D15312A00A21FAC /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
+		3CC701071D15312E00A21FAC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CC701081D15313200A21FAC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CC701091D15313700A21FAC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CC7010A1D15313C00A21FAC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CC7010B1D15314200A21FAC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CC7010C1D15315500A21FAC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CC7010D1D15315C00A21FAC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CC7010E1D15315C00A21FAC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CC7010F1D15316300A21FAC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CC701101D15316800A21FAC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CC701111D15316B00A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CC701121D15316E00A21FAC /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
+		3CC701131D153EC700A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +106,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3CC700D11D152E4100A21FAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3CC700E91D15305A00A21FAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3CC700F41D15306600A21FAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +155,18 @@
 		3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShaderReader.hpp; path = "../Files/Getting Start/ShaderReader.hpp"; sourceTree = "<group>"; };
 		3CC700CC1D1506E200A21FAC /* shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.vs; path = "../Files/Getting Start/shader.vs"; sourceTree = "<group>"; };
 		3CC700CD1D15070000A21FAC /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.frag; path = "../Files/Getting Start/shader.frag"; sourceTree = "<group>"; };
+		3CC700D31D152E4100A21FAC /* EX_GS_S_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_S_1; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC700DA1D152E6200A21FAC /* EX_GS_S_1_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_1_Fragment.shader; path = "../Files/Exercises/Getting Start/Shader/1/EX_GS_S_1_Fragment.shader"; sourceTree = SOURCE_ROOT; };
+		3CC700DB1D152E6200A21FAC /* EX_GS_S_1_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; lineEnding = 0; name = EX_GS_S_1_Vertex.shader; path = "../Files/Exercises/Getting Start/Shader/1/EX_GS_S_1_Vertex.shader"; sourceTree = SOURCE_ROOT; usesTabs = 0; };
+		3CC700DC1D152E6200A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Shader/1/main.cpp"; sourceTree = SOURCE_ROOT; };
+		3CC700EB1D15305A00A21FAC /* EX_GS_S_2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_S_2; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC700F61D15306600A21FAC /* EX_GS_S_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_S_3; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC700FD1D1530C800A21FAC /* EX_GS_S_2_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_2_Fragment.shader; path = "../Files/Exercises/Getting Start/Shader/2/EX_GS_S_2_Fragment.shader"; sourceTree = "<group>"; };
+		3CC700FE1D1530C800A21FAC /* EX_GS_S_2_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_2_Vertex.shader; path = "../Files/Exercises/Getting Start/Shader/2/EX_GS_S_2_Vertex.shader"; sourceTree = "<group>"; };
+		3CC700FF1D1530C800A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Shader/2/main.cpp"; sourceTree = "<group>"; };
+		3CC701011D1530E100A21FAC /* EX_GS_S_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_3_Fragment.shader; path = "../Files/Exercises/Getting Start/Shader/3/EX_GS_S_3_Fragment.shader"; sourceTree = "<group>"; };
+		3CC701021D1530E100A21FAC /* EX_GS_S_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_3_Vertex.shader; path = "../Files/Exercises/Getting Start/Shader/3/EX_GS_S_3_Vertex.shader"; sourceTree = "<group>"; };
+		3CC701031D1530E100A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Shader/3/main.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,12 +226,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CC700D01D152E4100A21FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC700E61D152F1800A21FAC /* IOKit.framework in Frameworks */,
+				3CC700E51D152F0600A21FAC /* GLUT.framework in Frameworks */,
+				3CC700E41D152F0200A21FAC /* CoreVideo.framework in Frameworks */,
+				3CC700E31D152EFC00A21FAC /* OpenGL.framework in Frameworks */,
+				3CC700E21D152EF700A21FAC /* Cocoa.framework in Frameworks */,
+				3CC700E01D152EF000A21FAC /* libglfw3.a in Frameworks */,
+				3CC700E11D152EF300A21FAC /* libGLEW.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC700E81D15305A00A21FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC7010B1D15314200A21FAC /* Cocoa.framework in Frameworks */,
+				3CC7010A1D15313C00A21FAC /* CoreVideo.framework in Frameworks */,
+				3CC701091D15313700A21FAC /* IOKit.framework in Frameworks */,
+				3CC701081D15313200A21FAC /* GLUT.framework in Frameworks */,
+				3CC701071D15312E00A21FAC /* OpenGL.framework in Frameworks */,
+				3CC701051D15312800A21FAC /* libglfw3.a in Frameworks */,
+				3CC701061D15312A00A21FAC /* libGLEW.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC700F31D15306600A21FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC701101D15316800A21FAC /* CoreVideo.framework in Frameworks */,
+				3CC7010F1D15316300A21FAC /* IOKit.framework in Frameworks */,
+				3CC7010D1D15315C00A21FAC /* GLUT.framework in Frameworks */,
+				3CC7010E1D15315C00A21FAC /* OpenGL.framework in Frameworks */,
+				3CC701121D15316E00A21FAC /* libGLEW.a in Frameworks */,
+				3CC701111D15316B00A21FAC /* libglfw3.a in Frameworks */,
+				3CC7010C1D15315500A21FAC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3C42909C1D12FBB600736950 /* EX */ = {
 			isa = PBXGroup;
 			children = (
+				3CC700D41D152E4100A21FAC /* EX_GS_S_1 */,
+				3CC700EC1D15305A00A21FAC /* EX_GS_S_2 */,
+				3CC700F71D15306600A21FAC /* EX_GS_S_3 */,
 				3CC700B31D14149F00A21FAC /* EX_GS_HT_3 */,
 				3CC16A7A1D12D3090080F62C /* EX_GS_HT_1 */,
 				3CC16A901D12F71B0080F62C /* EX_GS_HT_2 */,
@@ -196,6 +307,9 @@
 				3CC16A791D12D3090080F62C /* EX_GS_HT_1 */,
 				3CC16A8F1D12F71B0080F62C /* EX_GS_HT_2 */,
 				3CC700B21D14149F00A21FAC /* EX_GS_HT_3 */,
+				3CC700D31D152E4100A21FAC /* EX_GS_S_1 */,
+				3CC700EB1D15305A00A21FAC /* EX_GS_S_2 */,
+				3CC700F61D15306600A21FAC /* EX_GS_S_3 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +360,39 @@
 			);
 			name = "Shader Class";
 			sourceTree = "<group>";
+		};
+		3CC700D41D152E4100A21FAC /* EX_GS_S_1 */ = {
+			isa = PBXGroup;
+			children = (
+				3CC700DA1D152E6200A21FAC /* EX_GS_S_1_Fragment.shader */,
+				3CC700DB1D152E6200A21FAC /* EX_GS_S_1_Vertex.shader */,
+				3CC700DC1D152E6200A21FAC /* main.cpp */,
+			);
+			name = EX_GS_S_1;
+			path = ../EX_GS_S_1;
+			sourceTree = "<group>";
+		};
+		3CC700EC1D15305A00A21FAC /* EX_GS_S_2 */ = {
+			isa = PBXGroup;
+			children = (
+				3CC700FD1D1530C800A21FAC /* EX_GS_S_2_Fragment.shader */,
+				3CC700FE1D1530C800A21FAC /* EX_GS_S_2_Vertex.shader */,
+				3CC700FF1D1530C800A21FAC /* main.cpp */,
+			);
+			name = EX_GS_S_2;
+			path = ../EX_GS_S_2;
+			sourceTree = SOURCE_ROOT;
+		};
+		3CC700F71D15306600A21FAC /* EX_GS_S_3 */ = {
+			isa = PBXGroup;
+			children = (
+				3CC701011D1530E100A21FAC /* EX_GS_S_3_Fragment.shader */,
+				3CC701021D1530E100A21FAC /* EX_GS_S_3_Vertex.shader */,
+				3CC701031D1530E100A21FAC /* main.cpp */,
+			);
+			name = EX_GS_S_3;
+			path = ../EX_GS_S_3;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -318,6 +465,57 @@
 			productReference = 3CC700B21D14149F00A21FAC /* EX_GS_HT_3 */;
 			productType = "com.apple.product-type.tool";
 		};
+		3CC700D21D152E4100A21FAC /* EX_GS_S_1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC700D71D152E4100A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_1" */;
+			buildPhases = (
+				3CC700CF1D152E4100A21FAC /* Sources */,
+				3CC700D01D152E4100A21FAC /* Frameworks */,
+				3CC700D11D152E4100A21FAC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_S_1;
+			productName = EX_GS_S_1;
+			productReference = 3CC700D31D152E4100A21FAC /* EX_GS_S_1 */;
+			productType = "com.apple.product-type.tool";
+		};
+		3CC700EA1D15305A00A21FAC /* EX_GS_S_2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC700EF1D15305A00A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_2" */;
+			buildPhases = (
+				3CC700E71D15305A00A21FAC /* Sources */,
+				3CC700E81D15305A00A21FAC /* Frameworks */,
+				3CC700E91D15305A00A21FAC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_S_2;
+			productName = EX_GS_S_2;
+			productReference = 3CC700EB1D15305A00A21FAC /* EX_GS_S_2 */;
+			productType = "com.apple.product-type.tool";
+		};
+		3CC700F51D15306600A21FAC /* EX_GS_S_3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CC700FA1D15306600A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_3" */;
+			buildPhases = (
+				3CC700F21D15306600A21FAC /* Sources */,
+				3CC700F31D15306600A21FAC /* Frameworks */,
+				3CC700F41D15306600A21FAC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_S_3;
+			productName = EX_GS_S_3;
+			productReference = 3CC700F61D15306600A21FAC /* EX_GS_S_3 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -339,6 +537,15 @@
 					3CC700B11D14149F00A21FAC = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					3CC700D21D152E4100A21FAC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3CC700EA1D15305A00A21FAC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3CC700F51D15306600A21FAC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 3C86ED991D1021CA00D83A25 /* Build configuration list for PBXProject "Mac" */;
@@ -357,6 +564,9 @@
 				3CC16A781D12D3090080F62C /* EX_GS_HT_1 */,
 				3CC16A8E1D12F71B0080F62C /* EX_GS_HT_2 */,
 				3CC700B11D14149F00A21FAC /* EX_GS_HT_3 */,
+				3CC700D21D152E4100A21FAC /* EX_GS_S_1 */,
+				3CC700EA1D15305A00A21FAC /* EX_GS_S_2 */,
+				3CC700F51D15306600A21FAC /* EX_GS_S_3 */,
 			);
 		};
 /* End PBXProject section */
@@ -395,13 +605,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CC700CF1D152E4100A21FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC700DE1D152E8000A21FAC /* main.cpp in Sources */,
+				3CC700DF1D152E9300A21FAC /* ShaderReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC700E71D15305A00A21FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC701001D1530C800A21FAC /* main.cpp in Sources */,
+				3CC701131D153EC700A21FAC /* ShaderReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CC700F21D15306600A21FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC701041D1530E100A21FAC /* main.cpp in Sources */,
+				3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		3C86EDA31D1021CA00D83A25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -434,6 +671,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -444,7 +683,7 @@
 		3C86EDA41D1021CA00D83A25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -471,6 +710,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -557,6 +798,52 @@
 			};
 			name = Release;
 		};
+		3CC700D81D152E4100A21FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CC700D91D152E4100A21FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3CC700F01D15305A00A21FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CC700F11D15305A00A21FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3CC700FB1D15306600A21FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CC700FC1D15306600A21FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -604,6 +891,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3CC700D71D152E4100A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC700D81D152E4100A21FAC /* Debug */,
+				3CC700D91D152E4100A21FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3CC700EF1D15305A00A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC700F01D15305A00A21FAC /* Debug */,
+				3CC700F11D15305A00A21FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3CC700FA1D15306600A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC700FB1D15306600A21FAC /* Debug */,
+				3CC700FC1D15306600A21FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -59,7 +59,7 @@ ShaderReader::ShaderReader(const GLchar* vertexShaderPath, const GLchar* fragmen
     cout << "Program link failed\n" << infoLog << endl;
     return;
   }
-  
+
   glDeleteShader(vertexShader);
   glDeleteShader(fragmentShader);
 }
