@@ -10,5 +10,21 @@
 #define ShaderReader_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+class ShaderReader {
+  GLuint m_shaderProgram;
+public:
+  ShaderReader(const GLchar* vertexShaderPath, const GLchar* fragmentShaderPath);
+  GLuint GetProgram();
+  void Use();
+};
 
 #endif /* ShaderReader_hpp */

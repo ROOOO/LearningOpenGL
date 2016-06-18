@@ -38,6 +38,8 @@
 		3CC700C01D141ADB00A21FAC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
 		3CC700C11D141ADF00A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
 		3CC700C21D141AE200A21FAC /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
+		3CC700C31D1455A400A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CC700C71D14DD4200A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,6 +97,10 @@
 		3CC16AAA1D12F9570080F62C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/1/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3CC700B21D14149F00A21FAC /* EX_GS_HT_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_HT_3; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC700B91D14153B00A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/3/main.cpp"; sourceTree = SOURCE_ROOT; };
+		3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderReader.cpp; path = "../Files/Getting Start/ShaderReader.cpp"; sourceTree = "<group>"; };
+		3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShaderReader.hpp; path = "../Files/Getting Start/ShaderReader.hpp"; sourceTree = "<group>"; };
+		3CC700CC1D1506E200A21FAC /* shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.vs; path = "../Files/Getting Start/shader.vs"; sourceTree = "<group>"; };
+		3CC700CD1D15070000A21FAC /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.frag; path = "../Files/Getting Start/shader.frag"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 				3C86EDB01D1029D700D83A25 /* Cocoa.framework in Frameworks */,
 				3C86EDAE1D1029D000D83A25 /* IOKit.framework in Frameworks */,
 				3C86EDAC1D1029C800D83A25 /* CoreVideo.framework in Frameworks */,
+				3CC700C31D1455A400A21FAC /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,8 +203,11 @@
 		3C86EDA81D1021D500D83A25 /* Getting Start */ = {
 			isa = PBXGroup;
 			children = (
+				3CC700C41D14DCFD00A21FAC /* Shader Class */,
 				3C86EDA91D10221500D83A25 /* main.cpp */,
 				3C42909C1D12FBB600736950 /* EX */,
+				3CC700CC1D1506E200A21FAC /* shader.vs */,
+				3CC700CD1D15070000A21FAC /* shader.frag */,
 			);
 			name = "Getting Start";
 			sourceTree = "<group>";
@@ -226,6 +236,15 @@
 			);
 			name = EX_GS_HT_3;
 			path = "../Files/Exercises/Getting Start/Hello_Triangle/3";
+			sourceTree = "<group>";
+		};
+		3CC700C41D14DCFD00A21FAC /* Shader Class */ = {
+			isa = PBXGroup;
+			children = (
+				3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */,
+				3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */,
+			);
+			name = "Shader Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C86EDAA1D10221500D83A25 /* main.cpp in Sources */,
+				3CC700C71D14DD4200A21FAC /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +603,7 @@
 				3CC700B81D14149F00A21FAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
