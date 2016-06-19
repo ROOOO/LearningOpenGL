@@ -144,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		3C4290991D12FAE200736950 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/2/main.cpp"; sourceTree = SOURCE_ROOT; };
+		3C45E5251D16F33F007007DA /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = "../Files/Getting Start/awesomeface.png"; sourceTree = "<group>"; };
 		3C86ED9E1D1021CA00D83A25 /* Mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Mac; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C86EDA91D10221500D83A25 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Getting Start/main.cpp"; sourceTree = "<group>"; };
 		3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -160,8 +161,8 @@
 		3CC700B91D14153B00A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/3/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderReader.cpp; path = "../Files/Getting Start/ShaderReader.cpp"; sourceTree = "<group>"; };
 		3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShaderReader.hpp; path = "../Files/Getting Start/ShaderReader.hpp"; sourceTree = "<group>"; };
-		3CC700CC1D1506E200A21FAC /* shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.vs; path = "../Files/Getting Start/shader.vs"; sourceTree = "<group>"; };
-		3CC700CD1D15070000A21FAC /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader.frag; path = "../Files/Getting Start/shader.frag"; sourceTree = "<group>"; };
+		3CC700CC1D1506E200A21FAC /* shader_test7.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test7.vs; path = "../Files/Getting Start/shader_test7.vs"; sourceTree = "<group>"; };
+		3CC700CD1D15070000A21FAC /* shader_test7.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test7.frag; path = "../Files/Getting Start/shader_test7.frag"; sourceTree = "<group>"; };
 		3CC700D31D152E4100A21FAC /* EX_GS_S_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_S_1; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC700DA1D152E6200A21FAC /* EX_GS_S_1_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_1_Fragment.shader; path = "../Files/Exercises/Getting Start/Shader/1/EX_GS_S_1_Fragment.shader"; sourceTree = SOURCE_ROOT; };
 		3CC700DB1D152E6200A21FAC /* EX_GS_S_1_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; lineEnding = 0; name = EX_GS_S_1_Vertex.shader; path = "../Files/Exercises/Getting Start/Shader/1/EX_GS_S_1_Vertex.shader"; sourceTree = SOURCE_ROOT; usesTabs = 0; };
@@ -176,6 +177,11 @@
 		3CC701031D1530E100A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Shader/3/main.cpp"; sourceTree = "<group>"; };
 		3CC701351D15AA3C00A21FAC /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wall.jpg; path = "../Files/Getting Start/wall.jpg"; sourceTree = "<group>"; };
 		3CC701361D15ABFA00A21FAC /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../../../../../usr/local/lib/libSOIL.a; sourceTree = "<group>"; };
+		3CC7013F1D1622E900A21FAC /* shader_test8.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test8.frag; path = "../Files/Getting Start/shader_test8.frag"; sourceTree = SOURCE_ROOT; };
+		3CC701401D1622E900A21FAC /* shader_test8.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test8.vs; path = "../Files/Getting Start/shader_test8.vs"; sourceTree = SOURCE_ROOT; };
+		3CC701421D168FA800A21FAC /* shader_test9.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.frag; path = "../Files/Getting Start/shader_test9.frag"; sourceTree = "<group>"; };
+		3CC701431D168FA800A21FAC /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = container.jpg; path = "../Files/Getting Start/container.jpg"; sourceTree = "<group>"; };
+		3CC701441D168FA800A21FAC /* shader_test9.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.vs; path = "../Files/Getting Start/shader_test9.vs"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,12 +340,11 @@
 		3C86EDA81D1021D500D83A25 /* Getting Start */ = {
 			isa = PBXGroup;
 			children = (
+				3C86EDA91D10221500D83A25 /* main.cpp */,
+				3CC7013E1D1622D800A21FAC /* Shaders */,
 				3CC701341D15AA2E00A21FAC /* Textures */,
 				3CC700C41D14DCFD00A21FAC /* Shader Class */,
-				3C86EDA91D10221500D83A25 /* main.cpp */,
 				3C42909C1D12FBB600736950 /* EX */,
-				3CC700CC1D1506E200A21FAC /* shader.vs */,
-				3CC700CD1D15070000A21FAC /* shader.frag */,
 			);
 			name = "Getting Start";
 			sourceTree = "<group>";
@@ -415,9 +420,24 @@
 		3CC701341D15AA2E00A21FAC /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				3C45E5251D16F33F007007DA /* awesomeface.png */,
+				3CC701431D168FA800A21FAC /* container.jpg */,
 				3CC701351D15AA3C00A21FAC /* wall.jpg */,
 			);
 			name = Textures;
+			sourceTree = "<group>";
+		};
+		3CC7013E1D1622D800A21FAC /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3CC701421D168FA800A21FAC /* shader_test9.frag */,
+				3CC701441D168FA800A21FAC /* shader_test9.vs */,
+				3CC7013F1D1622E900A21FAC /* shader_test8.frag */,
+				3CC701401D1622E900A21FAC /* shader_test8.vs */,
+				3CC700CC1D1506E200A21FAC /* shader_test7.vs */,
+				3CC700CD1D15070000A21FAC /* shader_test7.frag */,
+			);
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -925,6 +945,7 @@
 				3CC700D91D152E4100A21FAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CC700EF1D15305A00A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_2" */ = {
 			isa = XCConfigurationList;
@@ -933,6 +954,7 @@
 				3CC700F11D15305A00A21FAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CC700FA1D15306600A21FAC /* Build configuration list for PBXNativeTarget "EX_GS_S_3" */ = {
 			isa = XCConfigurationList;
@@ -941,6 +963,7 @@
 				3CC700FC1D15306600A21FAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
