@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "ShaderReader.hpp"
+#include <SOIL.h>
 
 // test1  VAO and VBO
 // test2  VAO, VBO, EBO
@@ -16,8 +17,9 @@
 // test5  uniform
 // test6  vertex shader input color
 // test7  Shader Class
+// test8  Textures
 
-#define test7
+#define test8
 
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode) {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -32,7 +34,7 @@ int main(){
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 #ifdef __APPLE__
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
 	GLFWwindow *window = glfwCreateWindow(800, 600, "LearnOpenGL", nullptr, nullptr);
@@ -161,11 +163,18 @@ int main(){
   glGenBuffers(1, &VBO);
   glGenVertexArrays(1, &VAO);
 
-#if !defined(test6) && !defined(test7)
+#if !defined(test6) && !defined(test7) && !defined(test8)
   GLfloat vertices[] = {
     -0.5f, -0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
     0.0f, 0.5f, 0.0f,
+  };
+#elif defined(test8)
+  GLfloat vertices[] = {
+    
+  };
+  GLuint indices[] = {
+    
   };
 #else
   GLfloat vertices[] = {
@@ -231,6 +240,10 @@ int main(){
   GLint nrAttributes;
   glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
   std::cout << "MAX vertex attribs is " << nrAttributes << std::endl;
+#endif
+#ifdef test8
+  int texWidth, texHeight;
+  unsigned char* image = SOIL_load_image("wall.jpg", &texWidth, &texHeight, 0, SOIL_LOAD_RGB);
 #endif
   
   while (!glfwWindowShouldClose(window)) {

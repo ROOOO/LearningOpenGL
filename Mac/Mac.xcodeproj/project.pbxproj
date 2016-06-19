@@ -67,6 +67,13 @@
 		3CC701121D15316E00A21FAC /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDBC1D1055FF00D83A25 /* libGLEW.a */; };
 		3CC701131D153EC700A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 		3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CC701371D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
+		3CC701381D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
+		3CC701391D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
+		3CC7013A1D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
+		3CC7013B1D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
+		3CC7013C1D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
+		3CC7013D1D15ABFA00A21FAC /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC701361D15ABFA00A21FAC /* libSOIL.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,6 +174,8 @@
 		3CC701011D1530E100A21FAC /* EX_GS_S_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_3_Fragment.shader; path = "../Files/Exercises/Getting Start/Shader/3/EX_GS_S_3_Fragment.shader"; sourceTree = "<group>"; };
 		3CC701021D1530E100A21FAC /* EX_GS_S_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = EX_GS_S_3_Vertex.shader; path = "../Files/Exercises/Getting Start/Shader/3/EX_GS_S_3_Vertex.shader"; sourceTree = "<group>"; };
 		3CC701031D1530E100A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Shader/3/main.cpp"; sourceTree = "<group>"; };
+		3CC701351D15AA3C00A21FAC /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wall.jpg; path = "../Files/Getting Start/wall.jpg"; sourceTree = "<group>"; };
+		3CC701361D15ABFA00A21FAC /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../../../../../usr/local/lib/libSOIL.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +189,7 @@
 				3C86EDB01D1029D700D83A25 /* Cocoa.framework in Frameworks */,
 				3C86EDAE1D1029D000D83A25 /* IOKit.framework in Frameworks */,
 				3C86EDAC1D1029C800D83A25 /* CoreVideo.framework in Frameworks */,
+				3CC701371D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC700C31D1455A400A21FAC /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +204,7 @@
 				3CC16A851D12E0AB0080F62C /* IOKit.framework in Frameworks */,
 				3CC16A841D12E0A70080F62C /* Cocoa.framework in Frameworks */,
 				3CC16A831D12E09C0080F62C /* GLUT.framework in Frameworks */,
+				3CC701381D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC16A821D12E0970080F62C /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +219,7 @@
 				3CC16A9B1D12F7940080F62C /* OpenGL.framework in Frameworks */,
 				3CC16A9A1D12F78F0080F62C /* GLUT.framework in Frameworks */,
 				3CC16A9C1D12F7A30080F62C /* libglfw3.a in Frameworks */,
+				3CC701391D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC16A9D1D12F7CB0080F62C /* libGLEW.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +234,7 @@
 				3CC700BD1D141A9400A21FAC /* OpenGL.framework in Frameworks */,
 				3CC700BC1D141A8F00A21FAC /* GLUT.framework in Frameworks */,
 				3CC700C11D141ADF00A21FAC /* libglfw3.a in Frameworks */,
+				3CC7013A1D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC700C21D141AE200A21FAC /* libGLEW.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +249,7 @@
 				3CC700E31D152EFC00A21FAC /* OpenGL.framework in Frameworks */,
 				3CC700E21D152EF700A21FAC /* Cocoa.framework in Frameworks */,
 				3CC700E01D152EF000A21FAC /* libglfw3.a in Frameworks */,
+				3CC7013B1D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC700E11D152EF300A21FAC /* libGLEW.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +264,7 @@
 				3CC701081D15313200A21FAC /* GLUT.framework in Frameworks */,
 				3CC701071D15312E00A21FAC /* OpenGL.framework in Frameworks */,
 				3CC701051D15312800A21FAC /* libglfw3.a in Frameworks */,
+				3CC7013C1D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC701061D15312A00A21FAC /* libGLEW.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +279,7 @@
 				3CC7010E1D15315C00A21FAC /* OpenGL.framework in Frameworks */,
 				3CC701121D15316E00A21FAC /* libGLEW.a in Frameworks */,
 				3CC701111D15316B00A21FAC /* libglfw3.a in Frameworks */,
+				3CC7013D1D15ABFA00A21FAC /* libSOIL.a in Frameworks */,
 				3CC7010C1D15315500A21FAC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +304,7 @@
 		3C86ED951D1021CA00D83A25 = {
 			isa = PBXGroup;
 			children = (
+				3CC701361D15ABFA00A21FAC /* libSOIL.a */,
 				3CC16A871D12E0ED0080F62C /* libglfw3.a */,
 				3C86EDBC1D1055FF00D83A25 /* libGLEW.a */,
 				3C86EDB31D1029E400D83A25 /* GLUT.framework */,
@@ -317,6 +334,7 @@
 		3C86EDA81D1021D500D83A25 /* Getting Start */ = {
 			isa = PBXGroup;
 			children = (
+				3CC701341D15AA2E00A21FAC /* Textures */,
 				3CC700C41D14DCFD00A21FAC /* Shader Class */,
 				3C86EDA91D10221500D83A25 /* main.cpp */,
 				3C42909C1D12FBB600736950 /* EX */,
@@ -393,6 +411,14 @@
 			name = EX_GS_S_3;
 			path = ../EX_GS_S_3;
 			sourceTree = SOURCE_ROOT;
+		};
+		3CC701341D15AA2E00A21FAC /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				3CC701351D15AA3C00A21FAC /* wall.jpg */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
