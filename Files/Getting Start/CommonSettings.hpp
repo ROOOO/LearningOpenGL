@@ -18,13 +18,10 @@ using namespace std;
 
 class CommonSettings {
   
-#ifdef __APPLE__
   string m_ShadersFolder = "";
   string m_ResourcesFolder = "";
-#else
-  string m_ShadersFolder = "";
-  string m_ResourcesFolder = "";
-#endif
+  string m_FilesFolder = "";
+  string m_ExercisesFolder = "";
   
   static void m_key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
@@ -34,6 +31,8 @@ public:
   GLFWwindow *CreateWindow(GLFWwindow *window, string titleName = "Learning OpenGL");
   string GetResourcesFolder();
   string GetShadersFolder();
+  string GetFilesFolder();
+  string GetExercisesFolder();
   const GLchar* CCResourcesFolder(string str);
   const GLchar* CCShadersFolder(string str);
 };

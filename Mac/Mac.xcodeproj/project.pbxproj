@@ -54,6 +54,7 @@
 		3C3720831D1842750068ABC8 /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
 		3C3720841D1842750068ABC8 /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
 		3C3720851D1842750068ABC8 /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
+		3C37208D1D185CC40068ABC8 /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 		3C42909D1D12FE1600736950 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C4290991D12FAE200736950 /* main.cpp */; };
 		3C45E5301D182E04007007DA /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
 		3C45E5311D182E04007007DA /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
@@ -233,6 +234,8 @@
 		3C3720571D1833640068ABC8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Texture/4/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3C3720791D1842750068ABC8 /* CommonSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonSettings.cpp; path = "../Files/Getting Start/CommonSettings.cpp"; sourceTree = "<group>"; };
 		3C37207A1D1842750068ABC8 /* CommonSettings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonSettings.hpp; path = "../Files/Getting Start/CommonSettings.hpp"; sourceTree = "<group>"; };
+		3C37208A1D185C470068ABC8 /* EX_GS_Tex_1_Vertex.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EX_GS_Tex_1_Vertex.shader; sourceTree = "<group>"; };
+		3C37208B1D185C470068ABC8 /* EX_GS_Tex_1_Fragment.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EX_GS_Tex_1_Fragment.shader; sourceTree = "<group>"; };
 		3C4290991D12FAE200736950 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/2/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3C45E5251D16F33F007007DA /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = "../Files/Getting Start/Resources/awesomeface.png"; sourceTree = "<group>"; };
 		3C45E52E1D182E04007007DA /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../Libs/libSOIL.a; sourceTree = "<group>"; };
@@ -484,11 +487,13 @@
 		3C45E54F1D1830B6007007DA /* EX_GS_Tex_1 */ = {
 			isa = PBXGroup;
 			children = (
+				3C37208A1D185C470068ABC8 /* EX_GS_Tex_1_Vertex.shader */,
+				3C37208B1D185C470068ABC8 /* EX_GS_Tex_1_Fragment.shader */,
 				3C37204A1D1832D90068ABC8 /* main.cpp */,
 			);
 			name = EX_GS_Tex_1;
-			path = ../EX_GS_Tex_1;
-			sourceTree = "<group>";
+			path = "../Files/Exercises/Getting Start/Texture/1";
+			sourceTree = SOURCE_ROOT;
 		};
 		3C45E55A1D1830D3007007DA /* EX_GS_Tex_2 */ = {
 			isa = PBXGroup;
@@ -922,6 +927,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C37208D1D185CC40068ABC8 /* ShaderReader.cpp in Sources */,
 				3C37204B1D1832D90068ABC8 /* main.cpp in Sources */,
 				3C3720821D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);

@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "CommonSettings.hpp"
+#include "ShaderReader.hpp"
 
 int main() {
   CommonSettings Settings;
@@ -13,6 +14,8 @@ int main() {
     std::cout << "Create window failed." << std::endl;
     return -1;
   }
+  
+  ShaderReader shader("EX_GS_Tex_1_Vertex.shader", "EX_GS_Tex_1_Fragment.shader");
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();

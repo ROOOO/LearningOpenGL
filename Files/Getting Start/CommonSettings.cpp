@@ -12,9 +12,13 @@ CommonSettings::CommonSettings() {
 #ifdef __APPLE__
   m_ShadersFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/Shaders/";
   m_ResourcesFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/Resources/";
+  m_FilesFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
+  m_ExercisesFolder = "/Users/king/git/LearningOpenGL/Files/Exercises/Getting Start/";
 #else
   m_ShadersFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Shaders\\";
   m_ResourcesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Resources\\";
+  m_FilesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\";
+  m_ExercisesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Getting Start\\";
 #endif
 }
 
@@ -75,4 +79,10 @@ string CommonSettings::GetResourcesFolder() {
 }
 string CommonSettings::GetShadersFolder() {
   return m_ShadersFolder;
+}
+string CommonSettings::GetFilesFolder() {
+  return m_FilesFolder;
+}
+string CommonSettings::GetExercisesFolder() {
+  return m_ExercisesFolder;
 }
