@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "ShaderReader.hpp"
+#include "CommonSettings.hpp"
 #include <SOIL/SOIL.h>
 
 // test1  VAO and VBO
@@ -22,13 +23,7 @@
 
 #define test 9
 
-#ifdef __APPLE__
-const GLchar* ShadersFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
-const GLchar* ResourcesFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
-#else
-string ShadersFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Shaders\\";
-string ResourcesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Resources\\";
-#endif
+CommonSettings Settings;
 
 #include <iostream>
 
@@ -179,7 +174,7 @@ int main(){
 #elif test == 8
   ShaderReader ShaderReader("/Users/king/git/LearningOpenGL/Files/Getting Start/shader_test8.vs", "/Users/king/git/LearningOpenGL/Files/Getting Start/shader_test8.frag");
 #elif test == 9
-  ShaderReader ShaderReader((ShadersFolder + "shader_test9.vs").c_str(), (ShadersFolder + "shader_test9.frag").c_str());
+  ShaderReader ShaderReader((Settings.GetShadersFolder() + "shader_test9.vs").c_str(), (Settings.GetShadersFolder() + "shader_test9.frag").c_str());
 #endif
   
   ////////////////////////////// VAO VBO EBO //////////////////////////////
@@ -311,8 +306,8 @@ int main(){
   int texWidth[2], texHeight[2];
   // awesomeface.png
   // container.jpg
-  images[0] = SOIL_load_image((ResourcesFolder + "container.jpg").c_str(), &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
-  images[1] = SOIL_load_image((ResourcesFolder + "awesomeface.png").c_str(), &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
+  images[0] = SOIL_load_image((Settings.GetResourcesFolder() + "container.jpg").c_str(), &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
+  images[1] = SOIL_load_image((Settings.GetResourcesFolder() + "awesomeface.png").c_str(), &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
   
   GLuint textures[2];
   glGenTextures(2, textures);

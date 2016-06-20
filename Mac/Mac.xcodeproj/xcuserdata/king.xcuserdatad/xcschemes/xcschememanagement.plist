@@ -34,6 +34,26 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>EX_GS_Tex_1.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>EX_GS_Tex_2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>EX_GS_Tex_3.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>EX_GS_Tex_4.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,6 +62,26 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3C37204F1D1832F20068ABC8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C45E54D1D1830B6007007DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C45E5581D1830D3007007DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C45E5631D1830DA007007DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3C86ED9D1D1021CA00D83A25</key>
 		<dict>
 			<key>primary</key>
