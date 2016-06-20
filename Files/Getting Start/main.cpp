@@ -318,12 +318,6 @@ int main(){
   glGenTextures(2, textures);
   
   for (int i = 0; i < 2; i++) {
-    //if (i == 0) {
-    //  image = SOIL_load_image("/Users/king/git/LearningOpenGL/Files/Getting Start/awesomeface.png", &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
-    //} else {
-    //  image = SOIL_load_image("/Users/king/git/LearningOpenGL/Files/Getting Start/container.jpg", &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
-    //}
-    
     glBindTexture(GL_TEXTURE_2D, textures[i]);
     
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -375,7 +369,7 @@ int main(){
     glDrawArrays(GL_TRIANGLES, 0, 3);
 #elif test == 8
     glBindTexture(GL_TEXTURE_2D, texture);
-//    glUniform1ui(glGetUniformLocation(ShaderReader.GetProgram(), "ourTexture"), texture);
+//    glUniform1ui(glGetUniformLocation(ShaderReader.GetProgram(), "ourTexture"), 0);
     ShaderReader.Use();
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -386,26 +380,16 @@ int main(){
     };
 //    glBindTexture(GL_TEXTURE_2D, textures[0]);
     ShaderReader.Use();
-//    for (int i = 0; i < 2; i++) {
-//      glActiveTexture(GL_TEXTURE0 + i);
-//      glBindTexture(GL_TEXTURE_2D, textures[i]);
-//      glUniform1ui(glGetUniformLocation(ShaderReader.GetProgram(), vars[i]), textures[i]);
-////      glBindTexture(GL_TEXTURE_2D, 0);
-//    }
+    for (int i = 0; i < 2; i++) {
+      glActiveTexture(GL_TEXTURE0 + i);
+      glBindTexture(GL_TEXTURE_2D, textures[i]);
+      glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), vars[i]), i);
+    }
     
-//    glActiveTexture(GL_TEXTURE0);
-//    glBindTexture(GL_TEXTURE_2D, textures[0]);
-//    glUniform1ui(glGetUniformLocation(ShaderReader.GetProgram(), "ourTexture1"), textures[0]);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textures[0]);
-    glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), "ourTexture1"), 0);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, textures[1]);
-    glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), "ourTexture2"), 1);
-//    ShaderReader.Use();
+    ShaderReader.Use();
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 #endif
     glBindVertexArray(0);
 
