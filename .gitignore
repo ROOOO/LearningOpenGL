@@ -1,6 +1,7 @@
 !/GL\ Files/
 *.opensdf
 *.sdf
+Debug/
 # Compiled Object files
 *.slo
 *.lo
