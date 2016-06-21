@@ -13,18 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{c68a9f2e-e3a5-4f92-ac20-bfa0a1375daa}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Files\Getting Start\main.cpp">
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\1\EX_GS_Tex_1_Fragment.shader">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\1\EX_GS_Tex_1_Vertex.shader">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Files\Exercises\Getting Start\Texture\1\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp">
+    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp">
+    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,25 +40,5 @@
     <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test7.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test7.vs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test8.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test8.vs">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test9.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test9.vs">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

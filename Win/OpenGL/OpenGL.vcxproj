@@ -12,10 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
+    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp" />
     <ClCompile Include="..\..\Files\Getting Start\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
+    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Files\Getting Start\Shaders\shader_test7.frag" />

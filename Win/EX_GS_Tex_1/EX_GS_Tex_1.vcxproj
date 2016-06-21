@@ -10,12 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Files\Exercises\Getting Start\Hello_Triangle\1\main.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8A6DB04C-A0A0-4FE7-8CAE-9FD1077D56B9}</ProjectGuid>
-    <RootNamespace>Ex_GS_HT_1</RootNamespace>
+    <ProjectGuid>{E1F38489-DFD2-4AB5-960C-B5E62E7A9725}</ProjectGuid>
+    <RootNamespace>EX_GS_Tex_1</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -50,8 +47,6 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -72,6 +67,19 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\1\EX_GS_Tex_1_Fragment.shader" />
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\1\EX_GS_Tex_1_Vertex.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
+    <ClCompile Include="..\..\Files\Exercises\Getting Start\Texture\1\main.cpp" />
+    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
+    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

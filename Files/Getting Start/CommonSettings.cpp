@@ -1,4 +1,4 @@
-//
+﻿//
 //  CommonSettings.cpp
 //  Mac
 //
@@ -31,7 +31,7 @@ void CommonSettings::m_key_callback(GLFWwindow* window, int key, int scancode, i
     glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
-GLFWwindow *CommonSettings::CreateWindow(GLFWwindow *window, string titleName) {
+GLFWwindow *CommonSettings::CreateWindow(string titleName) {
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -41,7 +41,7 @@ GLFWwindow *CommonSettings::CreateWindow(GLFWwindow *window, string titleName) {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
   
-  window = glfwCreateWindow(800, 600, titleName.c_str(), nullptr, nullptr);
+  GLFWwindow* window = glfwCreateWindow(800, 600, titleName.c_str(), nullptr, nullptr);
   if (window == nullptr) {
     std::cout << "Create window failed." << std::endl;
     glfwTerminate();
@@ -64,7 +64,8 @@ GLFWwindow *CommonSettings::CreateWindow(GLFWwindow *window, string titleName) {
   return window;
 }
 
-const GLchar* CommonSettings::CCResourcesFolder(string str) {
+const GLchar* CommonSettings::CCResourcesFolder(string str) const
+{
   const GLchar* dst = (m_ResourcesFolder + str).c_str();
   return dst;
 }

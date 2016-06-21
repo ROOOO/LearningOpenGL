@@ -35,34 +35,37 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 }
 
 int main(){
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-#ifdef __APPLE__
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
-
-	GLFWwindow *window = glfwCreateWindow(800, 600, "LearnOpenGL", nullptr, nullptr);
-	if (window == nullptr) {
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-	glfwMakeContextCurrent(window);
-
-  glewExperimental = GL_TRUE;
-  if (glewInit() != GLEW_OK) {
-    std::cout << "Failed to initialize GLEW" << std::endl;
-    return -1;
-  }
-  
-  int widthViewPort, heightViewPort;
-  glfwGetFramebufferSize(window, &widthViewPort, &heightViewPort);
-  glViewport(0, 0, widthViewPort, heightViewPort);
-
-  glfwSetKeyCallback(window, key_callback);
+  CommonSettings Settings;
+  GLFWwindow *window = nullptr;
+  window = Settings.CreateWindow();
+//	glfwInit();
+//	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+//	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+//	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+//#ifdef __APPLE__
+//  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+//#endif
+//
+//	GLFWwindow *window = glfwCreateWindow(800, 600, "LearnOpenGL", nullptr, nullptr);
+//	if (window == nullptr) {
+//		std::cout << "Failed to create GLFW window" << std::endl;
+//		glfwTerminate();
+//		return -1;
+//	}
+//	glfwMakeContextCurrent(window);
+//
+//  glewExperimental = GL_TRUE;
+//  if (glewInit() != GLEW_OK) {
+//    std::cout << "Failed to initialize GLEW" << std::endl;
+//    return -1;
+//  }
+//  
+//  int widthViewPort, heightViewPort;
+//  glfwGetFramebufferSize(window, &widthViewPort, &heightViewPort);
+//  glViewport(0, 0, widthViewPort, heightViewPort);
+//
+//  glfwSetKeyCallback(window, key_callback);
 
   ////////////////////////////// vertext shader //////////////////////////////
 #if test < 7

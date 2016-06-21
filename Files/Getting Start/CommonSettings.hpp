@@ -1,4 +1,4 @@
-//
+﻿//
 //  CommonSettings.hpp
 //  Mac
 //
@@ -9,6 +9,7 @@
 #ifndef CommonSettings_hpp
 #define CommonSettings_hpp
 
+#define GLEW_STATIC
 #include <stdio.h>
 #include <iostream>
 #include <GL/glew.h>
@@ -28,12 +29,12 @@ class CommonSettings {
 public:
   CommonSettings();
   ~CommonSettings();
-  GLFWwindow *CreateWindow(GLFWwindow *window, string titleName = "Learning OpenGL");
+  GLFWwindow *CreateWindow(string titleName = "Learning OpenGL");
   string GetResourcesFolder();
   string GetShadersFolder();
   string GetFilesFolder();
   string GetExercisesFolder();
-  const GLchar* CCResourcesFolder(string str);
+  const GLchar* CCResourcesFolder(string str) const;
   const GLchar* CCShadersFolder(string str);
 };
 
