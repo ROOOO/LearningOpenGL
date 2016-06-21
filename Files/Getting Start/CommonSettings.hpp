@@ -19,10 +19,10 @@ using namespace std;
 
 class CommonSettings {
   
-  string m_ShadersFolder = "";
-  string m_ResourcesFolder = "";
-  string m_FilesFolder = "";
-  string m_ExercisesFolder = "";
+  string m_ShadersPath = "";
+  string m_ResourcesPath = "";
+  string m_FilesPath = "";
+  string m_ExercisesPath = "";
   
   static void m_key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
@@ -30,12 +30,12 @@ public:
   CommonSettings();
   ~CommonSettings();
   GLFWwindow *CreateWindow(string titleName = "Learning OpenGL");
-  string GetResourcesFolder();
-  string GetShadersFolder();
-  string GetFilesFolder();
-  string GetExercisesFolder();
-  const GLchar* CCResourcesFolder(string str) const;
-  const GLchar* CCShadersFolder(string str);
+  string GetResourcesPath();
+  string GetShadersPath();
+  string GetFilesPath();
+  string GetExercisesPath();
+  string CCResourcesPath(string str);
+  string CCShadersPath(string str);
 };
 
 #endif /* CommonSettings_hpp */

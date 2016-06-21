@@ -10,15 +10,15 @@
 
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__
-  m_ShadersFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/Shaders/";
-  m_ResourcesFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/Resources/";
-  m_FilesFolder = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
-  m_ExercisesFolder = "/Users/king/git/LearningOpenGL/Files/Exercises/Getting Start/";
+  m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/Shaders/";
+  m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/Resources/";
+  m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
+  m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Getting Start/";
 #else
-  m_ShadersFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Shaders\\";
-  m_ResourcesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Resources\\";
-  m_FilesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\";
-  m_ExercisesFolder = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Getting Start\\";
+  m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Shaders\\";
+  m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Resources\\";
+  m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\";
+  m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Getting Start\\";
 #endif
 }
 
@@ -36,7 +36,7 @@ GLFWwindow *CommonSettings::CreateWindow(string titleName) {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+  glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 #ifdef __APPLE__
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
@@ -64,26 +64,23 @@ GLFWwindow *CommonSettings::CreateWindow(string titleName) {
   return window;
 }
 
-const GLchar* CommonSettings::CCResourcesFolder(string str) const
-{
-  const GLchar* dst = (m_ResourcesFolder + str).c_str();
-  return dst;
+string CommonSettings::CCShadersPath(string str) {
+  return m_ShadersPath + str;
 }
 
-const GLchar* CommonSettings::CCShadersFolder(string str) {
-  const GLchar* dst = (m_ShadersFolder + str).c_str();
-  return dst;
+string CommonSettings::CCResourcesPath(string str) {
+  return m_ResourcesPath + str;
 }
 
-string CommonSettings::GetResourcesFolder() {
-  return m_ResourcesFolder;
+string CommonSettings::GetResourcesPath() {
+  return m_ResourcesPath;
 }
-string CommonSettings::GetShadersFolder() {
-  return m_ShadersFolder;
+string CommonSettings::GetShadersPath() {
+  return m_ShadersPath;
 }
-string CommonSettings::GetFilesFolder() {
-  return m_FilesFolder;
+string CommonSettings::GetFilesPath() {
+  return m_FilesPath;
 }
-string CommonSettings::GetExercisesFolder() {
-  return m_ExercisesFolder;
+string CommonSettings::GetExercisesPath() {
+  return m_ExercisesPath;
 }
