@@ -21,7 +21,7 @@
 // test8  Textures
 // test9  Double textures
 
-#define test 9
+#define test 2
 
 CommonSettings Settings;
 
@@ -181,7 +181,7 @@ int main(){
 #endif
   
   ////////////////////////////// VAO VBO EBO //////////////////////////////
-#if test < 6
+#if test < 6 && test != 2
   GLfloat vertices[] = {
     -0.5f, -0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
@@ -203,6 +203,17 @@ int main(){
     -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
     0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
     0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+  };
+#elif test == 2
+  GLfloat vertices[] = {
+    0.5f, 0.5f, 0.0f,
+    0.5f, -0.5f, 0.0f,
+    -0.5f, -0.5f, 0.0f,
+    -0.5f, 0.5f, 0.0f,
+  };
+  GLuint indices[] = {
+    0, 1, 3,
+    1, 2, 3,
   };
 #endif
 
@@ -251,21 +262,10 @@ int main(){
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
 #elif test == 2
-  GLfloat vertices2[] = {
-    0.5f, 0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    -0.5f, -0.5f, 0.0f,
-    -0.5f, 0.5f, 0.0f,
-  };
-  GLuint indices[] = {
-    0, 1, 3,
-    1, 2, 3,
-  };
-  
   glBindVertexArray(VAO);
   
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
   
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(0);

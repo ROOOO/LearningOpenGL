@@ -3,22 +3,29 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #ifdef __APPLE__
-//#include "CommonSettings.hpp"
+#include "CommonSettings.hpp"
 #else
 #include "../../../../Getting Start/CommonSettings.hpp"
 #endif
 #include "ShaderReader.hpp"
+#include <SOIL/SOIL.h>
 
 int main() {
   CommonSettings Settings;
   
-  GLFWwindow *window = Settings.CreateWindow("A");
+  GLFWwindow *window = Settings.CreateWindow("EX_GS_Tex_1");
   if (window == nullptr) {
     std::cout << "Create window failed." << std::endl;
     return -1;
   }
   
-  ShaderReader shader((Settings.GetExercisesPath() + "\\Texture\\1\\EX_GS_Tex_1_Vertex.shader").c_str(), (Settings.GetExercisesPath() + "\\Texture\\1\\EX_GS_Tex_1_Fragment.shader").c_str());
+#ifdef __APPLE__
+  string path = "/Texture/1/";
+#else
+  string path = "\\Texture\\1\\";
+#endif
+  
+  ShaderReader shader((Settings.GetExercisesPath() + path + "EX_GS_Tex_1_Vertex.shader").c_str(), (Settings.GetExercisesPath() + path + "EX_GS_Tex_1_Fragment.shader").c_str());
 
   GLfloat vertices[] = {
     0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
@@ -26,7 +33,7 @@ int main() {
     -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
     -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
   };
-  GLfloat indices[] = {
+  GLuint indices[] = {
     0, 1, 3,
     1, 2, 3,
   };
@@ -53,6 +60,28 @@ int main() {
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+  
+  unsigned char* images[2];
+  int texWidth[2], texHeight[2];
+  images[0] = SOIL_load_image(Settings.CCResourcesPath("container.jpg").c_str(), &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
+  images[1] = SOIL_load_image(Settings.CCResourcesPath("awesomeface.png").c_str(), &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
+  
+  GLuint textures[2];
+  glGenTextures(2, textures);
+  for (int i = 0; i < 2; i++) {
+    glBindTexture(GL_TEXTURE_2D, textures[i]);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth[i], texHeight[i], 0, GL_RGB, GL_UNSIGNED_BYTE, images[i]);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    
+    SOIL_free_image_data(images[i]);
+    glBindTexture(GL_TEXTURE_2D, 0);
+  }
 
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
@@ -61,9 +90,17 @@ int main() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     shader.Use();
+    const char* tex[] = {
+      "tex1", "tex2",
+    };
+    for (int i = 0; i < 2; i++) {
+      glActiveTexture(GL_TEXTURE0 + i);
+      glBindTexture(GL_TEXTURE_2D, textures[i]);
+      glUniform1i(glGetUniformLocation(shader.GetProgram(), tex[i]), i);
+    }
+    shader.Use();
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-    //glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
     glfwSwapBuffers(window);

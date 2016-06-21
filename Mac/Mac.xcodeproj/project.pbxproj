@@ -234,8 +234,8 @@
 		3C3720571D1833640068ABC8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Texture/4/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3C3720791D1842750068ABC8 /* CommonSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonSettings.cpp; path = "../Files/Getting Start/CommonSettings.cpp"; sourceTree = "<group>"; };
 		3C37207A1D1842750068ABC8 /* CommonSettings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonSettings.hpp; path = "../Files/Getting Start/CommonSettings.hpp"; sourceTree = "<group>"; };
-		3C37208A1D185C470068ABC8 /* EX_GS_Tex_1_Vertex.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EX_GS_Tex_1_Vertex.shader; sourceTree = "<group>"; };
-		3C37208B1D185C470068ABC8 /* EX_GS_Tex_1_Fragment.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EX_GS_Tex_1_Fragment.shader; sourceTree = "<group>"; };
+		3C37208A1D185C470068ABC8 /* EX_GS_Tex_1_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_1_Vertex.shader; sourceTree = "<group>"; };
+		3C37208B1D185C470068ABC8 /* EX_GS_Tex_1_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_1_Fragment.shader; sourceTree = "<group>"; };
 		3C4290991D12FAE200736950 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/2/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3C45E5251D16F33F007007DA /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = "../Files/Getting Start/Resources/awesomeface.png"; sourceTree = "<group>"; };
 		3C45E52E1D182E04007007DA /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../Libs/libSOIL.a; sourceTree = "<group>"; };
