@@ -30,10 +30,8 @@ public:
   CommonSettings();
   ~CommonSettings();
   GLFWwindow *CreateWindow(string titleName = "Learning OpenGL");
-  string GetResourcesPath();
-  string GetShadersPath();
-  string GetFilesPath();
-  string GetExercisesPath();
+  string CCFilesPath(string str);
+  string CCExercisesPath(string str);
   string CCResourcesPath(string str);
   string CCShadersPath(string str);
 };

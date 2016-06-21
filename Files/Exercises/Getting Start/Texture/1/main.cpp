@@ -25,7 +25,7 @@ int main() {
   string path = "\\Texture\\1\\";
 #endif
   
-  ShaderReader shader((Settings.GetExercisesPath() + path + "EX_GS_Tex_1_Vertex.shader").c_str(), (Settings.GetExercisesPath() + path + "EX_GS_Tex_1_Fragment.shader").c_str());
+  ShaderReader shader(Settings.CCExercisesPath(path + "EX_GS_Tex_1_Vertex.shader").c_str(), Settings.CCExercisesPath(path + "EX_GS_Tex_1_Fragment.shader").c_str());
 
   GLfloat vertices[] = {
     0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,

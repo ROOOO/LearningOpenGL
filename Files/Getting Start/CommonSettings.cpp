@@ -72,15 +72,9 @@ string CommonSettings::CCResourcesPath(string str) {
   return m_ResourcesPath + str;
 }
 
-string CommonSettings::GetResourcesPath() {
-  return m_ResourcesPath;
+string CommonSettings::CCFilesPath(string str) {
+  return m_FilesPath + str;
 }
-string CommonSettings::GetShadersPath() {
-  return m_ShadersPath;
-}
-string CommonSettings::GetFilesPath() {
-  return m_FilesPath;
-}
-string CommonSettings::GetExercisesPath() {
-  return m_ExercisesPath;
+string CommonSettings::CCExercisesPath(string str) {
+  return m_ExercisesPath + str;
 }
