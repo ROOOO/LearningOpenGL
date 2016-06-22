@@ -4,6 +4,7 @@
 #include <iostream>
 #include "CommonSettings.hpp"
 #include "ShaderReader.hpp"
+#include <SOIL/SOIL.h>
 
 int main() {
   CommonSettings Settings;
@@ -41,9 +42,9 @@ int main() {
   
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(vertices), (GLvoid*)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(0);
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(vertices), (GLvoid*)(3 * sizeof(GLfloat)));
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
   glEnableVertexAttribArray(1);
   
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -51,6 +52,29 @@ int main() {
   
   glBindBuffer(GL_TEXTURE_2D, 0);
   glBindVertexArray(0);
+  
+  GLuint textures[2];
+  glGenTextures(2, textures);
+  
+  unsigned char* images[2];
+  int texWidth[2], texHeight[2];
+  images[0] = SOIL_load_image(Settings.CCResourcesPath("container.jpg").c_str(), &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
+  images[1] = SOIL_load_image(Settings.CCResourcesPath("container.jpg").c_str(), &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
+  
+  for (int i = 0; i < 2; i++) {
+    glBindTexture(GL_TEXTURE_2D, textures[i]);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_REPEAT);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth[i], texHeight[i], 0, GL_RGB, GL_UNSIGNED_BYTE, images[i]);
+    glGenerateMipmap(textures[i]);
+    
+    SOIL_free_image_data(images[i]);
+    glBindTexture(GL_TEXTURE_2D, 0);
+  }
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
