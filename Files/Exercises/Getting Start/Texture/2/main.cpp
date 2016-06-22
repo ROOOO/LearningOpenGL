@@ -24,10 +24,10 @@ int main() {
   ShaderReader shader(Settings.CCExercisesPath(path + "EX_GS_Tex_2_Vertex.shader").c_str(), Settings.CCExercisesPath(path + "EX_GS_Tex_2_Fragment.shader").c_str());
   
   GLfloat vertices[] = {
-    0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
-    0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+    0.5f, 0.5f, 0.0f, 2.0f, 2.0f,
+    0.5f, -0.5f, 0.0f, 2.0f, 0.0f,
     -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-    -0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
+    -0.5f, 0.5f, 0.0f, 0.0f, 2.0f,
   };
   GLint indices[] = {
     0, 1, 2,
@@ -59,22 +59,25 @@ int main() {
   images[0] = SOIL_load_image(Settings.CCResourcesPath("container.jpg").c_str(), &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
   images[1] = SOIL_load_image(Settings.CCResourcesPath("awesomeface.png").c_str(), &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
   
-  GLuint textures[5];
-  glGenTextures(5, textures);
+  GLuint textures[2];
+  glGenTextures(2, textures);
   
-  for (int i = 0; i < 5; i++) {
+  GLfloat color[] = {1.0f, 0.0f, 1.0f, 1.0f};
+  
+  for (int i = 0; i < 2; i++) {
     glBindTexture(GL_TEXTURE_2D, textures[i]);
     
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, color);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    int idx = i > 0 ? 1 : i;
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth[idx], texHeight[idx], 0, GL_RGB, GL_UNSIGNED_BYTE, images[idx]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth[i], texHeight[i], 0, GL_RGB, GL_UNSIGNED_BYTE, images[i]);
     glGenerateMipmap(GL_TEXTURE_2D);
     
-    SOIL_free_image_data(images[idx]);
+    SOIL_free_image_data(images[i]);
+    
     glBindTexture(GL_TEXTURE_2D, 0);
   }
   
