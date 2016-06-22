@@ -283,6 +283,8 @@
 		3CC701421D168FA800A21FAC /* shader_test9.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.frag; path = "../Files/Getting Start/Shaders/shader_test9.frag"; sourceTree = "<group>"; };
 		3CC701431D168FA800A21FAC /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = container.jpg; path = "../Files/Getting Start/Resources/container.jpg"; sourceTree = "<group>"; };
 		3CC701441D168FA800A21FAC /* shader_test9.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.vs; path = "../Files/Getting Start/Shaders/shader_test9.vs"; sourceTree = "<group>"; };
+		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
+		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,10 +516,12 @@
 		3C45E5651D1830DA007007DA /* EX_GS_Tex_3 */ = {
 			isa = PBXGroup;
 			children = (
+				3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */,
+				3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */,
 				3C3720461D1832C30068ABC8 /* main.cpp */,
 			);
 			name = EX_GS_Tex_3;
-			path = ../EX_GS_Tex_3;
+			path = "../Files/Exercises/Getting Start/Texture/3";
 			sourceTree = "<group>";
 		};
 		3C86ED951D1021CA00D83A25 = {

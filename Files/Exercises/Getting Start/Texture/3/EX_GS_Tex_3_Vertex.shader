@@ -1,6 +1,5 @@
 #version 330 core
-uniform float x;
 layout (location = 0) in vec3 position;
 void main() {
-  gl_Position = vec4(position.x + x, position.yz, 1.0f);
+  gl_Position = vec4(position, 1.0f);
 }
