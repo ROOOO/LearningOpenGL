@@ -10,6 +10,9 @@
 #include "ShaderReader.hpp"
 #include "CommonSettings.hpp"
 #include <SOIL/SOIL.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 // test1  VAO and VBO
 // test2  VAO, VBO, EBO
@@ -20,8 +23,9 @@
 // test7  Shader Class
 // test8  Textures
 // test9  Double textures
+// test10 glm
 
-#define test 2
+#define test 10
 
 CommonSettings Settings;
 
@@ -249,6 +253,15 @@ int main(){
   GLint nrAttributes;
   glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
   std::cout << "MAX vertex attribs is " << nrAttributes << std::endl;
+#endif
+  
+  ////////////////////////////// GLM //////////////////////////////
+#if test == 10 
+  glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+  glm::mat4 trans;
+  trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+  vec = trans * vec;
+  std::cout << vec.x << vec.y << vec.z << std::endl;
 #endif
   
   ////////////////////////////// textures //////////////////////////////
