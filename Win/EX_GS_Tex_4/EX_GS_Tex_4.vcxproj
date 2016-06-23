@@ -38,8 +38,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>D:\Projects\OpenGL\LearningOpenGL\Libs\Includes;D:\Projects\OpenGL\LearningOpenGL\Files\Classes;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -50,7 +49,8 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation><AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -68,6 +68,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\4\EX_GS_Tex_4_Fragment.shader" />
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\4\EX_GS_Tex_4_Vertex.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
+    <ClCompile Include="..\..\Files\Exercises\Getting Start\Texture\4\main.cpp" />
+    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
+    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

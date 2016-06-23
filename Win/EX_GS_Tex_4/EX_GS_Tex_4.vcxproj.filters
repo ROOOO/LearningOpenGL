@@ -14,4 +14,31 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\4\EX_GS_Tex_4_Fragment.shader">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\Files\Exercises\Getting Start\Texture\4\EX_GS_Tex_4_Vertex.shader">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Files\Exercises\Getting Start\Texture\4\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
