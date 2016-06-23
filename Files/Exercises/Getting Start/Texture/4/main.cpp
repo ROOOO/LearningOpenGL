@@ -10,10 +10,21 @@
 #include "ShaderReader.hpp"
 #include <SOIL/SOIL.h>
 
+GLfloat offset = 0.0f;
+GLfloat trans = 0.2f;
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, GL_TRUE);
+  } else if (key == GLFW_KEY_UP && action == GLFW_PRESS) {
+    offset += 0.1f;
+  } else if (key == GLFW_KEY_DOWN && action == GLFW_PRESS) {
+    offset -= 0.1f;
+  } else if (key == GLFW_KEY_LEFT && action == GLFW_PRESS) {
+    trans = 0.2f;
+  } else if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS) {
+    trans = 0.0f;
   }
 }
 
@@ -103,6 +114,9 @@ int main() {
       glBindTexture(GL_TEXTURE_2D, textures[i]);
       glUniform1i(glGetUniformLocation(shader.GetProgram(), names[i]), i);
     }
+
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), "offset"), offset);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), "transparent"), trans);
 
     shader.Use();
     glBindVertexArray(VAO);
