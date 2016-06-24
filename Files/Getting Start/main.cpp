@@ -395,7 +395,6 @@ int main(){
     trans = glm::rotate(trans, glm::radians((float)glfwGetTime() * 50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "transform"), 1, GL_FALSE, glm::value_ptr(trans));
 
-    ShaderReader.Use();
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
