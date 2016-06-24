@@ -55,5 +55,11 @@
     <None Include="..\..\Files\Getting Start\Shaders\shader_test9.vs">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test11.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test11.vs">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

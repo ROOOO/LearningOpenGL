@@ -24,8 +24,9 @@
 // test8  Textures
 // test9  Double textures
 // test10 glm
+// test11 glm rotation
 
-#define test 10
+#define test 11
 
 CommonSettings Settings;
 
@@ -147,6 +148,8 @@ int main(){
   ShaderReader ShaderReader("/Users/king/git/LearningOpenGL/Files/Getting Start/shader_test8.vs", "/Users/king/git/LearningOpenGL/Files/Getting Start/shader_test8.frag");
 #elif test == 9
   ShaderReader ShaderReader(Settings.CCShadersPath("shader_test9.vs").c_str(), Settings.CCShadersPath("shader_test9.frag").c_str());
+#elif test == 11
+  ShaderReader ShaderReader(Settings.CCShadersPath("shader_test11.vs").c_str(), Settings.CCShadersPath("shader_test11.frag").c_str());
 #endif
   
   ////////////////////////////// VAO VBO EBO //////////////////////////////
@@ -179,6 +182,17 @@ int main(){
     0.5f, -0.5f, 0.0f,
     -0.5f, -0.5f, 0.0f,
     -0.5f, 0.5f, 0.0f,
+  };
+  GLuint indices[] = {
+    0, 1, 3,
+    1, 2, 3,
+  };
+#elif test == 11
+  GLfloat vertices[] = {
+    0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
+    0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+    -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+    -0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
   };
   GLuint indices[] = {
     0, 1, 3,
@@ -246,6 +260,22 @@ int main(){
   glBindVertexArray(0);
   
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+#elif test == 11
+  glBindVertexArray(VAO);
+
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+  glEnableVertexAttribArray(1);
+
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
 #endif
   
   ////////////////////////////// output GL_MAX_VERTEX_ATTRIBS //////////////////////////////
@@ -262,6 +292,10 @@ int main(){
   trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
   vec = trans * vec;
   std::cout << vec.x << vec.y << vec.z << std::endl;
+#elif test == 11
+  glm::mat4 trans;
+  trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+  trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
 #endif
   
   ////////////////////////////// textures //////////////////////////////
@@ -282,7 +316,7 @@ int main(){
 
   SOIL_free_image_data(image);
   glBindTexture(GL_TEXTURE_2D, 0);
-#elif test == 9
+#elif test == 9 || test == 11
   unsigned char* images[2];
   int texWidth[2], texHeight[2];
   // awesomeface.png
@@ -362,6 +396,24 @@ int main(){
       glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), vars[i]), i);
     }
     
+    ShaderReader.Use();
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+#elif test == 11
+    const char* vars[2] = {
+      "ourTexture1", "ourTexture2",
+    };
+    ShaderReader.Use();
+    for (int i = 0; i < 2; i++) {
+      glActiveTexture(GL_TEXTURE0 + i);
+      glBindTexture(GL_TEXTURE_2D, textures[i]);
+      glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), vars[i]), i);
+    }
+    trans = glm::mat4();
+    trans = glm::rotate(trans, glm::radians((float)glfwGetTime() * 50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "transform"), 1, GL_FALSE, glm::value_ptr(trans));
+
     ShaderReader.Use();
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
