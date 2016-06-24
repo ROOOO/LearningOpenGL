@@ -125,6 +125,17 @@
 		3CC701111D15316B00A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
 		3CC701131D153EC700A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 		3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CF99DB81D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DB91D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DBA1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DBB1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DBC1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DBD1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DBE1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DBF1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DC01D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DC11D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CF99DC21D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -285,6 +296,8 @@
 		3CC701441D168FA800A21FAC /* shader_test9.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.vs; path = "../Files/Getting Start/Shaders/shader_test9.vs"; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
+		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
+		3CF99DB71D1D5D6D0028100C /* TextureReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextureReader.hpp; path = ../Files/Classes/TextureReader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +499,7 @@
 		3C45E5371D182E62007007DA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3CF99DC31D1D60B10028100C /* Texture Class */,
 				3CC700C41D14DCFD00A21FAC /* Shader Class */,
 			);
 			name = Classes;
@@ -661,6 +675,15 @@
 				3CC700CD1D15070000A21FAC /* shader_test7.frag */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		3CF99DC31D1D60B10028100C /* Texture Class */ = {
+			isa = PBXGroup;
+			children = (
+				3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */,
+				3CF99DB71D1D5D6D0028100C /* TextureReader.hpp */,
+			);
+			name = "Texture Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -931,6 +954,7 @@
 			files = (
 				3C3720921D1977760068ABC8 /* ShaderReader.cpp in Sources */,
 				3C3720581D1833640068ABC8 /* main.cpp in Sources */,
+				3CF99DC21D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3C3720851D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +965,7 @@
 			files = (
 				3C37208D1D185CC40068ABC8 /* ShaderReader.cpp in Sources */,
 				3C37204B1D1832D90068ABC8 /* main.cpp in Sources */,
+				3CF99DBF1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3C3720821D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -951,6 +976,7 @@
 			files = (
 				3C3720901D1977280068ABC8 /* ShaderReader.cpp in Sources */,
 				3C3720491D1832D00068ABC8 /* main.cpp in Sources */,
+				3CF99DC01D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3C3720831D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -961,6 +987,7 @@
 			files = (
 				3C3720911D19776E0068ABC8 /* ShaderReader.cpp in Sources */,
 				3C3720471D1832C30068ABC8 /* main.cpp in Sources */,
+				3CF99DC11D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3C3720841D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -971,6 +998,7 @@
 			files = (
 				3C37207B1D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 				3C86EDAA1D10221500D83A25 /* main.cpp in Sources */,
+				3CF99DB81D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC700C71D14DD4200A21FAC /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -979,6 +1007,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF99DB91D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC16AAB1D12F9570080F62C /* main.cpp in Sources */,
 				3C37207C1D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
@@ -988,6 +1017,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF99DBA1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3C42909D1D12FE1600736950 /* main.cpp in Sources */,
 				3C37207D1D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
@@ -997,6 +1027,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF99DBB1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC700BB1D14155200A21FAC /* main.cpp in Sources */,
 				3C37207E1D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 			);
@@ -1008,6 +1039,7 @@
 			files = (
 				3C37207F1D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 				3CC700DE1D152E8000A21FAC /* main.cpp in Sources */,
+				3CF99DBC1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC700DF1D152E9300A21FAC /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1018,6 +1050,7 @@
 			files = (
 				3C3720801D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 				3CC701001D1530C800A21FAC /* main.cpp in Sources */,
+				3CF99DBD1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC701131D153EC700A21FAC /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1028,6 +1061,7 @@
 			files = (
 				3C3720811D1842750068ABC8 /* CommonSettings.cpp in Sources */,
 				3CC701041D1530E100A21FAC /* main.cpp in Sources */,
+				3CF99DBE1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

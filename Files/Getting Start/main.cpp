@@ -9,6 +9,7 @@
 #include <math.h>
 #include "ShaderReader.hpp"
 #include "CommonSettings.hpp"
+#include "TextureReader.hpp"
 #include <SOIL/SOIL.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -317,31 +318,11 @@ int main(){
   SOIL_free_image_data(image);
   glBindTexture(GL_TEXTURE_2D, 0);
 #elif test == 9 || test == 11
-  unsigned char* images[2];
-  int texWidth[2], texHeight[2];
-  // awesomeface.png
-  // container.jpg
-  images[0] = SOIL_load_image(Settings.CCResourcesPath("container.jpg").c_str(), &texWidth[0], &texHeight[0], 0, SOIL_LOAD_RGB);
-  images[1] = SOIL_load_image(Settings.CCResourcesPath("awesomeface.png").c_str(), &texWidth[1], &texHeight[1], 0, SOIL_LOAD_RGB);
-  
   GLuint textures[2];
-  glGenTextures(2, textures);
-  
-  for (int i = 0; i < 2; i++) {
-    glBindTexture(GL_TEXTURE_2D, textures[i]);
-    
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth[i], texHeight[i], 0, GL_RGB, GL_UNSIGNED_BYTE, images[i]);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    
-    SOIL_free_image_data(images[i]);
-    glBindTexture(GL_TEXTURE_2D, 0);
-  }
-
+  TextureReader texR1(Settings.CCResourcesPath("container.jpg").c_str());
+  textures[0] = texR1.getTexture();
+  TextureReader texR2(Settings.CCResourcesPath("awesomeface.png").c_str());
+  textures[1] = texR2.getTexture();
 #endif
   
   ////////////////////////////// main loop //////////////////////////////
