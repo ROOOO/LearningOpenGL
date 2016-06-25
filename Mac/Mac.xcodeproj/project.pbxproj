@@ -336,6 +336,12 @@
 		3CC701421D168FA800A21FAC /* shader_test9.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.frag; path = "../Files/Getting Start/Shaders/shader_test9.frag"; sourceTree = "<group>"; };
 		3CC701431D168FA800A21FAC /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = container.jpg; path = "../Files/Getting Start/Resources/container.jpg"; sourceTree = "<group>"; };
 		3CC701441D168FA800A21FAC /* shader_test9.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.vs; path = "../Files/Getting Start/Shaders/shader_test9.vs"; sourceTree = "<group>"; };
+		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
+		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
+		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
+		3CE392D51D1E54E10050486D /* shader_test12.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.vs; path = "../Files/Getting Start/Shaders/shader_test12.vs"; sourceTree = "<group>"; };
+		3CE392D61D1E5DE50050486D /* shader_test13.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test13.frag; path = "../Files/Getting Start/Shaders/shader_test13.frag"; sourceTree = "<group>"; };
+		3CE392D71D1E5DE50050486D /* shader_test13.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test13.vs; path = "../Files/Getting Start/Shaders/shader_test13.vs"; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -744,6 +750,12 @@
 		3CC7013E1D1622D800A21FAC /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				3CE392D61D1E5DE50050486D /* shader_test13.frag */,
+				3CE392D71D1E5DE50050486D /* shader_test13.vs */,
+				3CE392D21D1E54E10050486D /* shader_test11.frag */,
+				3CE392D31D1E54E10050486D /* shader_test11.vs */,
+				3CE392D41D1E54E10050486D /* shader_test12.frag */,
+				3CE392D51D1E54E10050486D /* shader_test12.vs */,
 				3CC701421D168FA800A21FAC /* shader_test9.frag */,
 				3CC701441D168FA800A21FAC /* shader_test9.vs */,
 				3CC7013F1D1622E900A21FAC /* shader_test8.frag */,

@@ -26,8 +26,10 @@
 // test9  Double textures
 // test10 glm
 // test11 glm rotation
+// test12 local model view projection clip
+// test13 3D cube
 
-#define test 11
+#define test 13
 
 CommonSettings Settings;
 
@@ -151,6 +153,10 @@ int main(){
   ShaderReader ShaderReader(Settings.CCShadersPath("shader_test9.vs").c_str(), Settings.CCShadersPath("shader_test9.frag").c_str());
 #elif test == 11
   ShaderReader ShaderReader(Settings.CCShadersPath("shader_test11.vs").c_str(), Settings.CCShadersPath("shader_test11.frag").c_str());
+#elif test == 12
+  ShaderReader ShaderReader(Settings.CCShadersPath("shader_test12.vs").c_str(), Settings.CCShadersPath("shader_test12.frag").c_str());
+#elif test == 13
+  ShaderReader ShaderReader(Settings.CCShadersPath("shader_test13.vs").c_str(), Settings.CCShadersPath("shader_test13.frag").c_str());
 #endif
   
   ////////////////////////////// VAO VBO EBO //////////////////////////////
@@ -188,7 +194,7 @@ int main(){
     0, 1, 3,
     1, 2, 3,
   };
-#elif test == 11
+#elif test == 11 || test == 12
   GLfloat vertices[] = {
     0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
     0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
@@ -198,6 +204,50 @@ int main(){
   GLuint indices[] = {
     0, 1, 3,
     1, 2, 3,
+  };
+#elif test == 13
+  GLfloat vertices[] = {
+    0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+    0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+    -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+    -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+    
+    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+    0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+    0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+    0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+
+    -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+    0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+    0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+
+    -0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    -0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+
+    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+    0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+    -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
+    0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+    -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
+    -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+
+    0.5f, -0.5f, 0.5f, 1.0f, 1.0f,
+    0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    0.5f, -0.5f, 0.5f, 1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    -0.5f, -0.5f, 0.5f, 0.0f, 1.0f,
   };
 #endif
 
@@ -261,7 +311,7 @@ int main(){
   glBindVertexArray(0);
   
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-#elif test == 11
+#elif test == 11 || test == 12
   glBindVertexArray(VAO);
 
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -277,6 +327,16 @@ int main(){
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+#elif test == 13
+  glBindVertexArray(VAO);
+  
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+  glEnableVertexAttribArray(1);
 #endif
   
   ////////////////////////////// output GL_MAX_VERTEX_ATTRIBS //////////////////////////////
@@ -284,19 +344,6 @@ int main(){
   GLint nrAttributes;
   glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
   std::cout << "MAX vertex attribs is " << nrAttributes << std::endl;
-#endif
-  
-  ////////////////////////////// GLM //////////////////////////////
-#if test == 10 
-  glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-  glm::mat4 trans;
-  trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
-  vec = trans * vec;
-  std::cout << vec.x << vec.y << vec.z << std::endl;
-#elif test == 11
-  glm::mat4 trans;
-  trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-  trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
 #endif
   
   ////////////////////////////// textures //////////////////////////////
@@ -317,7 +364,7 @@ int main(){
 
   SOIL_free_image_data(image);
   glBindTexture(GL_TEXTURE_2D, 0);
-#elif test == 9 || test == 11
+#elif test >= 9 && test != 10
   GLuint textures[2];
   TextureReader texR1(Settings.CCResourcesPath("container.jpg").c_str());
   textures[0] = texR1.getTexture();
@@ -325,12 +372,55 @@ int main(){
   textures[1] = texR2.getTexture();
 #endif
   
+  ////////////////////////////// GLM //////////////////////////////
+#if test == 10
+  glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+  glm::mat4 trans;
+  trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+  vec = trans * vec;
+  std::cout << vec.x << vec.y << vec.z << std::endl;
+#elif test == 11
+  glm::mat4 trans;
+  trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+  trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
+#elif test == 12
+  glm::mat4 modelMat;
+  modelMat = glm::rotate(modelMat, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+  glm::mat4 viewMat;
+  viewMat = glm::translate(viewMat, glm::vec3(0.0f, 0.0f, -1.5f));
+  glm::mat4 projMat;
+  int width, height;
+  glfwGetFramebufferSize(window, &width, &height);
+  projMat = glm::perspective(45.0f,(float)width / height, 0.1f, 100.0f);
+#elif test == 13
+  glm::mat4 modelMat;
+  glm::mat4 viewMat;
+  viewMat = glm::translate(viewMat, glm::vec3(0.0f, 0.0f, -3.0f));
+  glm::mat4 projMat;
+  int width, height;
+  glfwGetFramebufferSize(window, &width, &height);
+  projMat = glm::perspective(45.0f,(float)width / height, 0.1f, 100.0f);
+  glEnable(GL_DEPTH_TEST);
+  glm::vec3 cubePositions[] = {
+    glm::vec3( 0.0f,  0.0f,  0.0f),
+    glm::vec3( 2.0f,  5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f),
+    glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3( 2.4f, -0.4f, -3.5f),
+    glm::vec3(-1.7f,  3.0f, -7.5f),
+    glm::vec3( 1.3f, -2.0f, -2.5f),
+    glm::vec3( 1.5f,  2.0f, -2.5f),
+    glm::vec3( 1.5f,  0.2f, -1.5f),
+    glm::vec3(-1.3f,  1.0f, -1.5f)
+  };
+#endif
+  
   ////////////////////////////// main loop //////////////////////////////
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
 #if test == 1 || test == 4 || test == 6
     glUseProgram(shaderProgram);
@@ -365,39 +455,51 @@ int main(){
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
-#elif test == 9
+#elif test >= 9 && test != 10
     const char* vars[2] = {
       "ourTexture1", "ourTexture2",
     };
-//    glBindTexture(GL_TEXTURE_2D, textures[0]);
-    ShaderReader.Use();
-    for (int i = 0; i < 2; i++) {
-      glActiveTexture(GL_TEXTURE0 + i);
-      glBindTexture(GL_TEXTURE_2D, textures[i]);
-      glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), vars[i]), i);
-    }
     
     ShaderReader.Use();
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    glBindTexture(GL_TEXTURE_2D, 0);
-#elif test == 11
-    const char* vars[2] = {
-      "ourTexture1", "ourTexture2",
-    };
-    ShaderReader.Use();
     for (int i = 0; i < 2; i++) {
       glActiveTexture(GL_TEXTURE0 + i);
       glBindTexture(GL_TEXTURE_2D, textures[i]);
       glUniform1i(glGetUniformLocation(ShaderReader.GetProgram(), vars[i]), i);
     }
+#if test == 11
     trans = glm::mat4();
     trans = glm::rotate(trans, glm::radians((float)glfwGetTime() * 50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "transform"), 1, GL_FALSE, glm::value_ptr(trans));
-
+#elif test == 12
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "projMat"), 1, GL_FALSE, glm::value_ptr(projMat));
+#endif
+#if test == 11 || test == 12
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
+#elif test == 13
+    modelMat = glm::mat4();
+    modelMat = glm::rotate(modelMat, glm::radians((float)glfwGetTime() * 90.0f), glm::vec3(0.5f, 1.0f, -0.5f));
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "projMat"), 1, GL_FALSE, glm::value_ptr(projMat));
+    
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    
+    for (GLuint i = 0; i < 10; i++) {
+      modelMat = glm::mat4();
+      modelMat = glm::translate(modelMat, cubePositions[i]);
+      modelMat = glm::rotate(modelMat, glm::radians((float)glfwGetTime() * -90.0f), glm::vec3(0.5f, 1.0f, -0.5f));
+      glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+      glDrawArrays(GL_TRIANGLES, 0, 36);
+    }
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+#endif
 #endif
     glBindVertexArray(0);
 
