@@ -125,6 +125,18 @@
 		3CC701111D15316B00A21FAC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
 		3CC701131D153EC700A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 		3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CE392DF1D1ED2C10050486D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392DE1D1ED2C10050486D /* main.cpp */; };
+		3CE392E31D1ED3700050486D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
+		3CE392E41D1ED3710050486D /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CE392E51D1ED3740050486D /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E5421D182F86007007DA /* libGLEW.a */; };
+		3CE392E61D1ED3750050486D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CE392E71D1ED3760050486D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CE392E81D1ED3780050486D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CE392E91D1ED37B0050486D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CE392EA1D1ED37D0050486D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CE392EB1D1ED3840050486D /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CE392EC1D1ED3870050486D /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CE392ED1D1ED38C0050486D /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
 		3CF99DB81D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DB91D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DBA1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
@@ -262,6 +274,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3CE392DA1D1ED2C10050486D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3CF99DC61D1D62090028100C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,6 +363,10 @@
 		3CE392D51D1E54E10050486D /* shader_test12.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.vs; path = "../Files/Getting Start/Shaders/shader_test12.vs"; sourceTree = "<group>"; };
 		3CE392D61D1E5DE50050486D /* shader_test13.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test13.frag; path = "../Files/Getting Start/Shaders/shader_test13.frag"; sourceTree = "<group>"; };
 		3CE392D71D1E5DE50050486D /* shader_test13.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test13.vs; path = "../Files/Getting Start/Shaders/shader_test13.vs"; sourceTree = "<group>"; };
+		3CE392DC1D1ED2C10050486D /* EX_GS_CS_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_CS_3; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CE392DE1D1ED2C10050486D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CE392EE1D1ED42B0050486D /* EX_GS_CS_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_CS_3_Fragment.shader; sourceTree = "<group>"; };
+		3CE392EF1D1ED42B0050486D /* EX_GS_CS_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_CS_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -522,6 +547,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CE392D91D1ED2C10050486D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE392E91D1ED37B0050486D /* IOKit.framework in Frameworks */,
+				3CE392EA1D1ED37D0050486D /* CoreVideo.framework in Frameworks */,
+				3CE392E81D1ED3780050486D /* Cocoa.framework in Frameworks */,
+				3CE392E71D1ED3760050486D /* OpenGL.framework in Frameworks */,
+				3CE392E61D1ED3750050486D /* GLUT.framework in Frameworks */,
+				3CE392E31D1ED3700050486D /* libSOIL.a in Frameworks */,
+				3CE392E51D1ED3740050486D /* libGLEW.a in Frameworks */,
+				3CE392E41D1ED3710050486D /* libglfw3.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CF99DC51D1D62090028100C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -567,6 +607,7 @@
 		3C42909C1D12FBB600736950 /* EX */ = {
 			isa = PBXGroup;
 			children = (
+				3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */,
 				3CF99DC91D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD41D1D62150028100C /* EX_GS_T_2 */,
 				3C45E54F1D1830B6007007DA /* EX_GS_Tex_1 */,
@@ -652,6 +693,7 @@
 				3C3720501D1832F20068ABC8 /* EX_GS_Tex_4 */,
 				3CF99DC81D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD31D1D62150028100C /* EX_GS_T_2 */,
+				3CE392DC1D1ED2C10050486D /* EX_GS_CS_3 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -765,6 +807,17 @@
 			);
 			name = Shaders;
 			sourceTree = "<group>";
+		};
+		3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */ = {
+			isa = PBXGroup;
+			children = (
+				3CE392EE1D1ED42B0050486D /* EX_GS_CS_3_Fragment.shader */,
+				3CE392EF1D1ED42B0050486D /* EX_GS_CS_3_Vertex.shader */,
+				3CE392DE1D1ED2C10050486D /* main.cpp */,
+			);
+			name = EX_GS_CS_3;
+			path = "../Files/Exercises/Getting Start/Coordinate System/3";
+			sourceTree = SOURCE_ROOT;
 		};
 		3CF99DC31D1D60B10028100C /* Texture Class */ = {
 			isa = PBXGroup;
@@ -1002,6 +1055,23 @@
 			productReference = 3CC700F61D15306600A21FAC /* EX_GS_S_3 */;
 			productType = "com.apple.product-type.tool";
 		};
+		3CE392DB1D1ED2C10050486D /* EX_GS_CS_3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CE392E01D1ED2C10050486D /* Build configuration list for PBXNativeTarget "EX_GS_CS_3" */;
+			buildPhases = (
+				3CE392D81D1ED2C10050486D /* Sources */,
+				3CE392D91D1ED2C10050486D /* Frameworks */,
+				3CE392DA1D1ED2C10050486D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_CS_3;
+			productName = EX_GS_CS_3;
+			productReference = 3CE392DC1D1ED2C10050486D /* EX_GS_CS_3 */;
+			productType = "com.apple.product-type.tool";
+		};
 		3CF99DC71D1D62090028100C /* EX_GS_T_1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF99DCC1D1D62090028100C /* Build configuration list for PBXNativeTarget "EX_GS_T_1" */;
@@ -1078,6 +1148,9 @@
 					3CC700F51D15306600A21FAC = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					3CE392DB1D1ED2C10050486D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					3CF99DC71D1D62090028100C = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -1111,6 +1184,7 @@
 				3C37204F1D1832F20068ABC8 /* EX_GS_Tex_4 */,
 				3CF99DC71D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD21D1D62150028100C /* EX_GS_T_2 */,
+				3CE392DB1D1ED2C10050486D /* EX_GS_CS_3 */,
 			);
 		};
 /* End PBXProject section */
@@ -1231,6 +1305,17 @@
 				3CC701041D1530E100A21FAC /* main.cpp in Sources */,
 				3CF99DBE1D1D5D6D0028100C /* TextureReader.cpp in Sources */,
 				3CC701141D153EC800A21FAC /* ShaderReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CE392D81D1ED2C10050486D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE392DF1D1ED2C10050486D /* main.cpp in Sources */,
+				3CE392EB1D1ED3840050486D /* TextureReader.cpp in Sources */,
+				3CE392ED1D1ED38C0050486D /* CommonSettings.cpp in Sources */,
+				3CE392EC1D1ED3870050486D /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1532,6 +1617,22 @@
 			};
 			name = Release;
 		};
+		3CE392E11D1ED2C10050486D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CE392E21D1ED2C10050486D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3CF99DCD1D1D62090028100C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1671,6 +1772,15 @@
 			buildConfigurations = (
 				3CC700FB1D15306600A21FAC /* Debug */,
 				3CC700FC1D15306600A21FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CE392E01D1ED2C10050486D /* Build configuration list for PBXNativeTarget "EX_GS_CS_3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CE392E11D1ED2C10050486D /* Debug */,
+				3CE392E21D1ED2C10050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

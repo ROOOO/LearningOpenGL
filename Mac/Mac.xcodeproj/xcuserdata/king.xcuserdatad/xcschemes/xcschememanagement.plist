@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EX_GS_CS_3.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>EX_GS_HT_1.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -123,6 +128,11 @@
 			<true/>
 		</dict>
 		<key>3CC700F51D15306600A21FAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CE392DB1D1ED2C10050486D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

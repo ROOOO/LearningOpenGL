@@ -399,7 +399,7 @@ int main(){
   glm::mat4 projMat;
   int width, height;
   glfwGetFramebufferSize(window, &width, &height);
-  projMat = glm::perspective(45.0f,(float)width / height, 0.1f, 100.0f);
+  projMat = glm::perspective(glm::radians(45.0f),(float)width / height, 0.1f, 100.0f);
   glEnable(GL_DEPTH_TEST);
   glm::vec3 cubePositions[] = {
     glm::vec3( 0.0f,  0.0f,  0.0f),
