@@ -10,6 +10,7 @@
 #include "ShaderReader.hpp"
 #include "CommonSettings.hpp"
 #include "TextureReader.hpp"
+#include "Camera.hpp"
 #include <SOIL/SOIL.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -34,10 +35,7 @@
 #define test 15
 
 #if test == 15
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-GLfloat cameraSpeed = 0.05f;
+Camera cam(glm::vec3(0.0f, 0.0f, 3.0f));
 GLboolean keys[1024];
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
@@ -53,26 +51,26 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
   }
 };
 void do_movement() {
-  cameraSpeed = 5.0f * deltaTime;
   if (keys[GLFW_KEY_W]) {
-    cameraPos += cameraSpeed * cameraFront;
+    cam.processKeyBoard(Camera::FORWARD, deltaTime);
   }
   if (keys[GLFW_KEY_S]) {
-    cameraPos -= cameraSpeed * cameraFront;
+    cam.processKeyBoard(Camera::BACKWARD, deltaTime);
   }
   if (keys[GLFW_KEY_A]) {
-    cameraPos -= cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
+    cam.processKeyBoard(Camera::LEFT, deltaTime);
   }
   if (keys[GLFW_KEY_D]) {
-    cameraPos += cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
+    cam.processKeyBoard(Camera::RIGHT, deltaTime);
   }
   if (keys[GLFW_KEY_Q]) {
-    cameraPos.y -= cameraSpeed;
+    cam.processKeyBoard(Camera::DOWN, deltaTime);
   }
   if (keys[GLFW_KEY_E]) {
-    cameraPos.y += cameraSpeed;
+    cam.processKeyBoard(Camera::UP, deltaTime);
   }
 }
+
 GLfloat lastX = 400.0f, lastY = 300.0f;
 GLboolean firstMouse = true;
 GLfloat pitch = 0.0f, yaw = -90.0f;
@@ -87,28 +85,11 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
   lastX = xpos;
   lastY = ypos;
   
-  GLfloat sensitivity = 0.05f;
-  xOffset *= sensitivity;
-  yOffset *= sensitivity;
-  
-  yaw += xOffset;
-  pitch += yOffset;
-  
-  pitch = fabs(pitch) > 89.0f ? (pitch > 0 ? 89.0f : -89.0f) : pitch;
-  
-  glm::vec3 front;
-  front.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
-  front.y = sin(glm::radians(pitch));
-  front.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
-  cameraFront = glm::normalize(front);
+  cam.processMouseMovement(xOffset, yOffset);
 }
 GLfloat aspect = 45.0f;
 void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
-  if (aspect >= 1.0f && aspect <= 45.0f) {
-    aspect -= yOffset;
-  }
-  aspect = aspect < 1.0f ? 1.0f : aspect;
-  aspect = aspect > 45.0f ? 45.0f : aspect;
+  cam.processMouseScroll(yOffset);
 }
 #endif
 
@@ -583,7 +564,7 @@ int main(){
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
     do_movement();
-    viewMat = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+    viewMat = cam.getViewMatrix();
     projMat = glm::perspective(glm::radians(aspect), (float)width / height, 0.1f, 100.0f);
 #endif
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
