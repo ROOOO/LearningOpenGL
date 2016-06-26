@@ -27,18 +27,101 @@
 // test10 glm
 // test11 glm rotation
 // test12 local model view projection clip
-// test13 3D cube
+// test13 3D cubes
+// test14 Camara, Circle move
+// test15 Camara, free move
 
-#define test 13
+#define test 15
 
-CommonSettings Settings;
-
-#include <iostream>
+#if test == 15
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+GLfloat cameraSpeed = 0.05f;
+GLboolean keys[1024];
+GLfloat deltaTime = 0.0f;
+GLfloat lastFrame = 0.0f;
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
+  if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+    glfwSetWindowShouldClose(window, GL_TRUE);
+  }
+  if (action == GLFW_PRESS) {
+    keys[key] = true;
+  }
+  if (action == GLFW_RELEASE) {
+    keys[key] = false;
+  }
+};
+void do_movement() {
+  cameraSpeed = 5.0f * deltaTime;
+  if (keys[GLFW_KEY_W]) {
+    cameraPos += cameraSpeed * cameraFront;
+  }
+  if (keys[GLFW_KEY_S]) {
+    cameraPos -= cameraSpeed * cameraFront;
+  }
+  if (keys[GLFW_KEY_A]) {
+    cameraPos -= cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
+  }
+  if (keys[GLFW_KEY_D]) {
+    cameraPos += cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
+  }
+  if (keys[GLFW_KEY_Q]) {
+    cameraPos.y -= cameraSpeed;
+  }
+  if (keys[GLFW_KEY_E]) {
+    cameraPos.y += cameraSpeed;
+  }
+}
+GLfloat lastX = 400.0f, lastY = 300.0f;
+GLboolean firstMouse = true;
+GLfloat pitch = 0.0f, yaw = -90.0f;
+void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
+  if (firstMouse) {
+    lastX = xpos;
+    lastY = ypos;
+    firstMouse = false;
+  }
+  GLfloat xOffset = xpos - lastX;
+  GLfloat yOffset = lastY - ypos;
+  lastX = xpos;
+  lastY = ypos;
+  
+  GLfloat sensitivity = 0.05f;
+  xOffset *= sensitivity;
+  yOffset *= sensitivity;
+  
+  yaw += xOffset;
+  pitch += yOffset;
+  
+  pitch = fabs(pitch) > 89.0f ? (pitch > 0 ? 89.0f : -89.0f) : pitch;
+  
+  glm::vec3 front;
+  front.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
+  front.y = sin(glm::radians(pitch));
+  front.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
+  cameraFront = glm::normalize(front);
+}
+GLfloat aspect = 45.0f;
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
+  if (aspect >= 1.0f && aspect <= 45.0f) {
+    aspect -= yOffset;
+  }
+  aspect = aspect < 1.0f ? 1.0f : aspect;
+  aspect = aspect > 45.0f ? 45.0f : aspect;
+}
+#endif
 
 int main(){
   CommonSettings Settings;
   GLFWwindow *window = nullptr;
   window = Settings.CreateWindow();
+  
+#if test == 15
+  glfwSetKeyCallback(window, key_callback);
+  glfwSetCursorPosCallback(window, mouse_callback);
+  glfwSetScrollCallback(window, scroll_callback);
+#endif
 
   ////////////////////////////// vertext shader //////////////////////////////
 #if test < 7
@@ -155,7 +238,7 @@ int main(){
   ShaderReader ShaderReader(Settings.CCShadersPath("shader_test11.vs").c_str(), Settings.CCShadersPath("shader_test11.frag").c_str());
 #elif test == 12
   ShaderReader ShaderReader(Settings.CCShadersPath("shader_test12.vs").c_str(), Settings.CCShadersPath("shader_test12.frag").c_str());
-#elif test == 13
+#elif test == 13 || test == 14 || test == 15
   ShaderReader ShaderReader(Settings.CCShadersPath("shader_test13.vs").c_str(), Settings.CCShadersPath("shader_test13.frag").c_str());
 #endif
   
@@ -205,7 +288,7 @@ int main(){
     0, 1, 3,
     1, 2, 3,
   };
-#elif test == 13
+#elif test == 13 || test == 14 || test == 15
   GLfloat vertices[] = {
     0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
     0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
@@ -327,7 +410,7 @@ int main(){
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
-#elif test == 13
+#elif test == 13 || test == 14 || test == 15
   glBindVertexArray(VAO);
   
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -392,10 +475,17 @@ int main(){
   int width, height;
   glfwGetFramebufferSize(window, &width, &height);
   projMat = glm::perspective(45.0f,(float)width / height, 0.1f, 100.0f);
-#elif test == 13
+#elif test == 13 || test == 14 || test == 15
   glm::mat4 modelMat;
   glm::mat4 viewMat;
+#if test == 13 || test == 15
   viewMat = glm::translate(viewMat, glm::vec3(0.0f, 0.0f, -3.0f));
+#elif test == 14
+  viewMat = glm::mat4();
+  GLfloat radius = 20.0f;
+  GLfloat camX = 0;
+  GLfloat camZ = 0;
+#endif
   glm::mat4 projMat;
   int width, height;
   glfwGetFramebufferSize(window, &width, &height);
@@ -479,10 +569,23 @@ int main(){
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
-#elif test == 13
+#elif test == 13 || test == 14 || test == 15
     modelMat = glm::mat4();
     modelMat = glm::rotate(modelMat, glm::radians((float)glfwGetTime() * 90.0f), glm::vec3(0.5f, 1.0f, -0.5f));
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+#if test == 14
+    camX = sin(glfwGetTime()) * radius;
+    camZ = cos(glfwGetTime()) * radius;
+    viewMat = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+#endif
+#if test == 15
+    GLfloat currentFrame = glfwGetTime();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+    do_movement();
+    viewMat = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+    projMat = glm::perspective(glm::radians(aspect), (float)width / height, 0.1f, 100.0f);
+#endif
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "projMat"), 1, GL_FALSE, glm::value_ptr(projMat));
     

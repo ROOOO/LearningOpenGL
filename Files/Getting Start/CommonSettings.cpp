@@ -50,6 +50,7 @@ GLFWwindow *CommonSettings::CreateWindow(string titleName) {
   }
   glfwMakeContextCurrent(window);
   glfwSetKeyCallback(window, m_key_callback);
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
   
   glewExperimental = GL_TRUE;
   if (glewInit() != GLEW_OK) {
