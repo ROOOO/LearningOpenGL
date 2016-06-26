@@ -73,7 +73,6 @@ void do_movement() {
 
 GLfloat lastX = 400.0f, lastY = 300.0f;
 GLboolean firstMouse = true;
-GLfloat pitch = 0.0f, yaw = -90.0f;
 void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
   if (firstMouse) {
     lastX = xpos;
@@ -87,7 +86,6 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
   
   cam.processMouseMovement(xOffset, yOffset);
 }
-GLfloat aspect = 45.0f;
 void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
   cam.processMouseScroll(yOffset);
 }
@@ -565,7 +563,7 @@ int main(){
     lastFrame = currentFrame;
     do_movement();
     viewMat = cam.getViewMatrix();
-    projMat = glm::perspective(glm::radians(aspect), (float)width / height, 0.1f, 100.0f);
+    projMat = glm::perspective(glm::radians(cam.getZoom()), (float)width / height, 0.1f, 100.0f);
 #endif
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(glGetUniformLocation(ShaderReader.GetProgram(), "projMat"), 1, GL_FALSE, glm::value_ptr(projMat));

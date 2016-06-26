@@ -59,7 +59,7 @@ void Camera::processMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean co
 
 void Camera::processMouseScroll(GLfloat yOffset) {
   GLfloat min = 1.0f, max = 90.0f;
-  if (this->m_zoom > min && this->m_zoom < max) {
+  if (this->m_zoom >= min && this->m_zoom <= max) {
     this->m_zoom -= yOffset;
   }
   if (this->m_zoom < min) {
@@ -68,6 +68,10 @@ void Camera::processMouseScroll(GLfloat yOffset) {
   if (this->m_zoom > max) {
     this->m_zoom = max;
   }
+}
+
+GLfloat Camera::getZoom() {
+  return m_zoom;
 }
 
 void Camera::m_updateCameraVectors() {
