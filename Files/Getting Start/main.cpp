@@ -51,6 +51,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
   }
 };
 void do_movement() {
+  if (keys[GLFW_KEY_LEFT_SHIFT]) {
+    deltaTime *= 2;
+  }
   if (keys[GLFW_KEY_W]) {
     cam.processKeyBoard(Camera::FORWARD, deltaTime);
   }

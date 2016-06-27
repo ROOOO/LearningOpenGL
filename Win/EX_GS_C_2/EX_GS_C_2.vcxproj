@@ -10,33 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Files\Classes\Camera.cpp" />
-    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
-    <ClCompile Include="..\..\Files\Classes\TextureReader.cpp" />
-    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp" />
-    <ClCompile Include="..\..\Files\Getting Start\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Files\Classes\Camera.hpp" />
-    <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
-    <ClInclude Include="..\..\Files\Classes\TextureReader.hpp" />
-    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test11.frag" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test11.vs" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test7.frag" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test7.vs" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test8.frag" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test8.vs" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test9.frag" />
-    <None Include="..\..\Files\Getting Start\Shaders\shader_test9.vs" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1AEBB5D5-56D2-4D8D-9920-E44D08E86750}</ProjectGuid>
-    <RootNamespace>OpenGL</RootNamespace>
-    <ProjectName>Getting Start</ProjectName>
+    <ProjectGuid>{3E81EA1C-971D-4BF9-A1BF-B01BF05FEAA1}</ProjectGuid>
+    <RootNamespace>EX_GS_C_2</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,7 +40,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>D:\Projects\OpenGL\LearningOpenGL\Libs\Includes;D:\Projects\OpenGL\LearningOpenGL\Files\Classes;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -91,6 +67,23 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\Files\Exercises\Getting Start\Camera\2\EX_GS_C_2_Fragment.shader" />
+    <None Include="..\..\Files\Exercises\Getting Start\Camera\2\EX_GS_C_2_Vertex.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Files\Classes\Camera.cpp" />
+    <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
+    <ClCompile Include="..\..\Files\Classes\TextureReader.cpp" />
+    <ClCompile Include="..\..\Files\Exercises\Getting Start\Camera\2\main.cpp" />
+    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Files\Classes\Camera.hpp" />
+    <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
+    <ClInclude Include="..\..\Files\Classes\TextureReader.hpp" />
+    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
