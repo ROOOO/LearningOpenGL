@@ -45,7 +45,8 @@ glm::mat4 Camera::lookAt(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp
 }
 
 glm::mat4 Camera::getViewMatrix() {
-  return this->lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
+//  return this->lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
+  return glm::lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
 }
 
 void Camera::processKeyBoard(Camera::Camera_Movement direction, GLfloat deltaTime) {
@@ -66,6 +67,7 @@ void Camera::processKeyBoard(Camera::Camera_Movement direction, GLfloat deltaTim
   if (this->m_isFPS) {
     this->m_position.y = 0;
   }
+  std::cout << "position: " << m_position.x << "  " << m_position.y << "  " << m_position.z << std::endl;
 }
 
 void Camera::processMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean constrainPitch) {
@@ -115,4 +117,5 @@ void Camera::m_updateCameraVectors() {
   this->m_front = glm::normalize(front);
   this->m_right = glm::normalize(glm::cross(this->m_front, this->m_worldUp));
   this->m_up = glm::normalize(glm::cross(this->m_right, this->m_front));
+  std::cout << "front:  " << m_front.x << " " << m_front.y << " " << m_front.z << std::endl;
 }

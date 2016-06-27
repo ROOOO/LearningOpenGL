@@ -79,6 +79,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>Lighting.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 		<key>Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -153,6 +158,11 @@
 			<true/>
 		</dict>
 		<key>3CE393171D214BC80050486D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CE393351D2184520050486D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
