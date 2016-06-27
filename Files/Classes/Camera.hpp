@@ -36,7 +36,7 @@ class Camera {
   GLfloat m_movementSpeed;
   GLfloat m_mouseSensitivity;
   GLfloat m_zoom;
-  GLboolean m_isFPS;
+  GLboolean m_isFPS = false;
   
   void m_updateCameraVectors();
   
@@ -57,6 +57,8 @@ public:
   void processMouseScroll(GLfloat yOffset);
   GLfloat getZoom();
   void setFPS(GLboolean b);
+  glm::vec3 getPosition();
+  glm::mat4 lookAt(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp);
 };
 
 #endif /* Camera_hpp */

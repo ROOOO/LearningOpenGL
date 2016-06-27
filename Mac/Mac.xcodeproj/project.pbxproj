@@ -138,6 +138,32 @@
 		3CE392EC1D1ED3870050486D /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 		3CE392ED1D1ED38C0050486D /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
 		3CE392F21D1F97510050486D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392F01D1F97510050486D /* Camera.cpp */; };
+		3CE393061D214B490050486D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE393051D214B490050486D /* main.cpp */; };
+		3CE393071D214B660050486D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
+		3CE393081D214B680050486D /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CE393091D214B6A0050486D /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E5421D182F86007007DA /* libGLEW.a */; };
+		3CE3930A1D214B6B0050486D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CE3930B1D214B6D0050486D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CE3930C1D214B6F0050486D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CE3930D1D214B710050486D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CE3930E1D214B720050486D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CE3930F1D214B780050486D /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CE393111D214B840050486D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392F01D1F97510050486D /* Camera.cpp */; };
+		3CE393121D214B890050486D /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
+		3CE393131D214B9D0050486D /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CE3931B1D214BC80050486D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE3931A1D214BC80050486D /* main.cpp */; };
+		3CE393211D214BF50050486D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
+		3CE393221D214BF70050486D /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CE393231D214BF90050486D /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E5421D182F86007007DA /* libGLEW.a */; };
+		3CE393241D214BFA0050486D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CE393251D214BFD0050486D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CE393261D214BFF0050486D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CE393271D214C010050486D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CE393281D214C030050486D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CE3932E1D214C370050486D /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CE3932F1D214C390050486D /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CE393301D214C3C0050486D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392F01D1F97510050486D /* Camera.cpp */; };
+		3CE393311D214C400050486D /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C3720791D1842750068ABC8 /* CommonSettings.cpp */; };
 		3CF99DB81D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DB91D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DBA1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
@@ -284,6 +310,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3CE392F51D214AE50050486D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3CE393161D214BC80050486D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3CF99DC61D1D62090028100C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -370,6 +414,14 @@
 		3CE392EF1D1ED42B0050486D /* EX_GS_CS_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_CS_3_Vertex.shader; sourceTree = "<group>"; };
 		3CE392F01D1F97510050486D /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = ../Files/Classes/Camera.cpp; sourceTree = "<group>"; };
 		3CE392F11D1F97510050486D /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = ../Files/Classes/Camera.hpp; sourceTree = "<group>"; };
+		3CE392F71D214AE50050486D /* EX_GS_C_2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_C_2; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CE393031D214B490050486D /* EX_GS_C_2_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_C_2_Fragment.shader; sourceTree = "<group>"; };
+		3CE393041D214B490050486D /* EX_GS_C_2_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_C_2_Vertex.shader; sourceTree = "<group>"; };
+		3CE393051D214B490050486D /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CE393181D214BC80050486D /* EX_GS_C_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_C_1; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CE3931A1D214BC80050486D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CE3931F1D214BEB0050486D /* EX_GS_C_1_Fragment.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EX_GS_C_1_Fragment.shader; sourceTree = "<group>"; };
+		3CE393201D214BEB0050486D /* EX_GS_C_1_Vertex.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EX_GS_C_1_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -565,6 +617,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CE392F41D214AE50050486D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE3930E1D214B720050486D /* CoreVideo.framework in Frameworks */,
+				3CE3930D1D214B710050486D /* IOKit.framework in Frameworks */,
+				3CE3930C1D214B6F0050486D /* Cocoa.framework in Frameworks */,
+				3CE3930B1D214B6D0050486D /* OpenGL.framework in Frameworks */,
+				3CE3930A1D214B6B0050486D /* GLUT.framework in Frameworks */,
+				3CE393091D214B6A0050486D /* libGLEW.a in Frameworks */,
+				3CE393081D214B680050486D /* libglfw3.a in Frameworks */,
+				3CE393071D214B660050486D /* libSOIL.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CE393151D214BC80050486D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE393281D214C030050486D /* CoreVideo.framework in Frameworks */,
+				3CE393261D214BFF0050486D /* Cocoa.framework in Frameworks */,
+				3CE393251D214BFD0050486D /* OpenGL.framework in Frameworks */,
+				3CE393271D214C010050486D /* IOKit.framework in Frameworks */,
+				3CE393241D214BFA0050486D /* GLUT.framework in Frameworks */,
+				3CE393211D214BF50050486D /* libSOIL.a in Frameworks */,
+				3CE393221D214BF70050486D /* libglfw3.a in Frameworks */,
+				3CE393231D214BF90050486D /* libGLEW.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CF99DC51D1D62090028100C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +692,8 @@
 		3C42909C1D12FBB600736950 /* EX */ = {
 			isa = PBXGroup;
 			children = (
+				3CE393191D214BC80050486D /* EX_GS_C_1 */,
+				3CE392FE1D214B1F0050486D /* EX_GS_C_2 */,
 				3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */,
 				3CF99DC91D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD41D1D62150028100C /* EX_GS_T_2 */,
@@ -699,6 +783,8 @@
 				3CF99DC81D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD31D1D62150028100C /* EX_GS_T_2 */,
 				3CE392DC1D1ED2C10050486D /* EX_GS_CS_3 */,
+				3CE392F71D214AE50050486D /* EX_GS_C_2 */,
+				3CE393181D214BC80050486D /* EX_GS_C_1 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -822,6 +908,28 @@
 			);
 			name = EX_GS_CS_3;
 			path = "../Files/Exercises/Getting Start/Coordinate System/3";
+			sourceTree = SOURCE_ROOT;
+		};
+		3CE392FE1D214B1F0050486D /* EX_GS_C_2 */ = {
+			isa = PBXGroup;
+			children = (
+				3CE393031D214B490050486D /* EX_GS_C_2_Fragment.shader */,
+				3CE393041D214B490050486D /* EX_GS_C_2_Vertex.shader */,
+				3CE393051D214B490050486D /* main.cpp */,
+			);
+			name = EX_GS_C_2;
+			path = "../Files/Exercises/Getting Start/Camera/2";
+			sourceTree = SOURCE_ROOT;
+		};
+		3CE393191D214BC80050486D /* EX_GS_C_1 */ = {
+			isa = PBXGroup;
+			children = (
+				3CE3931F1D214BEB0050486D /* EX_GS_C_1_Fragment.shader */,
+				3CE393201D214BEB0050486D /* EX_GS_C_1_Vertex.shader */,
+				3CE3931A1D214BC80050486D /* main.cpp */,
+			);
+			name = EX_GS_C_1;
+			path = "../Files/Exercises/Getting Start/Camera/1";
 			sourceTree = SOURCE_ROOT;
 		};
 		3CF99DC31D1D60B10028100C /* Texture Class */ = {
@@ -1077,6 +1185,40 @@
 			productReference = 3CE392DC1D1ED2C10050486D /* EX_GS_CS_3 */;
 			productType = "com.apple.product-type.tool";
 		};
+		3CE392F61D214AE50050486D /* EX_GS_C_2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CE392FB1D214AE50050486D /* Build configuration list for PBXNativeTarget "EX_GS_C_2" */;
+			buildPhases = (
+				3CE392F31D214AE50050486D /* Sources */,
+				3CE392F41D214AE50050486D /* Frameworks */,
+				3CE392F51D214AE50050486D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_C_2;
+			productName = EX_GS_C_2;
+			productReference = 3CE392F71D214AE50050486D /* EX_GS_C_2 */;
+			productType = "com.apple.product-type.tool";
+		};
+		3CE393171D214BC80050486D /* EX_GS_C_1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CE3931C1D214BC80050486D /* Build configuration list for PBXNativeTarget "EX_GS_C_1" */;
+			buildPhases = (
+				3CE393141D214BC80050486D /* Sources */,
+				3CE393151D214BC80050486D /* Frameworks */,
+				3CE393161D214BC80050486D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_GS_C_1;
+			productName = EX_GS_C_1;
+			productReference = 3CE393181D214BC80050486D /* EX_GS_C_1 */;
+			productType = "com.apple.product-type.tool";
+		};
 		3CF99DC71D1D62090028100C /* EX_GS_T_1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF99DCC1D1D62090028100C /* Build configuration list for PBXNativeTarget "EX_GS_T_1" */;
@@ -1156,6 +1298,12 @@
 					3CE392DB1D1ED2C10050486D = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					3CE392F61D214AE50050486D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3CE393171D214BC80050486D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					3CF99DC71D1D62090028100C = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -1190,6 +1338,8 @@
 				3CF99DC71D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD21D1D62150028100C /* EX_GS_T_2 */,
 				3CE392DB1D1ED2C10050486D /* EX_GS_CS_3 */,
+				3CE392F61D214AE50050486D /* EX_GS_C_2 */,
+				3CE393171D214BC80050486D /* EX_GS_C_1 */,
 			);
 		};
 /* End PBXProject section */
@@ -1322,6 +1472,30 @@
 				3CE392EB1D1ED3840050486D /* TextureReader.cpp in Sources */,
 				3CE392ED1D1ED38C0050486D /* CommonSettings.cpp in Sources */,
 				3CE392EC1D1ED3870050486D /* ShaderReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CE392F31D214AE50050486D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE3930F1D214B780050486D /* TextureReader.cpp in Sources */,
+				3CE393061D214B490050486D /* main.cpp in Sources */,
+				3CE393121D214B890050486D /* CommonSettings.cpp in Sources */,
+				3CE393131D214B9D0050486D /* ShaderReader.cpp in Sources */,
+				3CE393111D214B840050486D /* Camera.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CE393141D214BC80050486D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE3931B1D214BC80050486D /* main.cpp in Sources */,
+				3CE3932E1D214C370050486D /* TextureReader.cpp in Sources */,
+				3CE3932F1D214C390050486D /* ShaderReader.cpp in Sources */,
+				3CE393301D214C3C0050486D /* Camera.cpp in Sources */,
+				3CE393311D214C400050486D /* CommonSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1639,6 +1813,38 @@
 			};
 			name = Release;
 		};
+		3CE392FC1D214AE50050486D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CE392FD1D214AE50050486D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3CE3931D1D214BC80050486D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CE3931E1D214BC80050486D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3CF99DCD1D1D62090028100C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1790,6 +1996,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3CE392FB1D214AE50050486D /* Build configuration list for PBXNativeTarget "EX_GS_C_2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CE392FC1D214AE50050486D /* Debug */,
+				3CE392FD1D214AE50050486D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3CE3931C1D214BC80050486D /* Build configuration list for PBXNativeTarget "EX_GS_C_1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CE3931D1D214BC80050486D /* Debug */,
+				3CE3931E1D214BC80050486D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		3CF99DCC1D1D62090028100C /* Build configuration list for PBXNativeTarget "EX_GS_T_1" */ = {
 			isa = XCConfigurationList;

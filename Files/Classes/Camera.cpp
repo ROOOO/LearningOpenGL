@@ -22,8 +22,30 @@ Camera::~Camera() {
   
 }
 
+glm::mat4 Camera::lookAt(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp) {
+  glm::vec3 D = glm::normalize(glm::vec3(position - target));
+  glm::vec3 R = glm::normalize(glm::cross(worldUp, D));
+  glm::vec3 U = glm::normalize(glm::cross(D, R));
+  
+  glm::mat4 m1;
+  m1[0][0] = R.x;
+  m1[0][1] = U.x;
+  m1[0][2] = D.x;
+  m1[1][0] = R.y;
+  m1[1][1] = U.y;
+  m1[1][2] = D.y;
+  m1[2][0] = R.z;
+  m1[2][1] = U.z;
+  m1[2][2] = D.z;
+  glm::mat4 m2;
+  m2[3][0] = -position.x;
+  m2[3][1] = -position.y;
+  m2[3][2] = -position.z;
+  return m1 * m2;
+}
+
 glm::mat4 Camera::getViewMatrix() {
-  return glm::lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
+  return this->lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
 }
 
 void Camera::processKeyBoard(Camera::Camera_Movement direction, GLfloat deltaTime) {
@@ -81,6 +103,9 @@ void Camera::setFPS(GLboolean b) {
   this->m_isFPS = b;
 }
 
+glm::vec3 Camera::getPosition() {
+  return this->m_position;
+}
 
 void Camera::m_updateCameraVectors() {
   glm::vec3 front;
