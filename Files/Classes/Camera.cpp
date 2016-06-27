@@ -41,6 +41,9 @@ void Camera::processKeyBoard(Camera::Camera_Movement direction, GLfloat deltaTim
   } else if (direction == DOWN) {
     this->m_position.y -= velocity;
   }
+  if (this->m_isFPS) {
+    this->m_position.y = 0;
+  }
 }
 
 void Camera::processMouseMovement(GLfloat xOffset, GLfloat yOffset, GLboolean constrainPitch) {
@@ -73,6 +76,11 @@ void Camera::processMouseScroll(GLfloat yOffset) {
 GLfloat Camera::getZoom() {
   return m_zoom;
 }
+
+void Camera::setFPS(GLboolean b) {
+  this->m_isFPS = b;
+}
+
 
 void Camera::m_updateCameraVectors() {
   glm::vec3 front;

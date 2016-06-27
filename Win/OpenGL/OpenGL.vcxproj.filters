@@ -73,5 +73,17 @@
     <None Include="..\..\Files\Getting Start\Shaders\shader_test11.vs">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test12.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test12.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test13.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test13.vs">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

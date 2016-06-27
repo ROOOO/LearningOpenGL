@@ -26,6 +26,10 @@
   <ItemGroup>
     <None Include="..\..\Files\Getting Start\Shaders\shader_test11.frag" />
     <None Include="..\..\Files\Getting Start\Shaders\shader_test11.vs" />
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test12.frag" />
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test12.vs" />
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test13.frag" />
+    <None Include="..\..\Files\Getting Start\Shaders\shader_test13.vs" />
     <None Include="..\..\Files\Getting Start\Shaders\shader_test7.frag" />
     <None Include="..\..\Files\Getting Start\Shaders\shader_test7.vs" />
     <None Include="..\..\Files\Getting Start\Shaders\shader_test8.frag" />
