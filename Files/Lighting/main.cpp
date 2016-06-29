@@ -29,6 +29,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, GL_TRUE);
   }
+  if (key == GLFW_KEY_GRAVE_ACCENT && action == GLFW_PRESS) {
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED == glfwGetInputMode(window, GLFW_CURSOR) ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_DISABLED);
+  }
   if (action == GLFW_PRESS) {
     keys[key] = true;
   }
@@ -175,6 +178,7 @@ int main(int argc, const char * argv[]) {
   GLint projLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
   GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
   GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
+  GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
 
   lightShader.Use();
   GLint lightModelLoc = glGetUniformLocation(lightShader.GetProgram(), "modelMat");
@@ -188,7 +192,8 @@ int main(int argc, const char * argv[]) {
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
-    
+    do_movement();
+
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -204,9 +209,10 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+
     glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
     glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
-    
+    glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
@@ -222,8 +228,6 @@ int main(int argc, const char * argv[]) {
     glBindVertexArray(lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
-    
-    do_movement();
     
     glfwSwapBuffers(window);
   }

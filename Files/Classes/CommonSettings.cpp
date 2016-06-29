@@ -8,17 +8,33 @@
 
 #include "CommonSettings.hpp"
 
+#define test 2
+
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__
+#if test == 1
+  m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/Shaders/";
+  m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/Resources/";
+  m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
+  m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Getting Start/";
+#elif test == 2
   m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Lighting/Shaders/";
   m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Lighting/Resources/";
   m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Lighting/";
   m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Lighting/";
+#endif
 #else
+#if test == 1
+  m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Shaders\\";
+  m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Resources\\";
+  m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\";
+  m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Getting Start\\";
+#elif test == 2
   m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\Shaders\\";
   m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\Resources\\";
   m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\";
   m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Lighting\\";
+#endif
 #endif
 }
 
@@ -29,6 +45,9 @@ void CommonSettings::m_key_callback(GLFWwindow* window, int key, int scancode, i
 {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, GL_TRUE);
+  }
+  if (key == GLFW_KEY_GRAVE_ACCENT && action == GLFW_PRESS) {
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED == glfwGetInputMode(window, GLFW_CURSOR) ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_DISABLED);
   }
 }
 

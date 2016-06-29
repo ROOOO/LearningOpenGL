@@ -69,18 +69,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Files\Classes\Camera.cpp" />
+    <ClCompile Include="..\..\Files\Classes\CommonSettings.cpp" />
     <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
     <ClCompile Include="..\..\Files\Classes\TextureReader.cpp" />
-    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp" />
-    <ClCompile Include="..\..\Files\Lighting\CommonSettings.cpp" />
     <ClCompile Include="..\..\Files\Lighting\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Files\Classes\Camera.hpp" />
+    <ClInclude Include="..\..\Files\Classes\CommonSettings.hpp" />
     <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
     <ClInclude Include="..\..\Files\Classes\TextureReader.hpp" />
-    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp" />
-    <ClInclude Include="..\..\Files\Lighting\CommonSettings.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

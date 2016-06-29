@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Files\Lighting\CommonSettings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Files\Lighting\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Files\Classes\Camera.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Files\Getting Start\CommonSettings.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp">
@@ -33,15 +27,12 @@
     <ClCompile Include="..\..\Files\Classes\TextureReader.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Files\Classes\CommonSettings.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Files\Lighting\CommonSettings.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Files\Classes\Camera.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Files\Getting Start\CommonSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp">
@@ -50,5 +41,22 @@
     <ClInclude Include="..\..\Files\Classes\TextureReader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Files\Classes\CommonSettings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.vs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
