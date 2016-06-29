@@ -154,12 +154,12 @@ int main(int argc, const char * argv[]) {
   glBindVertexArray(0);
   
 #ifdef __APPLE__
-  string path = "/Basic Lighting/1/";
+  string path = "/Basic Lighting/3/";
 #else
-  string path = "\\Basic Lighting\\1\\";
+  string path = "\\Basic Lighting\\3\\";
 #endif
-  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_BL_1.vs").c_str(), Settings.CCExercisesPath(path + "EX_L_BL_1.fs").c_str());
-  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_BL_1_light.vs").c_str(), Settings.CCExercisesPath(path + "EX_L_BL_1_light.fs").c_str());
+  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_BL_3.vs").c_str(), Settings.CCExercisesPath(path + "EX_L_BL_3.fs").c_str());
+  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_BL_3_light.vs").c_str(), Settings.CCExercisesPath(path + "EX_L_BL_3_light.fs").c_str());
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
@@ -169,16 +169,23 @@ int main(int argc, const char * argv[]) {
   glfwGetFramebufferSize(window, &width, &height);
   
   glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+  glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
+  glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
   
   shader.Use();
   GLint modelLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
-  
+  GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
+  GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
+  GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
+  GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
+
   lightShader.Use();
   GLint lightModelLoc = glGetUniformLocation(lightShader.GetProgram(), "modelMat");
   GLint lightViewLoc = glGetUniformLocation(lightShader.GetProgram(), "viewMat");
   GLint lightProjLoc = glGetUniformLocation(lightShader.GetProgram(), "projMat");
+  GLint lightLightColorLoc = glGetUniformLocation(lightShader.GetProgram(), "lightColor");
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
@@ -200,6 +207,11 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
     
+    glUniform3f(lightColorLoc, lightColor.x, lightColor.y, lightColor.z);
+    glUniform3f(objectColorLoc, objectColor.x, objectColor.y, objectColor.z);
+    glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+    glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
@@ -211,7 +223,8 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(lightModelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(lightViewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(lightProjLoc, 1, GL_FALSE, glm::value_ptr(projMat));
-    
+    glUniform3f(lightLightColorLoc, lightColor.x, lightColor.y, lightColor.z);
+
     glBindVertexArray(lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
