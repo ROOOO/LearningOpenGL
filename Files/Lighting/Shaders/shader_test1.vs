@@ -9,6 +9,6 @@ out vec3 FragPos;
 
 void main() {
   gl_Position = projMat * viewMat * modelMat * vec4(position, 1.0f);
-  Normal = normal;
+  Normal = mat3(transpose(inverse(modelMat))) * normal;
   FragPos = vec3(modelMat * vec4(position, 1.0f));
 }

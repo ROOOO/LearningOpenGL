@@ -179,6 +179,7 @@ int main(int argc, const char * argv[]) {
   GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
   GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
   GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
+  GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
 
   lightShader.Use();
   GLint lightModelLoc = glGetUniformLocation(lightShader.GetProgram(), "modelMat");
@@ -213,6 +214,7 @@ int main(int argc, const char * argv[]) {
     glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
     glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
     glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+    glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
