@@ -1,17 +1,13 @@
 //
 //  main.cpp
-//  Lighting
+//  EX_L_BL_1
 //
-//  Created by King on 16/6/27.
+//  Created by King on 16/6/29.
 //  Copyright © 2016年 King. All rights reserved.
 //
 
 #include <iostream>
 #include "CommonSettings.hpp"
-
-// test1 basic lighting
-
-#define test 1
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -77,7 +73,7 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 int main(int argc, const char * argv[]) {
   CommonSettings Settings;
   GLFWwindow *window = Settings.CreateWindow();
-  if (window == nullptr) {
+  if (nullptr == window) {
     std::cout << "Create window failed." << std::endl;
     glfwTerminate();
     return -1;
@@ -134,8 +130,8 @@ int main(int argc, const char * argv[]) {
   GLuint VAO, VBO;
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
-  
   glBindVertexArray(VAO);
+  
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
@@ -149,74 +145,73 @@ int main(int argc, const char * argv[]) {
   GLuint lightVAO;
   glGenVertexArrays(1, &lightVAO);
   glBindVertexArray(lightVAO);
+  
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(0);
+
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
-  ShaderReader shader(Settings.CCShadersPath("shader_test1.vs").c_str(), Settings.CCShadersPath("shader_test1.frag").c_str());
-  ShaderReader lightShader(Settings.CCShadersPath("shader_test1_light.vs").c_str(), Settings.CCShadersPath("shader_test1_light.frag").c_str());
+#ifdef __APPLE__
+  string path = "/Basic Lighting/1/";
+#else
+  string path = "\\Basic Lighting\\1\\";
+#endif
+  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_BL_1.vs").c_str(), Settings.CCExercisesPath(path + "EX_L_BL_1.fs").c_str());
+  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_BL_1_light.vs").c_str(), Settings.CCExercisesPath(path + "EX_L_BL_1_light.fs").c_str());
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
   
+  GLint width, height;
+  glfwGetFramebufferSize(window, &width, &height);
+  
+  glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+  
   shader.Use();
   GLint modelLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
-  GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
-  GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
-  GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
-  GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
-
+  
   lightShader.Use();
   GLint lightModelLoc = glGetUniformLocation(lightShader.GetProgram(), "modelMat");
   GLint lightViewLoc = glGetUniformLocation(lightShader.GetProgram(), "viewMat");
   GLint lightProjLoc = glGetUniformLocation(lightShader.GetProgram(), "projMat");
-
-  glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
-  
-  GLint width, height;
-  glfwGetFramebufferSize(window, &width, &height);
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
-
+    
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     GLfloat currentTime = glfwGetTime();
     deltaTime = currentTime - lastFrame;
     lastFrame = currentTime;
-    
+
     viewMat = cam.getViewMatrix();
-    projMat = glm::perspective(glm::radians(cam.getZoom()), (GLfloat)width / height, 0.1f, 100.0f);
-    
+    projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
+
     shader.Use();
     modelMat = glm::mat4();
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
-
-    glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
-    glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
-    glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+    
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
     
     lightShader.Use();
     modelMat = glm::mat4();
-    modelMat = glm::translate(modelMat, lightPos);
+    modelMat = glm::translate(modelMat, glm::vec3(lightPos.x, lightPos.y, lightPos.z));
     modelMat = glm::scale(modelMat, glm::vec3(0.2f));
-    
     glUniformMatrix4fv(lightModelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(lightViewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(lightProjLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    
     glBindVertexArray(lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
@@ -224,9 +219,6 @@ int main(int argc, const char * argv[]) {
     glfwSwapBuffers(window);
   }
   
-  glDeleteVertexArrays(1, &VAO);
-  glDeleteBuffers(1, &VBO);
   glfwTerminate();
-  
   return 0;
 }

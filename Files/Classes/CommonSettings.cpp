@@ -82,6 +82,8 @@ GLFWwindow *CommonSettings::CreateWindow(string titleName) {
   glfwGetFramebufferSize(window, &viewWidth, &viewHeight);
   glViewport(0, 0, viewWidth, viewHeight);
   
+  glEnable(GL_DEPTH_TEST);
+  
   return window;
 }
 
