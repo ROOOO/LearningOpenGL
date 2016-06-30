@@ -10,8 +10,9 @@
 #include "CommonSettings.hpp"
 
 // test1 basic lighting
+// test2 material
 
-#define test 1
+#define test 2
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -155,28 +156,57 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
+#if test == 1
   ShaderReader shader(Settings.CCShadersPath("shader_test1.vs").c_str(), Settings.CCShadersPath("shader_test1.frag").c_str());
+#elif test == 2
+  ShaderReader shader(Settings.CCShadersPath("shader_test2.vs").c_str(), Settings.CCShadersPath("shader_test2.frag").c_str());
+#endif
   ShaderReader lightShader(Settings.CCShadersPath("shader_test1_light.vs").c_str(), Settings.CCShadersPath("shader_test1_light.frag").c_str());
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
+#if test == 2
+  glm::vec3 ambient(0.0215f, 0.1745f, 0.0215f);
+  glm::vec3 diffuse(0.07568f, 0.61424f, 0.07568f);
+  glm::vec3 specular(0.633f, 0.727811f, 0.633f);
+  GLfloat shininess = 0.6f * 128;
+#endif
   
   shader.Use();
   GLint modelLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
-  GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
   GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
+#if test == 1
+  GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
   GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
+#endif
   GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
+#if test == 2
+  GLint ambientLoc = glGetUniformLocation(shader.GetProgram(), "material.ambient");
+  GLint diffuseLoc = glGetUniformLocation(shader.GetProgram(), "material.diffuse");
+  GLint specularLoc = glGetUniformLocation(shader.GetProgram(), "material.specular");
+  GLint shininessLoc = glGetUniformLocation(shader.GetProgram(), "material.shininess");
+  
+  GLint lightAmbientLoc = glGetUniformLocation(shader.GetProgram(), "light.ambient");
+  GLint lightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "light.diffuse");
+  GLint lightSpecularLoc = glGetUniformLocation(shader.GetProgram(), "light.specular");
+  GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "light.position");
+#endif
 
   lightShader.Use();
   GLint lightModelLoc = glGetUniformLocation(lightShader.GetProgram(), "modelMat");
   GLint lightViewLoc = glGetUniformLocation(lightShader.GetProgram(), "viewMat");
   GLint lightProjLoc = glGetUniformLocation(lightShader.GetProgram(), "projMat");
+  GLint lightLightColorLoc = glGetUniformLocation(lightShader.GetProgram(), "lightColor");
 
   glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+  glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
+  glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
+#if test == 2
+  glm::vec3 lightSpecular(1.0f);
+#endif
   
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
@@ -201,10 +231,32 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 
-    glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
-    glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+#if test == 2
+    glm::vec3 lightAmbient(0.2f);
+    glm::vec3 lightDiffuse(0.5f);
+    lightColor.x = sin(glfwGetTime() * 2.0f);
+    lightColor.y = sin(glfwGetTime() * 0.7f);
+    lightColor.z = sin(glfwGetTime() * 1.3f);
+    lightDiffuse *= lightColor;
+    lightAmbient *= lightDiffuse;
+#endif
+    glUniform3f(lightColorLoc, lightColor.r, lightColor.g, lightColor.b);
+
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+#if test == 1
+    glUniform3f(objectColorLoc, objectColor.r, objectColor.g, objectColor.b);
+    glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+#elif test == 2
+    glUniform3f(ambientLoc, ambient.r, ambient.g, ambient.b);
+    glUniform3f(diffuseLoc, diffuse.r, diffuse.g, diffuse.b);
+    glUniform3f(specularLoc, specular.r, specular.g, specular.b);
+    glUniform1f(shininessLoc, shininess);
+    
+    glUniform3f(lightPosLoc, lightPos.r, lightPos.g, lightPos.b);
+    glUniform3f(lightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
+    glUniform3f(lightDiffuseLoc, lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
+    glUniform3f(lightSpecularLoc, lightSpecular.r, lightSpecular.g, lightSpecular.b);
+#endif
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
@@ -217,6 +269,9 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(lightModelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(lightViewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(lightProjLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    
+    glUniform3f(lightLightColorLoc, lightColor.r, lightColor.g, lightColor.b);
+    
     glBindVertexArray(lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);

@@ -555,6 +555,10 @@
 		3CE393C71D24288E0050486D /* EX_L_BL_3_light.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_3_light.vs; sourceTree = "<group>"; };
 		3CE393C81D24288E0050486D /* EX_L_BL_3.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_3.vs; sourceTree = "<group>"; };
 		3CE393C91D24288E0050486D /* EX_L_BL_3.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_3.fs; sourceTree = "<group>"; };
+		3CE393CA1D2535DB0050486D /* EX_L_BL_4_light.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4_light.fs; sourceTree = "<group>"; };
+		3CE393CB1D2535DB0050486D /* EX_L_BL_4.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4.fs; sourceTree = "<group>"; };
+		3CE393CC1D2535DB0050486D /* EX_L_BL_4.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4.vs; sourceTree = "<group>"; };
+		3CE393CD1D2535DB0050486D /* EX_L_BL_4_light.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4_light.vs; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -1210,6 +1214,10 @@
 		3CE393881D23E3C20050486D /* EX_L_BL_4 */ = {
 			isa = PBXGroup;
 			children = (
+				3CE393CA1D2535DB0050486D /* EX_L_BL_4_light.fs */,
+				3CE393CB1D2535DB0050486D /* EX_L_BL_4.fs */,
+				3CE393CC1D2535DB0050486D /* EX_L_BL_4.vs */,
+				3CE393CD1D2535DB0050486D /* EX_L_BL_4_light.vs */,
 				3CE393891D23E3C20050486D /* main.cpp */,
 			);
 			name = EX_L_BL_4;
