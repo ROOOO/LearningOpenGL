@@ -231,6 +231,19 @@
 		3CE393BB1D23E5020050486D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
 		3CE393BC1D23E5020050486D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
 		3CE393BD1D23E5020050486D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CE393D51D2561010050486D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE393D41D2561010050486D /* main.cpp */; };
+		3CE393D91D2561070050486D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
+		3CE393DA1D2561070050486D /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CE393DB1D2561070050486D /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E5421D182F86007007DA /* libGLEW.a */; };
+		3CE393DC1D25610C0050486D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CE393DD1D25610C0050486D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CE393DE1D25610C0050486D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CE393DF1D25610C0050486D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CE393E01D25610C0050486D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CE393E11D25618D0050486D /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE3934C1D23DF020050486D /* CommonSettings.cpp */; };
+		3CE393E21D25618D0050486D /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CE393E31D25618D0050486D /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CE393E41D25618D0050486D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392F01D1F97510050486D /* Camera.cpp */; };
 		3CF99DB81D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DB91D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DBA1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
@@ -438,6 +451,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3CE393D01D2561010050486D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3CF99DC61D1D62090028100C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,6 +581,12 @@
 		3CE393CB1D2535DB0050486D /* EX_L_BL_4.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4.fs; sourceTree = "<group>"; };
 		3CE393CC1D2535DB0050486D /* EX_L_BL_4.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4.vs; sourceTree = "<group>"; };
 		3CE393CD1D2535DB0050486D /* EX_L_BL_4_light.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_L_BL_4_light.vs; sourceTree = "<group>"; };
+		3CE393D21D2561010050486D /* EX_L_M */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_L_M; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CE393D41D2561010050486D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CE393E51D2564660050486D /* EX_L_M_1.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_L_M_1.frag; sourceTree = "<group>"; };
+		3CE393E61D2564660050486D /* EX_L_M_1.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_L_M_1.vert; sourceTree = "<group>"; };
+		3CE393E71D2564660050486D /* EX_L_M_1_light.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_L_M_1_light.vert; sourceTree = "<group>"; };
+		3CE393E81D2564660050486D /* EX_L_M_1_light.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_L_M_1_light.frag; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -859,6 +887,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CE393CF1D2561010050486D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE393D91D2561070050486D /* libSOIL.a in Frameworks */,
+				3CE393DA1D2561070050486D /* libglfw3.a in Frameworks */,
+				3CE393DE1D25610C0050486D /* Cocoa.framework in Frameworks */,
+				3CE393DC1D25610C0050486D /* GLUT.framework in Frameworks */,
+				3CE393DD1D25610C0050486D /* OpenGL.framework in Frameworks */,
+				3CE393DF1D25610C0050486D /* IOKit.framework in Frameworks */,
+				3CE393DB1D2561070050486D /* libGLEW.a in Frameworks */,
+				3CE393E01D25610C0050486D /* CoreVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CF99DC51D1D62090028100C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -907,18 +950,18 @@
 				3CE393191D214BC80050486D /* EX_GS_C_1 */,
 				3CE392FE1D214B1F0050486D /* EX_GS_C_2 */,
 				3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */,
+				3CC16A7A1D12D3090080F62C /* EX_GS_HT_1 */,
+				3CC16A901D12F71B0080F62C /* EX_GS_HT_2 */,
+				3CC700B31D14149F00A21FAC /* EX_GS_HT_3 */,
+				3CC700D41D152E4100A21FAC /* EX_GS_S_1 */,
+				3CC700EC1D15305A00A21FAC /* EX_GS_S_2 */,
+				3CC700F71D15306600A21FAC /* EX_GS_S_3 */,
 				3CF99DC91D1D62090028100C /* EX_GS_T_1 */,
 				3CF99DD41D1D62150028100C /* EX_GS_T_2 */,
 				3C45E54F1D1830B6007007DA /* EX_GS_Tex_1 */,
 				3C45E55A1D1830D3007007DA /* EX_GS_Tex_2 */,
 				3C45E5651D1830DA007007DA /* EX_GS_Tex_3 */,
 				3C3720511D1832F20068ABC8 /* EX_GS_Tex_4 */,
-				3CC700D41D152E4100A21FAC /* EX_GS_S_1 */,
-				3CC700EC1D15305A00A21FAC /* EX_GS_S_2 */,
-				3CC700F71D15306600A21FAC /* EX_GS_S_3 */,
-				3CC700B31D14149F00A21FAC /* EX_GS_HT_3 */,
-				3CC16A7A1D12D3090080F62C /* EX_GS_HT_1 */,
-				3CC16A901D12F71B0080F62C /* EX_GS_HT_2 */,
 			);
 			name = EX;
 			path = EX_GS_HT_1;
@@ -1005,6 +1048,7 @@
 				3CE393711D23E3B50050486D /* EX_L_BL_2 */,
 				3CE3937C1D23E3BB0050486D /* EX_L_BL_3 */,
 				3CE393871D23E3C20050486D /* EX_L_BL_4 */,
+				3CE393D21D2561010050486D /* EX_L_M */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1101,18 +1145,18 @@
 		3CC7013E1D1622D800A21FAC /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				3CE392D61D1E5DE50050486D /* shader_test13.frag */,
-				3CE392D71D1E5DE50050486D /* shader_test13.vs */,
+				3CC700CD1D15070000A21FAC /* shader_test7.frag */,
+				3CC700CC1D1506E200A21FAC /* shader_test7.vs */,
+				3CC7013F1D1622E900A21FAC /* shader_test8.frag */,
+				3CC701401D1622E900A21FAC /* shader_test8.vs */,
+				3CC701421D168FA800A21FAC /* shader_test9.frag */,
+				3CC701441D168FA800A21FAC /* shader_test9.vs */,
 				3CE392D21D1E54E10050486D /* shader_test11.frag */,
 				3CE392D31D1E54E10050486D /* shader_test11.vs */,
 				3CE392D41D1E54E10050486D /* shader_test12.frag */,
 				3CE392D51D1E54E10050486D /* shader_test12.vs */,
-				3CC701421D168FA800A21FAC /* shader_test9.frag */,
-				3CC701441D168FA800A21FAC /* shader_test9.vs */,
-				3CC7013F1D1622E900A21FAC /* shader_test8.frag */,
-				3CC701401D1622E900A21FAC /* shader_test8.vs */,
-				3CC700CC1D1506E200A21FAC /* shader_test7.vs */,
-				3CC700CD1D15070000A21FAC /* shader_test7.frag */,
+				3CE392D61D1E5DE50050486D /* shader_test13.frag */,
+				3CE392D71D1E5DE50050486D /* shader_test13.vs */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -1168,6 +1212,7 @@
 				3CE393721D23E3B50050486D /* EX_L_BL_2 */,
 				3CE3937D1D23E3BB0050486D /* EX_L_BL_3 */,
 				3CE393881D23E3C20050486D /* EX_L_BL_4 */,
+				3CE393D31D2561010050486D /* EX_L_M */,
 			);
 			name = EX;
 			sourceTree = "<group>";
@@ -1222,6 +1267,19 @@
 			);
 			name = EX_L_BL_4;
 			path = "../Files/Exercises/Lighting/Basic Lighting/4";
+			sourceTree = SOURCE_ROOT;
+		};
+		3CE393D31D2561010050486D /* EX_L_M */ = {
+			isa = PBXGroup;
+			children = (
+				3CE393E51D2564660050486D /* EX_L_M_1.frag */,
+				3CE393E61D2564660050486D /* EX_L_M_1.vert */,
+				3CE393E71D2564660050486D /* EX_L_M_1_light.vert */,
+				3CE393E81D2564660050486D /* EX_L_M_1_light.frag */,
+				3CE393D41D2561010050486D /* main.cpp */,
+			);
+			name = EX_L_M;
+			path = ../Files/Exercises/Lighting/Material/1;
 			sourceTree = SOURCE_ROOT;
 		};
 		3CF99DC31D1D60B10028100C /* Texture Class */ = {
@@ -1596,6 +1654,23 @@
 			productReference = 3CE393871D23E3C20050486D /* EX_L_BL_4 */;
 			productType = "com.apple.product-type.tool";
 		};
+		3CE393D11D2561010050486D /* EX_L_M */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CE393D61D2561010050486D /* Build configuration list for PBXNativeTarget "EX_L_M" */;
+			buildPhases = (
+				3CE393CE1D2561010050486D /* Sources */,
+				3CE393CF1D2561010050486D /* Frameworks */,
+				3CE393D01D2561010050486D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EX_L_M;
+			productName = EX_L_M;
+			productReference = 3CE393D21D2561010050486D /* EX_L_M */;
+			productType = "com.apple.product-type.tool";
+		};
 		3CF99DC71D1D62090028100C /* EX_GS_T_1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF99DCC1D1D62090028100C /* Build configuration list for PBXNativeTarget "EX_GS_T_1" */;
@@ -1696,6 +1771,9 @@
 					3CE393861D23E3C20050486D = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					3CE393D11D2561010050486D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					3CF99DC71D1D62090028100C = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -1737,6 +1815,7 @@
 				3CE393701D23E3B50050486D /* EX_L_BL_2 */,
 				3CE3937B1D23E3BB0050486D /* EX_L_BL_3 */,
 				3CE393861D23E3C20050486D /* EX_L_BL_4 */,
+				3CE393D11D2561010050486D /* EX_L_M */,
 			);
 		};
 /* End PBXProject section */
@@ -1953,6 +2032,18 @@
 				3CE393A51D23E4EC0050486D /* Camera.cpp in Sources */,
 				3CE3939C1D23E4E40050486D /* CommonSettings.cpp in Sources */,
 				3CE393A41D23E4EC0050486D /* ShaderReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CE393CE1D2561010050486D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE393E21D25618D0050486D /* TextureReader.cpp in Sources */,
+				3CE393D51D2561010050486D /* main.cpp in Sources */,
+				3CE393E41D25618D0050486D /* Camera.cpp in Sources */,
+				3CE393E11D25618D0050486D /* CommonSettings.cpp in Sources */,
+				3CE393E31D25618D0050486D /* ShaderReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2382,6 +2473,22 @@
 			};
 			name = Release;
 		};
+		3CE393D71D2561010050486D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CE393D81D2561010050486D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3CF99DCD1D1D62090028100C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2587,6 +2694,14 @@
 			buildConfigurations = (
 				3CE3938C1D23E3C20050486D /* Debug */,
 				3CE3938D1D23E3C20050486D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3CE393D61D2561010050486D /* Build configuration list for PBXNativeTarget "EX_L_M" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CE393D71D2561010050486D /* Debug */,
+				3CE393D81D2561010050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

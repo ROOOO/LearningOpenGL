@@ -99,6 +99,11 @@
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
+		<key>EX_L_M.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
 		<key>Lighting.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -203,6 +208,11 @@
 			<true/>
 		</dict>
 		<key>3CE393861D23E3C20050486D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CE393D11D2561010050486D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
