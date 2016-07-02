@@ -19,6 +19,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Camera.hpp"
 #include "ShaderReader.hpp"
+#include "TextureReader.hpp"
 
 using namespace std;
 

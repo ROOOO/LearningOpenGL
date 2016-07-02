@@ -11,8 +11,9 @@
 
 // test1 basic lighting
 // test2 material
+// test3 lighting maps
 
-#define test 2
+#define test 3
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -88,6 +89,7 @@ int main(int argc, const char * argv[]) {
   glfwSetCursorPosCallback(window, mouse_callback);
   glfwSetScrollCallback(window, scroll_callback);
   
+#if test == 1 || test == 2
   GLfloat vertices[] = {
     0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
     0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
@@ -131,6 +133,52 @@ int main(int argc, const char * argv[]) {
     -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
     -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f,
   };
+#elif test == 3
+  GLfloat vertices[] = {
+    // Positions           // Normals           // Texture Coords
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+    0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
+    0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
+    0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+    
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
+    0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 0.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
+    
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+    
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+    0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+    0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+    0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+    0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+    
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
+    0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
+    0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
+    0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
+    
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
+    0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
+  };
+#endif
   
   GLuint VAO, VBO;
   glGenVertexArrays(1, &VAO);
@@ -139,10 +187,19 @@ int main(int argc, const char * argv[]) {
   glBindVertexArray(VAO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+#if test == 2 || test == 1
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
   glEnableVertexAttribArray(1);
+#elif test == 3
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+  glEnableVertexAttribArray(1);
+  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+  glEnableVertexAttribArray(2);
+#endif
   
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
@@ -151,7 +208,11 @@ int main(int argc, const char * argv[]) {
   glGenVertexArrays(1, &lightVAO);
   glBindVertexArray(lightVAO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
+#if test == 1 || test == 2
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+#elif test == 3
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+#endif
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
@@ -160,16 +221,28 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("shader_test1.vs").c_str(), Settings.CCShadersPath("shader_test1.frag").c_str());
 #elif test == 2
   ShaderReader shader(Settings.CCShadersPath("shader_test2.vs").c_str(), Settings.CCShadersPath("shader_test2.frag").c_str());
+#elif test == 3
+  ShaderReader shader(Settings.CCShadersPath("shader_test3.vs").c_str(), Settings.CCShadersPath("shader_test3.frag").c_str());
 #endif
   ShaderReader lightShader(Settings.CCShadersPath("shader_test1_light.vs").c_str(), Settings.CCShadersPath("shader_test1_light.frag").c_str());
+
+#if test == 3
+  GLuint tex[2];
+  TextureReader tex0(Settings.CCResourcesPath("container2.png").c_str());
+  TextureReader tex1(Settings.CCResourcesPath("container2_specular.png").c_str());
+  tex[0] = tex0.getTexture();
+  tex[1] = tex1.getTexture();
+#endif
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
+#if test == 2 || test == 3
 #if test == 2
   glm::vec3 ambient(0.0215f, 0.1745f, 0.0215f);
   glm::vec3 diffuse(0.07568f, 0.61424f, 0.07568f);
   glm::vec3 specular(0.633f, 0.727811f, 0.633f);
+#endif
   GLfloat shininess = 0.6f * 128;
 #endif
   
@@ -177,17 +250,21 @@ int main(int argc, const char * argv[]) {
   GLint modelLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
-  GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
 #if test == 1
   GLint objectColorLoc = glGetUniformLocation(shader.GetProgram(), "objectColor");
   GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
+  GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
 #endif
   GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
+#if test == 2 || test == 3
 #if test == 2
   GLint ambientLoc = glGetUniformLocation(shader.GetProgram(), "material.ambient");
+#endif
   GLint diffuseLoc = glGetUniformLocation(shader.GetProgram(), "material.diffuse");
   GLint specularLoc = glGetUniformLocation(shader.GetProgram(), "material.specular");
   GLint shininessLoc = glGetUniformLocation(shader.GetProgram(), "material.shininess");
+  glUniform1i(diffuseLoc, 0);
+  glUniform1i(specularLoc, 1);
   
   GLint lightAmbientLoc = glGetUniformLocation(shader.GetProgram(), "light.ambient");
   GLint lightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "light.diffuse");
@@ -204,7 +281,9 @@ int main(int argc, const char * argv[]) {
   glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
   glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
   glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
-#if test == 2
+  glm::vec3 lightAmbient(0.2f);
+  glm::vec3 lightDiffuse(0.5f);
+#if test == 2 || test == 3
   glm::vec3 lightSpecular(1.0f);
 #endif
   
@@ -232,27 +311,34 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 
 #if test == 2
-    glm::vec3 lightAmbient(0.2f);
-    glm::vec3 lightDiffuse(0.5f);
     lightColor.x = sin(glfwGetTime() * 2.0f);
     lightColor.y = sin(glfwGetTime() * 0.7f);
     lightColor.z = sin(glfwGetTime() * 1.3f);
     lightDiffuse *= lightColor;
     lightAmbient *= lightDiffuse;
 #endif
-    glUniform3f(lightColorLoc, lightColor.r, lightColor.g, lightColor.b);
 
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+    
 #if test == 1
     glUniform3f(objectColorLoc, objectColor.r, objectColor.g, objectColor.b);
     glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
-#elif test == 2
+    glUniform3f(lightColorLoc, lightColor.r, lightColor.g, lightColor.b);
+#elif test == 2 || test == 3
+    glUniform3f(lightPosLoc, lightPos.r, lightPos.g, lightPos.b);
+#if test == 2
     glUniform3f(ambientLoc, ambient.r, ambient.g, ambient.b);
     glUniform3f(diffuseLoc, diffuse.r, diffuse.g, diffuse.b);
     glUniform3f(specularLoc, specular.r, specular.g, specular.b);
+#elif test == 3
+    for (int i = 0; i < 2; i++) {
+      glActiveTexture(GL_TEXTURE0 + i);
+      glBindTexture(GL_TEXTURE_2D, tex[i]);
+    }
+#endif
+    
     glUniform1f(shininessLoc, shininess);
     
-    glUniform3f(lightPosLoc, lightPos.r, lightPos.g, lightPos.b);
     glUniform3f(lightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
     glUniform3f(lightDiffuseLoc, lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
     glUniform3f(lightSpecularLoc, lightSpecular.r, lightSpecular.g, lightSpecular.b);
