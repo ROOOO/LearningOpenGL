@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  EX_L_LM_2
+//  Mac
 //
 //  Created by King on 16/7/3.
 //  Copyright © 2016年 King. All rights reserved.
@@ -75,7 +75,7 @@ int main(int argc, const char * argv[]) {
   glfwSetKeyCallback(window, key_callback);
   glfwSetCursorPosCallback(window, mouse_callback);
   glfwSetScrollCallback(window, scroll_callback);
-  int width, height;
+  GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
   GLfloat vertices[] = {
@@ -122,7 +122,7 @@ int main(int argc, const char * argv[]) {
     -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
   };
-
+  
   GLuint VAO, VBO;
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
@@ -140,7 +140,7 @@ int main(int argc, const char * argv[]) {
   
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
-
+  
   GLuint lightVAO;
   glGenVertexArrays(1, &lightVAO);
   
@@ -152,22 +152,25 @@ int main(int argc, const char * argv[]) {
   
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
-
+  
 #ifdef __APPLE__
-  string path = "/Lighting Maps/2/";
+  string path = "/Lighting Maps/3/";
 #else
-  string path = "\\Lighting Maps\\2\\";
+  string path = "\\Lighting Maps\\3\\";
 #endif
-
+  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_LM_3.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_3.frag").c_str());
+  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_LM_3_light.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_3_light.frag").c_str());
+  
   TextureReader tex1(Settings.CCExercisesPath(path + "container2.png").c_str());
-  TextureReader tex2(Settings.CCExercisesPath(path + "container2_specular.png").c_str());
+  TextureReader tex2(Settings.CCExercisesPath(path + "lighting_maps_specular_color.png").c_str());
   GLuint tex[2];
   tex[0] = tex1.getTexture();
   tex[1] = tex2.getTexture();
-  
-  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_LM_2.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_2.frag").c_str());
-  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_LM_2_light.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_2_light.frag").c_str());
-  
+  for (int i = 0; i < 2; i++) {
+    glActiveTexture(GL_TEXTURE0 + i);
+    glBindTexture(GL_TEXTURE_2D, tex[i]);
+  }
+
   glm::vec3 lightColor(1.0f);
   glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
   glm::vec3 lightAmbient(0.2f);
@@ -191,13 +194,9 @@ int main(int argc, const char * argv[]) {
   GLint lightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "light.diffuse");
   GLint lightSpecularLoc = glGetUniformLocation(shader.GetProgram(), "light.specular");
   GLint camPosLoc = glGetUniformLocation(shader.GetProgram(), "camPos");
-
-  for (int i = 0; i < 2; i++) {
-    glActiveTexture(GL_TEXTURE0 + i);
-    glBindTexture(GL_TEXTURE_2D, tex[i]);
-  }
   glUniform1i(materialDiffuseLoc, 0);
   glUniform1i(materialSpecularLoc, 1);
+//  glBindTexture(GL_TEXTURE_2D, 0);
   glUniform1f(materialShininessLoc, materialShininess);
   glUniform3f(lightPositionLoc, lightPos.x, lightPos.y, lightPos.z);
   glUniform3f(lightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
@@ -214,7 +213,6 @@ int main(int argc, const char * argv[]) {
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
-    
     GLfloat currentFrame = glfwGetTime();
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
@@ -230,7 +228,6 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
-    
     glUniform3f(camPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
     
     glBindVertexArray(VAO);
@@ -239,9 +236,8 @@ int main(int argc, const char * argv[]) {
     
     lightShader.Use();
     modelMat = glm::mat4();
-    modelMat = glm::translate(modelMat, lightPos);
+    modelMat = glm::translate(modelMat, glm::vec3(lightPos.x, lightPos.y, lightPos.z));
     modelMat = glm::scale(modelMat, glm::vec3(0.2f));
-    
     glUniformMatrix4fv(lightModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(lightviewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(lightprojMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
@@ -252,10 +248,5 @@ int main(int argc, const char * argv[]) {
     
     glfwSwapBuffers(window);
   }
-  
-  glDeleteBuffers(1, &VBO);
-  glDeleteVertexArrays(1, &VAO);
-  
-  glfwTerminate();
   return 0;
 }

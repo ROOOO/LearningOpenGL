@@ -104,6 +104,11 @@
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
+		<key>EX_L_LM_3.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
 		<key>EX_L_M.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -223,6 +228,11 @@
 			<true/>
 		</dict>
 		<key>3CE393EC1D281D4D0050486D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CE3940B1D290E910050486D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
