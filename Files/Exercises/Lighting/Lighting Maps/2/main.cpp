@@ -140,26 +140,123 @@ int main(int argc, const char * argv[]) {
   
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+
+  GLuint lightVAO;
+  glGenVertexArrays(1, &lightVAO);
   
+  glBindVertexArray(lightVAO);
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
+
 #ifdef __APPLE__
-  string path = "/Lighting Maps/2";
+  string path = "/Lighting Maps/2/";
 #else
-  string path = "\\Lighting Maps\\2";
+  string path = "\\Lighting Maps\\2\\";
 #endif
 
   TextureReader tex1(Settings.CCExercisesPath(path + "container2.png").c_str());
   TextureReader tex2(Settings.CCExercisesPath(path + "container2_specular.png").c_str());
   GLuint tex[2];
   tex[0] = tex1.getTexture();
-  tex[2] = tex2.getTexture();
+  tex[1] = tex2.getTexture();
   
   ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_LM_2.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_2.frag").c_str());
   ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_LM_2_light.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_2_light.frag").c_str());
   
   glm::vec3 lightColor(1.0f);
+  glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+  glm::vec3 lightAmbient(0.2f);
+  glm::vec3 lightDiffuse(0.5f);
+  glm::vec3 lightSpecular(1.0f);
+  GLfloat materialShininess = 32.0f;
+  
+  glm::mat4 modelMat;
+  glm::mat4 viewMat;
+  glm::mat4 projMat;
   
   shader.Use();
-  
+  GLint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
+  GLint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
+  GLint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
+  GLint materialDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "material.diffuse");
+  GLint materialSpecularLoc = glGetUniformLocation(shader.GetProgram(), "material.specular");
+  GLint materialShininessLoc = glGetUniformLocation(shader.GetProgram(), "material.shininess");
+  GLint lightPositionLoc = glGetUniformLocation(shader.GetProgram(), "light.position");
+  GLint lightAmbientLoc = glGetUniformLocation(shader.GetProgram(), "light.ambient");
+  GLint lightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "light.diffuse");
+  GLint lightSpecularLoc = glGetUniformLocation(shader.GetProgram(), "light.specular");
+  GLint camPosLoc = glGetUniformLocation(shader.GetProgram(), "camPos");
+
+  for (int i = 0; i < 2; i++) {
+    glActiveTexture(GL_TEXTURE0 + i);
+    glBindTexture(GL_TEXTURE_2D, tex[i]);
+  }
+  glUniform1i(materialDiffuseLoc, 0);
+  glUniform1i(materialSpecularLoc, 1);
+  glUniform1f(materialShininessLoc, materialShininess);
+  glUniform3f(lightPositionLoc, lightPos.x, lightPos.y, lightPos.z);
+  glUniform3f(lightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
+  glUniform3f(lightDiffuseLoc, lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
+  glUniform3f(lightSpecularLoc, lightSpecular.r, lightSpecular.g, lightSpecular.b);
+
   lightShader.Use();
-  GLint 
+  GLint lightLightColorLoc = glGetUniformLocation(lightShader.GetProgram(), "lightColor");
+  GLint lightModelMatLoc = glGetUniformLocation(lightShader.GetProgram(), "modelMat");
+  GLint lightviewMatLoc = glGetUniformLocation(lightShader.GetProgram(), "viewMat");
+  GLint lightprojMatLoc = glGetUniformLocation(lightShader.GetProgram(), "projMat");
+  
+  while (!glfwWindowShouldClose(window)) {
+    glfwPollEvents();
+    do_movement();
+    
+    GLfloat currentFrame = glfwGetTime();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    viewMat = cam.getViewMatrix();
+    projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
+    
+    shader.Use();
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    
+    glUniform3f(camPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+    
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    
+    lightShader.Use();
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, lightPos);
+    modelMat = glm::scale(modelMat, glm::vec3(0.2f));
+    
+    glUniformMatrix4fv(lightModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glUniformMatrix4fv(lightviewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(lightprojMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    
+    glUniform3f(lightLightColorLoc, lightColor.r, lightColor.g, lightColor.b);
+    
+    glBindVertexArray(lightVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    
+    glfwSwapBuffers(window);
+  }
+  
+  glDeleteBuffers(1, &VBO);
+  glDeleteVertexArrays(1, &VAO);
+  
+  glfwTerminate();
+  return 0;
 }
