@@ -2,7 +2,7 @@
 //  main.cpp
 //  Mac
 //
-//  Created by King on 16/7/3.
+//  Created by King on 16/7/4.
 //  Copyright © 2016年 King. All rights reserved.
 //
 
@@ -154,15 +154,15 @@ int main(int argc, const char * argv[]) {
   glBindVertexArray(0);
   
 #ifdef __APPLE__
-  string path = "/Lighting Maps/3/";
+  string path = "/Lighting Maps/4/";
 #else
-  string path = "\\Lighting Maps\\3\\";
+  string path = "\\Lighting Maps\\4\\";
 #endif
-  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_LM_3.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_3.frag").c_str());
-  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_LM_3_light.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_3_light.frag").c_str());
+  ShaderReader shader(Settings.CCExercisesPath(path + "EX_L_LM_4.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_4.frag").c_str());
+  ShaderReader lightShader(Settings.CCExercisesPath(path + "EX_L_LM_4_light.vert").c_str(), Settings.CCExercisesPath(path + "EX_L_LM_4_light.frag").c_str());
   
   TextureReader tex1(Settings.CCExercisesPath(path + "container2.png").c_str());
-  TextureReader tex2(Settings.CCExercisesPath(path + "lighting_maps_specular_color.png").c_str());
+  TextureReader tex2(Settings.CCExercisesPath(path + "container2_specular.png").c_str());
   GLuint tex[2];
   for (int i = 0; i < 2; i++) {
     glActiveTexture(GL_TEXTURE0 + i);
