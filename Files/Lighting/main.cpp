@@ -13,7 +13,7 @@
 // test2 material
 // test3 lighting maps
 
-#define test 3
+#define test 4
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -133,7 +133,7 @@ int main(int argc, const char * argv[]) {
     -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
     -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f,
   };
-#elif test == 3
+#elif test == 3 || test == 4
   GLfloat vertices[] = {
     // Positions           // Normals           // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
@@ -192,7 +192,7 @@ int main(int argc, const char * argv[]) {
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
   glEnableVertexAttribArray(1);
-#elif test == 3
+#elif test == 3 || test == 4
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
@@ -210,7 +210,7 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
 #if test == 1 || test == 2
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
-#elif test == 3
+#elif test == 3 || test == 4
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
 #endif
   glEnableVertexAttribArray(0);
@@ -223,10 +223,12 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("shader_test2.vs").c_str(), Settings.CCShadersPath("shader_test2.frag").c_str());
 #elif test == 3
   ShaderReader shader(Settings.CCShadersPath("shader_test3.vs").c_str(), Settings.CCShadersPath("shader_test3.frag").c_str());
+#elif test == 4
+  ShaderReader shader(Settings.CCShadersPath("shader_test4.vs").c_str(), Settings.CCShadersPath("shader_test4.frag").c_str());
 #endif
   ShaderReader lightShader(Settings.CCShadersPath("shader_test1_light.vs").c_str(), Settings.CCShadersPath("shader_test1_light.frag").c_str());
 
-#if test == 3
+#if test == 3 || test == 4
   GLuint tex[2];
   TextureReader tex0(Settings.CCResourcesPath("container2.png").c_str());
   TextureReader tex1(Settings.CCResourcesPath("container2_specular.png").c_str());
@@ -237,7 +239,7 @@ int main(int argc, const char * argv[]) {
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
-#if test == 2 || test == 3
+#if test == 2 || test == 3 || test == 4
 #if test == 2
   glm::vec3 ambient(0.0215f, 0.1745f, 0.0215f);
   glm::vec3 diffuse(0.07568f, 0.61424f, 0.07568f);
@@ -256,7 +258,7 @@ int main(int argc, const char * argv[]) {
   GLint lightColorLoc = glGetUniformLocation(shader.GetProgram(), "lightColor");
 #endif
   GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
-#if test == 2 || test == 3
+#if test == 2 || test == 3 || test == 4
 #if test == 2
   GLint ambientLoc = glGetUniformLocation(shader.GetProgram(), "material.ambient");
 #endif
@@ -269,7 +271,13 @@ int main(int argc, const char * argv[]) {
   GLint lightAmbientLoc = glGetUniformLocation(shader.GetProgram(), "light.ambient");
   GLint lightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "light.diffuse");
   GLint lightSpecularLoc = glGetUniformLocation(shader.GetProgram(), "light.specular");
+#if test == 2 || test == 3
   GLint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "light.position");
+  glUniform3f(lightPosLoc, lightPos.r, lightPos.g, lightPos.b);
+#elif test == 4
+  GLint lightDirectionLoc = glGetUniformLocation(shader.GetProgram(), "light.direction");
+  glUniform3f(lightDirectionLoc, -0.2f, -1.0f, -0.3f);
+#endif
 #endif
 
   lightShader.Use();
@@ -283,8 +291,22 @@ int main(int argc, const char * argv[]) {
   glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
   glm::vec3 lightAmbient(0.2f);
   glm::vec3 lightDiffuse(0.5f);
-#if test == 2 || test == 3
+#if test == 2 || test == 3 || test == 4
   glm::vec3 lightSpecular(1.0f);
+#endif
+#if test == 4
+  glm::vec3 cubePositions[] = {
+    glm::vec3( 0.0f,  0.0f,  0.0f),
+    glm::vec3( 2.0f,  5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f),
+    glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3( 2.4f, -0.4f, -3.5f),
+    glm::vec3(-1.7f,  3.0f, -7.5f),
+    glm::vec3( 1.3f, -2.0f, -2.5f),
+    glm::vec3( 1.5f,  2.0f, -2.5f),
+    glm::vec3( 1.5f,  0.2f, -1.5f),
+    glm::vec3(-1.3f,  1.0f, -1.5f)
+  };
 #endif
   
   GLint width, height;
@@ -306,8 +328,10 @@ int main(int argc, const char * argv[]) {
     
     shader.Use();
     modelMat = glm::mat4();
+#if test == 1 ||  test == 2 || test == 3
     modelMat = glm::rotate(modelMat, glm::radians(currentTime * 50), glm::vec3(0.5f, 1.0f, -0.5f));
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+#endif
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 
@@ -325,13 +349,12 @@ int main(int argc, const char * argv[]) {
     glUniform3f(objectColorLoc, objectColor.r, objectColor.g, objectColor.b);
     glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
     glUniform3f(lightColorLoc, lightColor.r, lightColor.g, lightColor.b);
-#elif test == 2 || test == 3
-    glUniform3f(lightPosLoc, lightPos.r, lightPos.g, lightPos.b);
+#elif test == 2 || test == 3 || test == 4
 #if test == 2
     glUniform3f(ambientLoc, ambient.r, ambient.g, ambient.b);
     glUniform3f(diffuseLoc, diffuse.r, diffuse.g, diffuse.b);
     glUniform3f(specularLoc, specular.r, specular.g, specular.b);
-#elif test == 3
+#elif test == 3 || test == 4
     for (int i = 0; i < 2; i++) {
       glActiveTexture(GL_TEXTURE0 + i);
       glBindTexture(GL_TEXTURE_2D, tex[i]);
@@ -345,8 +368,18 @@ int main(int argc, const char * argv[]) {
     glUniform3f(lightSpecularLoc, lightSpecular.r, lightSpecular.g, lightSpecular.b);
 #endif
     glBindVertexArray(VAO);
+#if test == 1 || test == 2 || test == 3
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
+#elif test == 4
+    for (int i = 0; i < 10; i++) {
+      modelMat = glm::mat4();
+      modelMat = glm::translate(modelMat, glm::vec3(cubePositions[i]));
+      modelMat = glm::rotate(modelMat, glm::radians(currentTime * 50), glm::vec3(0.5f, 1.0f, -0.5f));
+      glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+      glDrawArrays(GL_TRIANGLES, 0, 36);
+    }
+#endif
     
     lightShader.Use();
     modelMat = glm::mat4();
