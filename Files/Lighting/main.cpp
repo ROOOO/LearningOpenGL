@@ -306,6 +306,7 @@ int main(int argc, const char * argv[]) {
     
     shader.Use();
     modelMat = glm::mat4();
+    modelMat = glm::rotate(modelMat, glm::radians(currentTime * 50), glm::vec3(0.5f, 1.0f, -0.5f));
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
