@@ -163,10 +163,14 @@ int main(int argc, const char * argv[]) {
   
   TextureReader tex1(Settings.CCExercisesPath(path + "container2.png").c_str());
   TextureReader tex2(Settings.CCExercisesPath(path + "container2_specular.png").c_str());
-  GLuint tex[2];
-  for (int i = 0; i < 2; i++) {
+  TextureReader tex3(Settings.CCExercisesPath(path + "matrix.jpg").c_str());
+  GLuint tex[3];
+  tex[0] = tex1.getTexture();
+  tex[1] = tex2.getTexture();
+  tex[2] = tex3.getTexture();
+  for (int i = 0; i < 3; i++) {
     glActiveTexture(GL_TEXTURE0 + i);
-    glBindTexture(GL_TEXTURE_2D, tex[1]);
+    glBindTexture(GL_TEXTURE_2D, tex[i]);
   }
 
   glm::vec3 lightColor(1.0f);
@@ -186,15 +190,16 @@ int main(int argc, const char * argv[]) {
   GLint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
   GLint materialDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "material.diffuse");
   GLint materialSpecularLoc = glGetUniformLocation(shader.GetProgram(), "material.specular");
+  GLint materialEmissionLoc = glGetUniformLocation(shader.GetProgram(), "material.emission");
   GLint materialShininessLoc = glGetUniformLocation(shader.GetProgram(), "material.shininess");
   GLint lightPositionLoc = glGetUniformLocation(shader.GetProgram(), "light.position");
   GLint lightAmbientLoc = glGetUniformLocation(shader.GetProgram(), "light.ambient");
   GLint lightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "light.diffuse");
   GLint lightSpecularLoc = glGetUniformLocation(shader.GetProgram(), "light.specular");
-  GLint camPosLoc = glGetUniformLocation(shader.GetProgram(), "camPos");
+  GLint camPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
   glUniform1i(materialDiffuseLoc, 0);
   glUniform1i(materialSpecularLoc, 1);
-  glBindTexture(GL_TEXTURE_2D, 0);
+  glUniform1i(materialEmissionLoc, 2);
   glUniform1f(materialShininessLoc, materialShininess);
   glUniform3f(lightPositionLoc, lightPos.x, lightPos.y, lightPos.z);
   glUniform3f(lightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
