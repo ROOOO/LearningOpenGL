@@ -32,3 +32,66 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
     9. 配置 SOIL（引用aiplay）：下载好该库的代码后，需要自己再编译一下。进入projects/makefile目录，新建立 obj 目录，并修改makefile文件，在CXXFLAGS增加”-m64”选项，即 CXXFLAGS = -O2 -s -Wall -m64 。然后在makefile目录执行 make 和 sudo make install ，将lib目录新生成的libSOIL.a库文件增加到xcode的链接库中。
 
 其中也许有的步骤没必要，现在知识不足，先这样吧。
+
+---
+### Log
+
+##### Jun 27, 2016
+ - 
+
+##### Jun 26, 2016
+ - 3rd exercise of Transformations.
+ - Chapter Camera.
+ - Add Camera Class.
+
+##### Jun 25, 2016
+ - 1st exercise of Transformations.
+ - 2nd exercise of Transformations.
+ - Chapter Coordinate System.
+
+##### Jun 24, 2016
+ - Add GLM.
+ - Chapter Transformations.
+ - Add Texture Class.
+
+##### Jun 23, 2016
+ - 3rd exercise of Textures.
+ - 4nd exercise of Textures.
+
+##### Jun 22, 2016
+ - 2nd exercise of Textures.
+ - 3rd exercise of Textures.
+ - Add Texture Reader Class.
+
+##### Jun 21, 2016
+ - Add Common Setting Class.
+ - 1st exercise of Textures.
+
+##### Jun 20, 2016
+ - Fix texture shaders bugs.
+ - Ignore some files of Github.
+
+##### Jun 19, 2016
+ - Add SOIL libs.
+ - Chapter Textures.
+
+##### Jun 18, 2016
+ - Shader Reader Class.
+ - Chapter Shaders.
+ - Exercises of Shaders.
+
+##### Jun 17, 2016
+ - 2nd Exercise of Create a window.
+ - 3rd Exercise of Create a window.
+ - Set up Visual Studio Project by Python.
+
+##### Jun 16, 2016
+ - EBO.
+ - 1st Exercise of Create a window.
+
+##### Jun 15, 2016
+ - VAO and VBO.
+
+##### Jun 14, 2016
+ - Setting up environment.
+ - Create a glfw window.
