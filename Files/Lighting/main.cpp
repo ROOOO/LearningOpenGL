@@ -15,8 +15,9 @@
 // test4 Direction Light
 // test5 Point Light
 // test6 Spot Light
+// test7 Multiple Lights
 
-#define test 6
+#define test 7
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -136,7 +137,7 @@ int main(int argc, const char * argv[]) {
     -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
     -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f,
   };
-#elif test == 3 || test == 4 || test == 5 || test == 6
+#elif test == 3 || test == 4 || test == 5 || test == 6 || test == 7
   GLfloat vertices[] = {
     // Positions           // Normals           // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
@@ -195,7 +196,7 @@ int main(int argc, const char * argv[]) {
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
   glEnableVertexAttribArray(1);
-#elif test == 3 || test == 4 || test == 5 || test == 6
+#elif test == 3 || test == 4 || test == 5 || test == 6 || test == 7
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
@@ -213,7 +214,7 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
 #if test == 1 || test == 2
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
-#elif test == 3 || test == 4 || test == 5 | test == 6
+#elif test == 3 || test == 4 || test == 5 | test == 6 || test == 7
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
 #endif
   glEnableVertexAttribArray(0);
@@ -232,10 +233,12 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("shader_test5.vs").c_str(), Settings.CCShadersPath("shader_test5.frag").c_str());
 #elif test == 6
   ShaderReader shader(Settings.CCShadersPath("shader_test6.vs").c_str(), Settings.CCShadersPath("shader_test6.frag").c_str());
+#elif test == 7
+  ShaderReader shader(Settings.CCShadersPath("shader_test7.vs").c_str(), Settings.CCShadersPath("shader_test7.frag").c_str());
 #endif
   ShaderReader lightShader(Settings.CCShadersPath("shader_test1_light.vs").c_str(), Settings.CCShadersPath("shader_test1_light.frag").c_str());
 
-#if test == 3 || test == 4 || test == 5 || test == 6
+#if test == 3 || test == 4 || test == 5 || test == 6 || test == 7
   GLuint tex[2];
   TextureReader tex0(Settings.CCResourcesPath("container2.png").c_str());
   TextureReader tex1(Settings.CCResourcesPath("container2_specular.png").c_str());
