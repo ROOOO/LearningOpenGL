@@ -300,7 +300,9 @@ int main(int argc, const char * argv[]) {
 #if test == 6
   GLint lightDirectionLoc = glGetUniformLocation(shader.GetProgram(), "light.direction");
   GLint lightCutOffLoc = glGetUniformLocation(shader.GetProgram(), "light.cutOff");
+  GLint lightOuterCutOffLoc = glGetUniformLocation(shader.GetProgram(), "light.outerCutOff");
   glUniform1f(lightCutOffLoc, glm::cos(glm::radians(12.5f)));
+  glUniform1f(lightOuterCutOffLoc, glm::cos(glm::radians(17.5f)));
 #endif
 #endif
 #elif test == 4 
