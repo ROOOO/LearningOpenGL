@@ -58,5 +58,35 @@
     <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.vs">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test2.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test2.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test3.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test3.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test4.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test4.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test5.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test5.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test6.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test6.frag">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

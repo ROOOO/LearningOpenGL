@@ -109,6 +109,10 @@ glm::vec3 Camera::getPosition() {
   return this->m_position;
 }
 
+glm::vec3 Camera::getDirection() {
+  return this->m_front;
+}
+
 void Camera::m_updateCameraVectors() {
   glm::vec3 front;
   front.x = cos(glm::radians(this->m_pitch)) * cos(glm::radians(this->m_yaw));

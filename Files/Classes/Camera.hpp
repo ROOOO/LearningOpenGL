@@ -58,6 +58,7 @@ public:
   GLfloat getZoom();
   void setFPS(GLboolean b);
   glm::vec3 getPosition();
+  glm::vec3 getDirection();
   glm::mat4 lookAt(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp);
 };
 

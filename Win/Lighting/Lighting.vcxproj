@@ -85,6 +85,16 @@
     <None Include="..\..\Files\Lighting\Shaders\shader_test1.vs" />
     <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.frag" />
     <None Include="..\..\Files\Lighting\Shaders\shader_test1_light.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test2.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test2.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test3.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test3.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test4.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test4.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test5.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test5.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test6.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test6.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
