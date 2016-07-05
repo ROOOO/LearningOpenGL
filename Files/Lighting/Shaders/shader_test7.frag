@@ -3,27 +3,52 @@ out vec4 color;
 in vec3 Normal;
 in vec3 FragPos;
 in vec2 ourTexCoord;
-uniform vec3 lightColor;
-uniform vec3 viewPos;
+
 struct Material {
   sampler2D diffuse;
   sampler2D specular;
   float shininess;
 };
-uniform Material material;
-struct Light {
+
+struct DirLight {
+  vec3 direction;
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+};
+struct PointLight {
   vec3 position;
   float constant;
   float linear;
   float quadratic;
-  vec3 direction;
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+};
+struct SpotLight {
   float cutOff;
   float outerCutOff;
   vec3 ambient;
   vec3 diffuse;
   vec3 specular;
 };
-uniform Light light;
+
+#define NR_POINT_LIGHTS 4
+uniform vec3 viewPos;
+uniform Material material;
+uniform DirLight dirLight;
+uniform PointLight pointLights[NR_POINT_LIGHTS];
+uniform SpotLight spotLight;
+
+vec3 CalcDirectionLight(DirLight light, vec3 normal, vec3 viewDir) {
+  vec3 ambient = light.ambient * vec3(texture(material.diffuse, ourTexCoord));
+  
+  vec3 lightDir = normalize(-DirLight.direction);
+  float diff = max(dot(normal, lightDir), 0.0f);
+  vec3 diffuse = light.diffuse * vec3(texture(material.diffuse, ourTexCoord));
+  
+//  vec3 
+}
 
 void main() {
   vec3 ambient = light.ambient * vec3(texture(material.diffuse, ourTexCoord));

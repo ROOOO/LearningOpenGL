@@ -204,7 +204,6 @@ int main(int argc, const char * argv[]) {
   glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
   glEnableVertexAttribArray(2);
 #endif
-  
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
@@ -256,7 +255,7 @@ int main(int argc, const char * argv[]) {
   glm::vec3 lightAmbient(0.2f);
   glm::vec3 lightDiffuse(0.5f);
 
-#if test == 2 || test == 3 || test == 4 || test == 5 || test == 6
+#if test == 2 || test == 3 || test == 4 || test == 5 || test == 6 || test == 7
 #if test == 2
   glm::vec3 ambient(0.0215f, 0.1745f, 0.0215f);
   glm::vec3 diffuse(0.07568f, 0.61424f, 0.07568f);
@@ -264,7 +263,25 @@ int main(int argc, const char * argv[]) {
 #endif
   GLfloat shininess = 0.6f * 128;
 #endif
-  
+
+#if test == 2 || test == 3 || test == 4 || test == 5 || test == 6 || test == 7
+  glm::vec3 lightSpecular(1.0f);
+#endif
+#if test == 4 || test == 5 || test == 6 || test == 7
+  glm::vec3 cubePositions[] = {
+    glm::vec3( 0.0f,  0.0f,  0.0f),
+    glm::vec3( 2.0f,  5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f),
+    glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3( 2.4f, -0.4f, -3.5f),
+    glm::vec3(-1.7f,  3.0f, -7.5f),
+    glm::vec3( 1.3f, -2.0f, -2.5f),
+    glm::vec3( 1.5f,  2.0f, -2.5f),
+    glm::vec3( 1.5f,  0.2f, -1.5f),
+    glm::vec3(-1.3f,  1.0f, -1.5f)
+  };
+#endif
+
   shader.Use();
   GLint modelLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
@@ -319,24 +336,6 @@ int main(int argc, const char * argv[]) {
   GLint lightViewLoc = glGetUniformLocation(lightShader.GetProgram(), "viewMat");
   GLint lightProjLoc = glGetUniformLocation(lightShader.GetProgram(), "projMat");
   GLint lightLightColorLoc = glGetUniformLocation(lightShader.GetProgram(), "lightColor");
-
-#if test == 2 || test == 3 || test == 4 || test == 5 || test == 6
-  glm::vec3 lightSpecular(1.0f);
-#endif
-#if test == 4 || test == 5 || test == 6
-  glm::vec3 cubePositions[] = {
-    glm::vec3( 0.0f,  0.0f,  0.0f),
-    glm::vec3( 2.0f,  5.0f, -15.0f),
-    glm::vec3(-1.5f, -2.2f, -2.5f),
-    glm::vec3(-3.8f, -2.0f, -12.3f),
-    glm::vec3( 2.4f, -0.4f, -3.5f),
-    glm::vec3(-1.7f,  3.0f, -7.5f),
-    glm::vec3( 1.3f, -2.0f, -2.5f),
-    glm::vec3( 1.5f,  2.0f, -2.5f),
-    glm::vec3( 1.5f,  0.2f, -1.5f),
-    glm::vec3(-1.3f,  1.0f, -1.5f)
-  };
-#endif
   
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
@@ -351,6 +350,14 @@ int main(int argc, const char * argv[]) {
     GLfloat currentTime = glfwGetTime();
     deltaTime = currentTime - lastFrame;
     lastFrame = currentTime;
+
+#if test == 2
+    lightColor.x = sin(glfwGetTime() * 2.0f);
+    lightColor.y = sin(glfwGetTime() * 0.7f);
+    lightColor.z = sin(glfwGetTime() * 1.3f);
+    lightDiffuse *= lightColor;
+    lightAmbient *= lightDiffuse;
+#endif
     
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(glm::radians(cam.getZoom()), (GLfloat)width / height, 0.1f, 100.0f);
@@ -364,49 +371,42 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 
-#if test == 2
-    lightColor.x = sin(glfwGetTime() * 2.0f);
-    lightColor.y = sin(glfwGetTime() * 0.7f);
-    lightColor.z = sin(glfwGetTime() * 1.3f);
-    lightDiffuse *= lightColor;
-    lightAmbient *= lightDiffuse;
-#endif
-
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
     
 #if test == 1
     glUniform3f(objectColorLoc, objectColor.r, objectColor.g, objectColor.b);
     glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
     glUniform3f(lightColorLoc, lightColor.r, lightColor.g, lightColor.b);
-#elif test == 2 || test == 3 || test == 4 || test == 5 || test == 6
+#elif test == 2 || test == 3 || test == 4 || test == 5 || test == 6 || test == 7
 #if test == 2
     glUniform3f(ambientLoc, ambient.r, ambient.g, ambient.b);
     glUniform3f(diffuseLoc, diffuse.r, diffuse.g, diffuse.b);
     glUniform3f(specularLoc, specular.r, specular.g, specular.b);
-#elif test == 3 || test == 4 || test == 5 || test == 6 
+#elif test == 3 || test == 4 || test == 5 || test == 6 || test == 7
     for (int i = 0; i < 2; i++) {
       glActiveTexture(GL_TEXTURE0 + i);
       glBindTexture(GL_TEXTURE_2D, tex[i]);
     }
-#endif
-    
+#if test != 7
     glUniform1f(shininessLoc, shininess);
     
     glUniform3f(lightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
     glUniform3f(lightDiffuseLoc, lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
     glUniform3f(lightSpecularLoc, lightSpecular.r, lightSpecular.g, lightSpecular.b);
+#endif
+#endif
 
 #if test == 6
     glUniform3f(lightPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
     glUniform3f(lightDirectionLoc, cam.getDirection().x, cam.getDirection().y, cam.getDirection().z);
 #endif
-
 #endif
+    
     glBindVertexArray(VAO);
 #if test == 1 || test == 2 || test == 3
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
-#elif test == 4 || test == 5 || test == 6
+#elif test == 4 || test == 5 || test == 6 || test == 7
     for (int i = 0; i < 10; i++) {
       modelMat = glm::mat4();
       modelMat = glm::translate(modelMat, glm::vec3(cubePositions[i]));
