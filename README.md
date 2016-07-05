@@ -34,10 +34,42 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 其中也许有的步骤没必要，现在知识不足，先这样吧。
 
 ---
-### Log
+### Logs
+
+##### Jul 5, 2016
+ - 
+
+##### Jul 4, 2016
+ - 4nd exercise of Lighting Maps, Lighting.
+
+##### Jul 3, 2016
+ - 2nd exercise of Lighting Maps, Lighting.
+ - 3rd exercise of Lighting Maps, Lighting.
+
+##### Jul 2, 2016
+ - Chapter Lighting Maps, Lighting.
+
+##### Jul 1, 2016
+ - Exercises of Material, Lighting.
+
+##### Jun 30, 2016
+ - 3rd exercise of Basic Lighting.
+ - 4nd exercise of Basic Lighting.
+ - Chapter Material, Lighting.
+
+##### Jun 29, 2016
+ - Phong lighting.
+ - Chapter Basic Lighting.
+ - Enhance common settings.
+ - 1st exercise of Basic Lighting.
+ - 2nd exercise of Basic Lighting.
+
+##### Jun 28, 2016
+ - Chapter Lighting.
 
 ##### Jun 27, 2016
- - 
+ - 1st exercise of Camera.
+ - All the exercises of Getting Start.
 
 ##### Jun 26, 2016
  - 3rd exercise of Transformations.
