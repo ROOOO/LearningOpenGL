@@ -36,8 +36,11 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 ---
 ### Logs
 
-##### Jul 5, 2016
+##### Jul 6, 2016
  - 
+ 
+##### Jul 5, 2016
+ - Chapter Multiple Lights.
 
 ##### Jul 4, 2016
  - 4nd exercise of Lighting Maps, Lighting.
