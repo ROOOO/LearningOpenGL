@@ -202,32 +202,24 @@ int main(int argc, const char * argv[]) {
   GLuint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLuint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
   
-  GLuint materialDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "material.diffuse");
-  GLuint materialSpecularLoc = glGetUniformLocation(shader.GetProgram(), "material.specular");
-  GLuint materialShininessLoc = glGetUniformLocation(shader.GetProgram(), "material.shininess");
   for (int i = 0; i < 2; i++) {
     glActiveTexture(GL_TEXTURE0 + i);
     glBindTexture(GL_TEXTURE_2D, tex[i]);
   }
-  glUniform1i(materialDiffuseLoc, 0);
-  glUniform1i(materialSpecularLoc, 1);
-  glUniform1f(materialShininessLoc, shininess);
+  glUniform1i(glGetUniformLocation(shader.GetProgram(), "material.diffuse"), 0);
+  glUniform1i(glGetUniformLocation(shader.GetProgram(), "material.specular"), 1);
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "material.shininess"), shininess);
   
-  GLuint directionLightDirectionLoc = glGetUniformLocation(shader.GetProgram(), "directionLight.direction");
-  GLuint directionLightAmbientLoc = glGetUniformLocation(shader.GetProgram(), "directionLight.ambient");
-  GLuint directionLightDiffuseLoc = glGetUniformLocation(shader.GetProgram(), "directionLight.diffuse");
-  GLuint directionLightSpecularLoc = glGetUniformLocation(shader.GetProgram(), "directionLight.specular");
-  glUniform3f(directionLightDirectionLoc, -0.2f, -1.0f, -0.3f);
-  glUniform3f(directionLightAmbientLoc, lightAmbient.r, lightAmbient.g, lightAmbient.b);
-  glUniform3f(directionLightDiffuseLoc, lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
-  glUniform3f(directionLightSpecularLoc, lightSpecular.r, lightSpecular.g, lightSpecular.b);
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.direction"), -0.2f, -1.0f, -0.3f);
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.ambient"), lightAmbient.r, lightAmbient.g, lightAmbient.b);
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.diffuse"), lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.specular"), lightSpecular.r, lightSpecular.g, lightSpecular.b);
   
   lampShader.Use();
-  GLuint lampColorLoc = glGetUniformLocation(lampShader.GetProgram(), "lampColor");
   GLuint lampModelMatLoc = glGetUniformLocation(lampShader.GetProgram(), "modelMat");
   GLuint lampViewMatLoc = glGetUniformLocation(lampShader.GetProgram(), "viewMat");
   GLuint lampProjMatLoc = glGetUniformLocation(lampShader.GetProgram(), "projMat");
-  glUniform3f(lampColorLoc, lampColor.r, lampColor.g, lampColor.b);
+  glUniform3f(glGetUniformLocation(lampShader.GetProgram(), "lampColor"), lampColor.r, lampColor.g, lampColor.b);
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
@@ -250,6 +242,7 @@ int main(int argc, const char * argv[]) {
     for (int i = 0; i < 10; i++) {
       modelMat = glm::mat4();
       modelMat = glm::translate(modelMat, cubePositions[i]);
+      modelMat = glm::rotate(modelMat, glm::radians(i * 30.f), glm::vec3(0.5f, 1.0f, -0.5f));
       glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
       glDrawArrays(GL_TRIANGLES, 0, 36);
     }

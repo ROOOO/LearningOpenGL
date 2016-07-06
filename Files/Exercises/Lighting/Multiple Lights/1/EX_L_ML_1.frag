@@ -46,6 +46,12 @@ vec3 CalcDirectionLight(DirectionLight light, vec3 normal, vec3 viewDir) {
   return ambient + diffuse + specular;
 }
 
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
+  vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoord));
+  
+  vec3 lightDir = normalize(light.position - fragPos);
+}
+
 void main() {
   vec3 norm = normalize(Normal);
   vec3 viewDir = normalize(viewPos - FragPos);
