@@ -95,6 +95,8 @@
     <None Include="..\..\Files\Lighting\Shaders\shader_test5.vs" />
     <None Include="..\..\Files\Lighting\Shaders\shader_test6.frag" />
     <None Include="..\..\Files\Lighting\Shaders\shader_test6.vs" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test7.frag" />
+    <None Include="..\..\Files\Lighting\Shaders\shader_test7.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

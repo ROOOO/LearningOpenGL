@@ -88,5 +88,11 @@
     <None Include="..\..\Files\Lighting\Shaders\shader_test6.frag">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test7.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Lighting\Shaders\shader_test7.vs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
