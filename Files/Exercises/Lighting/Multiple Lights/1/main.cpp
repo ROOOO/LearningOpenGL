@@ -214,7 +214,35 @@ int main(int argc, const char * argv[]) {
   glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.ambient"), lightAmbient.r, lightAmbient.g, lightAmbient.b);
   glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.diffuse"), lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
   glUniform3f(glGetUniformLocation(shader.GetProgram(), "directionLight.specular"), lightSpecular.r, lightSpecular.g, lightSpecular.b);
-  
+
+  string prefix = "pointLights[";
+  string num;
+  for (int i = 0; i < 4; i++) {
+    stringstream ss;
+    ss << i;
+    ss >> num;
+    string a = prefix + num + ".position";
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].position").c_str()), pointLightPositions[i].x, pointLightPositions[i].y, pointLightPositions[i].z);
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].ambient").c_str()), lightAmbient.r, lightAmbient.g, lightAmbient.b);
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].diffuse").c_str()), lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].specular").c_str()), lightSpecular.r, lightSpecular.g, lightSpecular.b);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].constant").c_str()), 1.0f);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].linear").c_str()), 0.09f);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].quadratic").c_str()), 0.032f);
+  }
+
+  GLuint spotLightDirectionLoc = glGetUniformLocation(shader.GetProgram(), "spotLight.direction");
+  GLuint spotLightPositionLoc = glGetUniformLocation(shader.GetProgram(), "spotLight.position");
+
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "spotLight.ambient"), lightAmbient.r, lightAmbient.g, lightAmbient.b);
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "spotLight.diffuse"), lightDiffuse.r, lightDiffuse.g, lightDiffuse.b);
+  glUniform3f(glGetUniformLocation(shader.GetProgram(), "spotLight.specular"), lightSpecular.r, lightSpecular.g, lightSpecular.b);
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "spotLight.constant"), 1.0f);
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "spotLight.linear"), 0.09f);
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "spotLight.quadratic"), 0.032f);
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "spotLight.cutOff"), glm::cos(glm::radians(12.5f)));
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "spotLight.outerCutOff"), glm::cos(glm::radians(17.5f))); // cos  radians notice
+
   lampShader.Use();
   GLuint lampModelMatLoc = glGetUniformLocation(lampShader.GetProgram(), "modelMat");
   GLuint lampViewMatLoc = glGetUniformLocation(lampShader.GetProgram(), "viewMat");
@@ -238,6 +266,9 @@ int main(int argc, const char * argv[]) {
     shader.Use();
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    glUniform3f(spotLightDirectionLoc, cam.getDirection().x, cam.getDirection().y, cam.getDirection().z);
+    glUniform3f(spotLightPositionLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+
     glBindVertexArray(VAO);
     for (int i = 0; i < 10; i++) {
       modelMat = glm::mat4();

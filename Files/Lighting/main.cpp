@@ -17,7 +17,7 @@
 // test6 Spot Light
 // test7 Multiple Lights
 
-#define test 7
+#define test 6
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
