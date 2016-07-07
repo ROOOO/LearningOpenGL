@@ -139,6 +139,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Model Loading.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>27</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -263,6 +268,11 @@
 			<true/>
 		</dict>
 		<key>3CE3946A1D2E6C6A0050486D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CE3948C1D2EAED70050486D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
