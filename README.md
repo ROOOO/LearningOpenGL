@@ -36,8 +36,14 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 ---
 ### Logs
 
+##### Jul 8, 2016
+
+##### Jul 7, 2016
+ - Exercises of Multiple Lights.
+ - Chapter Assimp.
+
 ##### Jul 6, 2016
- - 
+ - Chapter Multiple Lights.
  
 ##### Jul 5, 2016
  - Chapter Multiple Lights.
