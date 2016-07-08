@@ -36,7 +36,13 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 ---
 ### Logs
 
+##### Jul 9, 2016
+ -
+
 ##### Jul 8, 2016
+ - Chapter Mesh.
+ - Add Mesh Class.
+ - Chapter Model.
 
 ##### Jul 7, 2016
  - Exercises of Multiple Lights.
