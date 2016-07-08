@@ -20,6 +20,8 @@
 #include "Camera.hpp"
 #include "ShaderReader.hpp"
 #include "TextureReader.hpp"
+#include "Mesh.hpp"
+#include <vector>
 
 using namespace std;
 
