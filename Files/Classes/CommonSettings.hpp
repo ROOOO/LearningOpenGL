@@ -21,6 +21,7 @@
 #include "ShaderReader.hpp"
 #include "TextureReader.hpp"
 #include "Mesh.hpp"
+#include "Model.hpp"
 #include <vector>
 
 using namespace std;
@@ -31,6 +32,7 @@ class CommonSettings {
   string m_ResourcesPath = "";
   string m_FilesPath = "";
   string m_ExercisesPath = "";
+  string m_ModelsPath = "";
   
   static void m_key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
@@ -42,6 +44,7 @@ public:
   string CCExercisesPath(string str);
   string CCResourcesPath(string str);
   string CCShadersPath(string str);
+  string CCModelsPath(string str);
 };
 
 #endif /* CommonSettings_hpp */

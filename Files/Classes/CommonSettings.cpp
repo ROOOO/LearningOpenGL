@@ -8,7 +8,7 @@
 
 #include "CommonSettings.hpp"
 
-#define test 2
+#define test 3
 
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__
@@ -22,6 +22,12 @@ CommonSettings::CommonSettings() {
   m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Lighting/Resources/";
   m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Lighting/";
   m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Lighting/";
+#elif test == 3
+  m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/Shaders/";
+  m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/Resources/";
+  m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/";
+  m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Model Loading/";
+  m_ModelsPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/Models/";
 #endif
 #else
 #if test == 1
@@ -34,6 +40,11 @@ CommonSettings::CommonSettings() {
   m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\Resources\\";
   m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\";
   m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Lighting\\";
+#elif test == 3
+  m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Model Loading\\Shaders\\";
+  m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Model Loading\\Resources\\";
+  m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Model Loading\\";
+  m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Model Loading\\";
 #endif
 #endif
 }
@@ -100,4 +111,7 @@ string CommonSettings::CCFilesPath(string str) {
 }
 string CommonSettings::CCExercisesPath(string str) {
   return m_ExercisesPath + str;
+}
+string CommonSettings::CCModelsPath(string str) {
+  return m_ModelsPath + str;
 }

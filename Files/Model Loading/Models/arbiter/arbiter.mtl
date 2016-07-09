@@ -1,0 +1,38 @@
+newmtl arbiter_mi_dante_weapons_demon
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd t_dante_weapons_demon_dm.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl arbiter_mi_dante_weapons_handle
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd t_dante_weapons_rebellion_d.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks t_dante_weapons_rebellion_s.png
+Ns 96.08
+newmtl mi_dante_weapons_demon
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd t_dante_weapons_demon_dm.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl mi_dante_weapons_handle
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd t_dante_weapons_rebellion_d.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks t_dante_weapons_rebellion_s.png
+Ns 96.08

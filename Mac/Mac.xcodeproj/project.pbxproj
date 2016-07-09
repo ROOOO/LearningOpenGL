@@ -772,6 +772,8 @@
 		3CE394A01D2FF5A80050486D /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Mesh.hpp; path = ../Files/Classes/Mesh.hpp; sourceTree = SOURCE_ROOT; };
 		3CE394A61D2FFA4C0050486D /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = ../Files/Classes/Model.cpp; sourceTree = SOURCE_ROOT; };
 		3CE394A71D2FFA4C0050486D /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Model.hpp; path = ../Files/Classes/Model.hpp; sourceTree = "<group>"; };
+		3CE394A91D30A61E0050486D /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
+		3CE394AA1D30A61E0050486D /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -1653,6 +1655,8 @@
 		3CE3948E1D2EAED70050486D /* Model Loading */ = {
 			isa = PBXGroup;
 			children = (
+				3CE394A91D30A61E0050486D /* Models */,
+				3CE394AA1D30A61E0050486D /* Shaders */,
 				3CE3948F1D2EAED70050486D /* main.cpp */,
 			);
 			name = "Model Loading";

@@ -29,7 +29,7 @@ class Model {
   GLuint m_textureFromFile(const char* path, string directory);
   
 public:
-  Model(GLchar *path);
+  Model(const GLchar *path);
   void Draw(ShaderReader shader);
   
 };

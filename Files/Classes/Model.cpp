@@ -8,7 +8,7 @@
 
 #include "Model.hpp"
 
-Model::Model(GLchar *path) {
+Model::Model(const GLchar *path) {
   this->m_loadModel(path);
 }
 
@@ -53,10 +53,14 @@ Mesh Model::m_processMesh(aiMesh *mesh, const aiScene *scene) {
     vector.z = mesh->mVertices[i].z;
     vertex.Position = vector;
     
+    if (!mesh->mNormals) {
+      vertex.Normal = glm::vec3(0.0f);
+    } else {
     vector.x = mesh->mNormals[i].x;
     vector.y = mesh->mNormals[i].y;
     vector.z = mesh->mNormals[i].z;
     vertex.Normal = vector;
+    }
     
     if (mesh->mTextureCoords[0]) {
       glm::vec2 vec;
