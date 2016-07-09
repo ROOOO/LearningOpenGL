@@ -326,6 +326,7 @@
 		3CE394A31D2FF6A90050486D /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CE394A41D2FF6A90050486D /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
 		3CE394A51D2FF6A90050486D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392F01D1F97510050486D /* Camera.cpp */; };
+		3CE394A81D2FFA4C0050486D /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE394A61D2FFA4C0050486D /* Model.cpp */; };
 		3CF99DB81D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DB91D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
 		3CF99DBA1D1D5D6D0028100C /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
@@ -769,6 +770,8 @@
 		3CE3948F1D2EAED70050486D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3CE3949F1D2FF5A80050486D /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = ../Files/Classes/Mesh.cpp; sourceTree = SOURCE_ROOT; };
 		3CE394A01D2FF5A80050486D /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Mesh.hpp; path = ../Files/Classes/Mesh.hpp; sourceTree = SOURCE_ROOT; };
+		3CE394A61D2FFA4C0050486D /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = ../Files/Classes/Model.cpp; sourceTree = SOURCE_ROOT; };
+		3CE394A71D2FFA4C0050486D /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Model.hpp; path = ../Files/Classes/Model.hpp; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -1245,6 +1248,8 @@
 		3C45E5371D182E62007007DA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3CE394A61D2FFA4C0050486D /* Model.cpp */,
+				3CE394A71D2FFA4C0050486D /* Model.hpp */,
 				3CE3949F1D2FF5A80050486D /* Mesh.cpp */,
 				3CE394A01D2FF5A80050486D /* Mesh.hpp */,
 				3CE3934C1D23DF020050486D /* CommonSettings.cpp */,
@@ -2616,6 +2621,7 @@
 				3CE394A11D2FF5A80050486D /* Mesh.cpp in Sources */,
 				3CE394A41D2FF6A90050486D /* ShaderReader.cpp in Sources */,
 				3CE394A31D2FF6A90050486D /* TextureReader.cpp in Sources */,
+				3CE394A81D2FFA4C0050486D /* Model.cpp in Sources */,
 				3CE394A51D2FF6A90050486D /* Camera.cpp in Sources */,
 				3CE394901D2EAED70050486D /* main.cpp in Sources */,
 			);
