@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  Model Loading
+//  EX_ML_M
 //
-//  Created by King on 16/7/7.
+//  Created by King on 16/7/9.
 //  Copyright © 2016年 King. All rights reserved.
 //
 
@@ -85,17 +85,44 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-  ShaderReader shader(Settings.CCShadersPath("shader_test1.vert").c_str(), Settings.CCShadersPath("shader_test1.frag").c_str());
+#ifdef __APPLE__
+  string path = "EX_ML_M/";
+#else
+  string path = "EX_ML_M\\";
+#endif
+  ShaderReader shader(Settings.CCExercisesPath(path + "EX_ML_M.vert").c_str(), Settings.CCExercisesPath(path + "EX_ML_M.frag").c_str());
   Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
+  GLfloat shininess = 1.0f;
+  glm::vec3 pointLightPositions[] = {
+    glm::vec3(2.3f, -1.6f, -3.0f),
+    glm::vec3(-1.7f, 0.9f, 1.0f)
+  };
   
   shader.Use();
   GLint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
+  
+  glUniform1f(glGetUniformLocation(shader.GetProgram(), "material.shininess"), shininess);
+  
+  string prefix = "pointLights[";
+  for (GLuint i = 0; i < 2; i++) {
+    stringstream ss;
+    ss << i;
+    string num;
+    ss >> num;
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].position").c_str()), pointLightPositions[i].x, pointLightPositions[i].y, pointLightPositions[i].z);
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].ambient").c_str()), 0.2f, 0.2f, 0.2f);
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].diffuse").c_str()), 1.0f, 1.0f, 1.0f);
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].specular").c_str()), 1.0f, 1.0f, 1.0f);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].constant").c_str()), 1.0f);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].linear").c_str()), 0.009f);
+    glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].quadratic").c_str()), 0.0032f);
+  }
   
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   
