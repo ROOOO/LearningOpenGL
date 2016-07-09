@@ -8,43 +8,54 @@
 
 #include "CommonSettings.hpp"
 
-#define test 3
+#define test 4
 
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__
 #if test == 1
-  m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/Shaders/";
-  m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/Resources/";
-  m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Getting Start/";
-  m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Getting Start/";
+  m_ShadersPath = "Getting Start/Shaders/";
+  m_ResourcesPath = "Getting Start/Resources/";
+  m_FilesPath = "Getting Start/";
+  m_ExercisesPath = "Exercises/Getting Start/";
 #elif test == 2
-  m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Lighting/Shaders/";
-  m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Lighting/Resources/";
-  m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Lighting/";
-  m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Lighting/";
+  m_ShadersPath = "Lighting/Shaders/";
+  m_ResourcesPath = "Lighting/Resources/";
+  m_FilesPath = "Lighting/";
+  m_ExercisesPath = "Exercises/Lighting/";
 #elif test == 3
-  m_ShadersPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/Shaders/";
-  m_ResourcesPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/Resources/";
-  m_FilesPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/";
-  m_ExercisesPath = "/Users/king/git/LearningOpenGL/Files/Exercises/Model Loading/";
-  m_ModelsPath = "/Users/king/git/LearningOpenGL/Files/Model Loading/Models/";
+  m_ShadersPath = "Model Loading/Shaders/";
+  m_ResourcesPath = "Model Loading/Resources/";
+  m_FilesPath = "Model Loading/";
+  m_ExercisesPath = "Exercises/Model Loading/";
+  m_ModelsPath = "Model Loading/Models/";
+#elif test == 4
+  m_ShadersPath = "Advanced OpenGL/Shaders/";
+  m_ResourcesPath = "Advanced OpenGL/Resources/";
+  m_FilesPath = "Advanced OpenGL/";
+  m_ExercisesPath = "Exercises/Advanced OpenGL/";
 #endif
 #else
 #if test == 1
-  m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Shaders\\";
-  m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\Resources\\";
-  m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Getting Start\\";
-  m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Getting Start\\";
+  m_ShadersPath = "Getting Start\\Shaders\\";
+  m_ResourcesPath = "Getting Start\\Resources\\";
+  m_FilesPath = "Getting Start\\";
+  m_ExercisesPath = "Exercises\\Getting Start\\";
 #elif test == 2
-  m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\Shaders\\";
-  m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\Resources\\";
-  m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Lighting\\";
-  m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Lighting\\";
+  m_ShadersPath = "Lighting\\Shaders\\";
+  m_ResourcesPath = "Lighting\\Resources\\";
+  m_FilesPath = "Lighting\\";
+  m_ExercisesPath = "Exercises\\Lighting\\";
 #elif test == 3
-  m_ShadersPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Model Loading\\Shaders\\";
-  m_ResourcesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Model Loading\\Resources\\";
-  m_FilesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Model Loading\\";
-  m_ExercisesPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\Exercises\\Model Loading\\";
+  m_ShadersPath = "Model Loading\\Shaders\\";
+  m_ResourcesPath = "Model Loading\\Resources\\";
+  m_FilesPath = "Model Loading\\";
+  m_ExercisesPath = "Exercises\\Model Loading\\";
+  m_ModelsPath = "Model Loading\\Models\\";
+#elif test == 4
+  m_ShadersPath = "Advanced OpenGL\\Shaders\\";
+  m_ResourcesPath = "Advanced OpenGL\\Resources\\";
+  m_FilesPath = "Advanced OpenGL\\";
+  m_ExercisesPath = "Exercises\\Advanced OpenGL\\";
 #endif
 #endif
 }
@@ -99,19 +110,19 @@ GLFWwindow *CommonSettings::CreateWindow(string titleName) {
 }
 
 string CommonSettings::CCShadersPath(string str) {
-  return m_ShadersPath + str;
+  return m_ProjectPath + m_ShadersPath + str;
 }
 
 string CommonSettings::CCResourcesPath(string str) {
-  return m_ResourcesPath + str;
+  return m_ProjectPath + m_ResourcesPath + str;
 }
 
 string CommonSettings::CCFilesPath(string str) {
-  return m_FilesPath + str;
+  return m_ProjectPath + m_FilesPath + str;
 }
 string CommonSettings::CCExercisesPath(string str) {
-  return m_ExercisesPath + str;
+  return m_ProjectPath + m_ExercisesPath + str;
 }
 string CommonSettings::CCModelsPath(string str) {
-  return m_ModelsPath + str;
+  return m_ProjectPath + m_ModelsPath + str;
 }

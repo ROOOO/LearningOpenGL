@@ -33,6 +33,11 @@ class CommonSettings {
   string m_FilesPath = "";
   string m_ExercisesPath = "";
   string m_ModelsPath = "";
+#ifdef __APPLE__
+  string m_ProjectPath = "/Users/king/git/LearningOpenGL/Files/";
+#else
+  string m_ProjectPath = "D:\\Projects\\OpenGL\\LearningOpenGL\\Files\\";
+#endif
   
   static void m_key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
