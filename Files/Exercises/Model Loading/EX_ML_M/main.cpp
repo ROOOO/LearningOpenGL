@@ -96,7 +96,7 @@ int main(int argc, const char * argv[]) {
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
-  GLfloat shininess = 1.0f;
+  GLfloat shininess = 32.0f;
   glm::vec3 pointLightPositions[] = {
     glm::vec3(2.3f, -1.6f, -3.0f),
     glm::vec3(-1.7f, 0.9f, 1.0f)
@@ -124,7 +124,7 @@ int main(int argc, const char * argv[]) {
     glUniform1f(glGetUniformLocation(shader.GetProgram(), (prefix + num + "].quadratic").c_str()), 0.0032f);
   }
   
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+//  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
