@@ -34,6 +34,9 @@ https://learnopengl-cn.readthedocs.io/zh/latest/
 其中也许有的步骤没必要，现在知识不足，先这样吧。
 
 ---
+All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
+
+---
 ### Logs
 
 ##### Jul 9, 2016
