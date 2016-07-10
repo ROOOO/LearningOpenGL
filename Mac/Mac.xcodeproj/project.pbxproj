@@ -834,6 +834,10 @@
 		3CE394EE1D3129A70050486D /* EX_ML_M.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_ML_M.vert; sourceTree = "<group>"; };
 		3CE394F31D3155A30050486D /* Advanced OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advanced OpenGL"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE394F51D3155A30050486D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CE3950C1D31D44E0050486D /* test1.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test1.frag; sourceTree = "<group>"; };
+		3CE3950D1D31D44E0050486D /* test1.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test1.vert; sourceTree = "<group>"; };
+		3CE3950F1D31D44E0050486D /* marble.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marble.jpg; sourceTree = "<group>"; };
+		3CE395101D31D44E0050486D /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal.png; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -1786,10 +1790,30 @@
 			isa = PBXGroup;
 			children = (
 				3CE394F51D3155A30050486D /* main.cpp */,
+				3CE3950B1D31D44E0050486D /* Shaders */,
+				3CE3950E1D31D44E0050486D /* Resources */,
 			);
 			name = "Advanced OpenGL";
 			path = "../Files/Advanced OpenGL";
 			sourceTree = SOURCE_ROOT;
+		};
+		3CE3950B1D31D44E0050486D /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3CE3950C1D31D44E0050486D /* test1.frag */,
+				3CE3950D1D31D44E0050486D /* test1.vert */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		3CE3950E1D31D44E0050486D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3CE3950F1D31D44E0050486D /* marble.jpg */,
+				3CE395101D31D44E0050486D /* metal.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
 		};
 		3CF99DC31D1D60B10028100C /* Texture Class */ = {
 			isa = PBXGroup;
