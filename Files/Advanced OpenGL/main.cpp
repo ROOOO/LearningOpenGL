@@ -10,8 +10,9 @@
 // test2 Stencil Testing
 // test3 Blending Grass
 // test4 Blending Windows
+// test5 Face culling
 
-#define advancedtest 4
+#define advancedtest 5
 
 #include "CommonSettings.hpp"
 
@@ -92,6 +93,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
+#if advancedtest < 5
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -146,6 +148,52 @@ int main(int argc, const char * argv[]) {
     -5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
     5.0f,  -0.5f, -5.0f,  2.0f, 2.0f
   };
+#else
+  GLfloat cubeVertices[] = {
+    // Back face
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, // Bottom-left
+    0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
+    0.5f, -0.5f, -0.5f,  1.0f, 0.0f, // bottom-right
+    0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, // bottom-left
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
+    // Front face
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-left
+    0.5f, -0.5f,  0.5f,  1.0f, 0.0f, // bottom-right
+    0.5f,  0.5f,  0.5f,  1.0f, 1.0f, // top-right
+    0.5f,  0.5f,  0.5f,  1.0f, 1.0f, // top-right
+    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, // top-left
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-left
+    // Left face
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-right
+    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-left
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-left
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-left
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-right
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-right
+    // Right face
+    0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-left
+    0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-right
+    0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
+    0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-right
+    0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-left
+    0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-left
+    // Bottom face
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // top-right
+    0.5f, -0.5f, -0.5f,  1.0f, 1.0f, // top-left
+    0.5f, -0.5f,  0.5f,  1.0f, 0.0f, // bottom-left
+    0.5f, -0.5f,  0.5f,  1.0f, 0.0f, // bottom-left
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-right
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // top-right
+    // Top face
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
+    0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // bottom-right
+    0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
+    0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // bottom-right
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
+    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f  // bottom-left
+  };
+#endif
 #if advancedtest == 3 || advancedtest == 4
   GLfloat vegetationVertices[] = {
     0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
@@ -170,6 +218,7 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
+#if advancedtest < 5
   GLuint planeVAO, planeVBO;
   glGenVertexArrays(1, &planeVAO);
   glGenBuffers(1, &planeVBO);
@@ -182,6 +231,7 @@ int main(int argc, const char * argv[]) {
   glEnableVertexAttribArray(1);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+#endif
   
 #if advancedtest == 3 || advancedtest == 4
 #if advancedtest == 3
@@ -231,7 +281,11 @@ int main(int argc, const char * argv[]) {
   windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
 #endif
 
+#if advancedtest < 5
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
+#elif advancedtest == 5
+  ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
+#endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
   shaderSingleColor.Use();
@@ -273,6 +327,12 @@ int main(int argc, const char * argv[]) {
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 #endif
   
+#if advancedtest == 5
+  glEnable(GL_CULL_FACE);
+//  glCullFace(GL_FRONT);
+  glFrontFace(GL_CW);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -282,7 +342,7 @@ int main(int argc, const char * argv[]) {
     lastFrame = currentFrame;
     
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 5
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 #elif advancedtest == 2
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -412,6 +472,14 @@ int main(int argc, const char * argv[]) {
     
     glStencilMask(0xff);
     glEnable(GL_DEPTH_TEST);
+    
+#elif advancedtest == 5
+    glBindVertexArray(cubeVAO);
+    glBindTexture(GL_TEXTURE_2D, cubeTexture);
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
 #endif
     
     glfwSwapBuffers(window);
