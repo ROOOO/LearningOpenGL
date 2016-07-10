@@ -39,15 +39,24 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
-##### Jul 9, 2016
- -
+##### Jul 11, 2016, Mon.
+ - 
 
-##### Jul 8, 2016
+##### Jul 10, 2016, Sun.
+ - Chapter Depth testing.
+ - Chapter Stencil testing.
+ - Chapter Blending.
+ - Chapter Face culling.
+
+##### Jul 9, 2016, Sat.
+ - Chapter Model Loading.
+
+##### Jul 8, 2016, Fri.
  - Chapter Mesh.
  - Add Mesh Class.
  - Chapter Model.
 
-##### Jul 7, 2016
+##### Jul 7, 2016, Thur.
  - Exercises of Multiple Lights.
  - Chapter Assimp.
 
