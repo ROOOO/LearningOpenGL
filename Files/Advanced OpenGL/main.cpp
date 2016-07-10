@@ -6,6 +6,11 @@
 //  Copyright © 2016年 King. All rights reserved.
 //
 
+// test1 Depth Testing
+// test2 Stencil Testing
+
+#define advancedtest 2
+
 #include "CommonSettings.hpp"
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
@@ -172,6 +177,13 @@ int main(int argc, const char * argv[]) {
   GLuint planeTexture = planeTex.getTexture();
   
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
+#if advancedtest == 2
+  ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
+  shaderSingleColor.Use();
+  GLint singleModelMatLoc = glGetUniformLocation(shaderSingleColor.GetProgram(), "modelMat");
+  GLint singleviewMatLoc = glGetUniformLocation(shaderSingleColor.GetProgram(), "viewMat");
+  GLint singleprojMatLoc = glGetUniformLocation(shaderSingleColor.GetProgram(), "projMat");
+#endif
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
@@ -184,6 +196,11 @@ int main(int argc, const char * argv[]) {
   
   glDepthFunc(GL_LESS);
   
+#if advancedtest == 2
+  glEnable(GL_STENCIL_TEST);
+  glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -193,15 +210,25 @@ int main(int argc, const char * argv[]) {
     lastFrame = currentFrame;
     
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+#if advancedtest == 1
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+#elif advancedtest == 2
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+#endif
     
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
-    
+
     shader.Use();
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
-    
+#if advancedtest == 2
+    shaderSingleColor.Use();
+    glUniformMatrix4fv(singleviewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(singleprojMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+#endif
+
+#if advancedtest == 1
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
@@ -227,6 +254,58 @@ int main(int argc, const char * argv[]) {
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+#elif advancedtest == 2
+    
+    glStencilMask(0x00);
+    
+    shader.Use();
+    glBindVertexArray(planeVAO);
+    glBindTexture(GL_TEXTURE_2D, planeTexture);
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    glStencilFunc(GL_ALWAYS, 1, 0xff);
+    glStencilMask(0xff);
+    
+    glBindVertexArray(cubeVAO);
+    glBindTexture(GL_TEXTURE_2D, cubeTexture);
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.01f, 0.0f));
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    glStencilFunc(GL_NOTEQUAL, 1, 0xff);
+    glStencilMask(0x00);
+    glDisable(GL_DEPTH_TEST);
+    
+    shaderSingleColor.Use();
+    glBindVertexArray(cubeVAO);
+    glBindTexture(GL_TEXTURE_2D, cubeTexture);
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
+    modelMat = glm::scale(modelMat, glm::vec3(1.1f));
+    glUniformMatrix4fv(singleModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.01f, 0.0f));
+    modelMat = glm::scale(modelMat, glm::vec3(1.1f));
+    glUniformMatrix4fv(singleModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    glStencilMask(0xff);
+    glEnable(GL_DEPTH_TEST);
+#endif
     
     glfwSwapBuffers(window);
   }
