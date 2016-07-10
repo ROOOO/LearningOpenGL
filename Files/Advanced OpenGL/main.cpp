@@ -8,8 +8,10 @@
 
 // test1 Depth Testing
 // test2 Stencil Testing
+// test3 Blending Grass
+// test4 Blending Windows
 
-#define advancedtest 2
+#define advancedtest 4
 
 #include "CommonSettings.hpp"
 
@@ -144,6 +146,16 @@ int main(int argc, const char * argv[]) {
     -5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
     5.0f,  -0.5f, -5.0f,  2.0f, 2.0f
   };
+#if advancedtest == 3 || advancedtest == 4
+  GLfloat vegetationVertices[] = {
+    0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+    0.5f, 0.5f, 0.0f, 1.0f, 0.0f,
+    -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
+    0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+    -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
+    -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
+  };
+#endif
   
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
@@ -171,11 +183,54 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
+#if advancedtest == 3 || advancedtest == 4
+#if advancedtest == 3
+  GLuint vegetationVAO, vegetationVBO;
+  glGenVertexArrays(1, &vegetationVAO);
+  glGenBuffers(1, &vegetationVBO);
+  glBindVertexArray(vegetationVAO);
+  glBindBuffer(GL_ARRAY_BUFFER, vegetationVBO);
+#elif advancedtest == 4
+  GLuint windowsVAO, windowsVBO;
+  glGenVertexArrays(1, &windowsVAO);
+  glGenBuffers(1, &windowsVBO);
+  glBindVertexArray(windowsVAO);
+  glBindBuffer(GL_ARRAY_BUFFER, windowsVBO);
+#endif
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vegetationVertices), vegetationVertices, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+  glEnableVertexAttribArray(1);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
+#endif
+  
   TextureReader cubeTex(Settings.CCResourcesPath("marble.jpg").c_str());
   TextureReader planeTex(Settings.CCResourcesPath("metal.png").c_str());
   GLuint cubeTexture = cubeTex.getTexture();
   GLuint planeTexture = planeTex.getTexture();
-  
+
+#if advancedtest == 3
+  TextureReader vegetationTex(Settings.CCResourcesPath("grass.png").c_str(), true);
+  GLuint vegetationTexture = vegetationTex.getTexture();
+  vector<glm::vec3> vegetation;
+  vegetation.push_back(glm::vec3(-1.5f,  0.0f, -0.48f));
+  vegetation.push_back(glm::vec3( 1.5f,  0.0f,  0.51f));
+  vegetation.push_back(glm::vec3( 0.0f,  0.0f,  0.7f));
+  vegetation.push_back(glm::vec3(-0.3f,  0.0f, -2.3f));
+  vegetation.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
+#elif advancedtest == 4
+  TextureReader windowTex(Settings.CCResourcesPath("window.png").c_str(), true);
+  GLuint windowTexture = windowTex.getTexture();
+  vector<glm::vec3> windows;
+  windows.push_back(glm::vec3(-1.5f,  0.0f, -0.48f));
+  windows.push_back(glm::vec3( 1.5f,  0.0f,  0.51f));
+  windows.push_back(glm::vec3( 0.0f,  0.0f,  0.7f));
+  windows.push_back(glm::vec3(-0.3f,  0.0f, -2.3f));
+  windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
+#endif
+
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -183,6 +238,18 @@ int main(int argc, const char * argv[]) {
   GLint singleModelMatLoc = glGetUniformLocation(shaderSingleColor.GetProgram(), "modelMat");
   GLint singleviewMatLoc = glGetUniformLocation(shaderSingleColor.GetProgram(), "viewMat");
   GLint singleprojMatLoc = glGetUniformLocation(shaderSingleColor.GetProgram(), "projMat");
+#elif advancedtest == 3
+  ShaderReader vegetationShader(Settings.CCShadersPath("test3.vert").c_str(), Settings.CCShadersPath("test3.frag").c_str());
+  vegetationShader.Use();
+  GLint vegetationModelMatLoc = glGetUniformLocation(vegetationShader.GetProgram(), "modelMat");
+  GLint vegetationViewMatLoc = glGetUniformLocation(vegetationShader.GetProgram(), "viewMat");
+  GLint vegetationProjMatLoc = glGetUniformLocation(vegetationShader.GetProgram(), "projMat");
+#elif advancedtest == 4
+  ShaderReader windowsShader(Settings.CCShadersPath("test4.vert").c_str(), Settings.CCShadersPath("test4.frag").c_str());
+  windowsShader.Use();
+  GLint windowsModelMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "modelMat");
+  GLint windowsViewMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "viewMat");
+  GLint windowsProjMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "projMat");
 #endif
   
   glm::mat4 modelMat;
@@ -201,6 +268,11 @@ int main(int argc, const char * argv[]) {
   glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 #endif
   
+#if advancedtest == 4
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -210,7 +282,7 @@ int main(int argc, const char * argv[]) {
     lastFrame = currentFrame;
     
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-#if advancedtest == 1
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 #elif advancedtest == 2
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -226,23 +298,26 @@ int main(int argc, const char * argv[]) {
     shaderSingleColor.Use();
     glUniformMatrix4fv(singleviewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(singleprojMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+#elif advancedtest == 3
+    vegetationShader.Use();
+    glUniformMatrix4fv(vegetationViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(vegetationProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+#elif advancedtest == 4
+    windowsShader.Use();
+    glUniformMatrix4fv(windowsViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(windowsProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 #endif
 
-#if advancedtest == 1
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4
+    glBindVertexArray(cubeVAO);
+    glBindTexture(GL_TEXTURE_2D, cubeTexture);
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
-    glBindTexture(GL_TEXTURE_2D, cubeTexture);
-    glBindVertexArray(cubeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
-    glBindVertexArray(0);
-    glBindTexture(GL_TEXTURE_2D, 0);
-
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.01f, 0.0f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
-    glBindTexture(GL_TEXTURE_2D, cubeTexture);
-    glBindVertexArray(cubeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -254,6 +329,38 @@ int main(int argc, const char * argv[]) {
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+    
+#if advancedtest == 3 || advancedtest == 4
+#if advancedtest == 3
+    vegetationShader.Use();
+    glBindVertexArray(vegetationVAO);
+    glBindTexture(GL_TEXTURE_2D, vegetationTexture);
+    for (GLuint i = 0; i < vegetation.size(); i++) {
+      modelMat = glm::mat4();
+      modelMat = glm::translate(modelMat, vegetation[i]);
+      glUniformMatrix4fv(vegetationModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+      glDrawArrays(GL_TRIANGLES, 0, 6);
+    }
+#elif advancedtest == 4
+    windowsShader.Use();
+    glBindVertexArray(windowsVAO);
+    glBindTexture(GL_TEXTURE_2D, windowTexture);
+    map<GLfloat, glm::vec3> sorted;
+    for (GLuint i = 0; i < windows.size(); i++) {
+      GLfloat distance = glm::length(cam.getPosition() - windows[i]);
+      sorted[distance] = windows[i];
+    }
+    for (map<GLfloat, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); it++) {
+      modelMat = glm::mat4();
+      modelMat = glm::translate(modelMat, it->second);
+      glUniformMatrix4fv(windowsModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+      glDrawArrays(GL_TRIANGLES, 0, 6);
+    }
+#endif
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glBindVertexArray(0);
+#endif
+    
 #elif advancedtest == 2
     
     glStencilMask(0x00);

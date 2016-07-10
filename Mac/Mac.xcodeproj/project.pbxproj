@@ -840,6 +840,10 @@
 		3CE395101D31D44E0050486D /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal.png; sourceTree = "<group>"; };
 		3CE395111D3235A10050486D /* test2.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test2.vert; sourceTree = "<group>"; };
 		3CE395121D3235A10050486D /* test2.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test2.frag; sourceTree = "<group>"; };
+		3CE395131D3262F60050486D /* test3.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test3.vert; sourceTree = "<group>"; };
+		3CE395141D3262F60050486D /* test3.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test3.frag; sourceTree = "<group>"; };
+		3CE395151D3298EB0050486D /* test4.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test4.frag; sourceTree = "<group>"; };
+		3CE395161D3298EB0050486D /* test4.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test4.vert; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -1802,6 +1806,10 @@
 		3CE3950B1D31D44E0050486D /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				3CE395151D3298EB0050486D /* test4.frag */,
+				3CE395161D3298EB0050486D /* test4.vert */,
+				3CE395131D3262F60050486D /* test3.vert */,
+				3CE395141D3262F60050486D /* test3.frag */,
 				3CE395111D3235A10050486D /* test2.vert */,
 				3CE395121D3235A10050486D /* test2.frag */,
 				3CE3950C1D31D44E0050486D /* test1.frag */,

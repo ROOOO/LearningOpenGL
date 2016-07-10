@@ -19,7 +19,7 @@ class TextureReader {
   GLuint m_texture;
   
 public:
-  TextureReader(const GLchar* path);
+  TextureReader(const GLchar* path, GLboolean isAlphaTexture = false);
   ~TextureReader();
   GLuint getTexture();
 };
