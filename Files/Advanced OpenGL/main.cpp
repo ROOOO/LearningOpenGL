@@ -11,8 +11,9 @@
 // test3 Blending Grass
 // test4 Blending Windows
 // test5 Face culling
+// test6 Framebuffers
 
-#define advancedtest 5
+#define advancedtest 6
 
 #include "CommonSettings.hpp"
 
@@ -93,7 +94,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest < 5
+#if advancedtest != 5
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -204,6 +205,18 @@ int main(int argc, const char * argv[]) {
     -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
   };
 #endif
+#if advancedtest == 6
+  GLfloat quadVertices[] = {   // Vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
+    // Positions   // TexCoords
+    -1.0f,  1.0f,  0.0f, 1.0f,
+    -1.0f, -1.0f,  0.0f, 0.0f,
+    1.0f, -1.0f,  1.0f, 0.0f,
+    
+    -1.0f,  1.0f,  0.0f, 1.0f,
+    1.0f, -1.0f,  1.0f, 0.0f,
+    1.0f,  1.0f,  1.0f, 1.0f
+  };
+#endif
   
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
@@ -218,7 +231,7 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
-#if advancedtest < 5
+#if advancedtest != 5
   GLuint planeVAO, planeVBO;
   glGenVertexArrays(1, &planeVAO);
   glGenBuffers(1, &planeVBO);
@@ -256,7 +269,26 @@ int main(int argc, const char * argv[]) {
   glBindVertexArray(0);
 #endif
   
+#if advancedtest == 6
+  GLuint quadVAO, quadVBO;
+  glGenVertexArrays(1, &quadVAO);
+  glGenBuffers(1, &quadVBO);
+  glBindVertexArray(quadVAO);
+  glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+  glEnableVertexAttribArray(1);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
+#endif
+
+#if advancedtest != 6
   TextureReader cubeTex(Settings.CCResourcesPath("marble.jpg").c_str());
+#elif advancedtest == 6
+  TextureReader cubeTex(Settings.CCResourcesPath("container.jpg").c_str());
+#endif
   TextureReader planeTex(Settings.CCResourcesPath("metal.png").c_str());
   GLuint cubeTexture = cubeTex.getTexture();
   GLuint planeTexture = planeTex.getTexture();
@@ -281,7 +313,7 @@ int main(int argc, const char * argv[]) {
   windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
 #endif
 
-#if advancedtest < 5
+#if advancedtest != 5
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #elif advancedtest == 5
   ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
@@ -304,6 +336,8 @@ int main(int argc, const char * argv[]) {
   GLint windowsModelMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "modelMat");
   GLint windowsViewMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "viewMat");
   GLint windowsProjMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "projMat");
+#elif advancedtest == 6
+  ShaderReader screenShader(Settings.CCShadersPath("test6.vert").c_str(), Settings.CCShadersPath("test6.frag").c_str());
 #endif
   
   glm::mat4 modelMat;
@@ -333,6 +367,37 @@ int main(int argc, const char * argv[]) {
   glFrontFace(GL_CW);
 #endif
   
+#if advancedtest == 6
+  GLuint framebuffer;
+  glGenFramebuffers(1, &framebuffer);
+  glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+  
+  GLuint textureColorBuffer;
+  glGenTextures(1, &textureColorBuffer);
+  glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glBindTexture(GL_TEXTURE_2D, 0);
+  
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorBuffer, 0);
+  
+  GLuint RBO;
+  glGenRenderbuffers(1, &RBO);
+  glBindRenderbuffer(GL_RENDERBUFFER, RBO);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+  
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RBO);
+  
+  if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    std::cout << "Frame Buffer Failed.\n" << std::endl;
+  }
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -341,8 +406,12 @@ int main(int argc, const char * argv[]) {
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
     
+#if advancedtest == 6
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    glEnable(GL_DEPTH_TEST);
+#endif
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 5
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 5 || advancedtest == 6
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 #elif advancedtest == 2
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -368,7 +437,7 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(windowsProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 #endif
 
-#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6
     glBindVertexArray(cubeVAO);
     glBindTexture(GL_TEXTURE_2D, cubeTexture);
     modelMat = glm::mat4();
@@ -479,6 +548,19 @@ int main(int argc, const char * argv[]) {
     modelMat = glm::mat4();
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+#endif
+    
+#if advancedtest == 6
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    
+    screenShader.Use();
+    glBindVertexArray(quadVAO);
+    glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
 #endif
     
