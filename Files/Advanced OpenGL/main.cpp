@@ -395,7 +395,7 @@ int main(int argc, const char * argv[]) {
   }
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+//  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 #endif
   
   while (!glfwWindowShouldClose(window)) {

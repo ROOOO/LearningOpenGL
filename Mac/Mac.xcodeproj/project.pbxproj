@@ -848,6 +848,7 @@
 		3CE395181D32A6750050486D /* test5.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test5.vert; sourceTree = "<group>"; };
 		3CE395191D3411A50050486D /* test6.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test6.frag; sourceTree = "<group>"; };
 		3CE3951A1D3411A50050486D /* test6.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test6.vert; sourceTree = "<group>"; };
+		3CE3951B1D35255F0050486D /* test7.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test7.frag; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
 		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
@@ -1822,6 +1823,7 @@
 				3CE395121D3235A10050486D /* test2.frag */,
 				3CE3950C1D31D44E0050486D /* test1.frag */,
 				3CE3950D1D31D44E0050486D /* test1.vert */,
+				3CE3951B1D35255F0050486D /* test7.frag */,
 			);
 			name = Shaders;
 			path = "../Files/Advanced OpenGL/Shaders";
