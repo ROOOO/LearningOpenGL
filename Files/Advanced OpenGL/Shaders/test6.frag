@@ -32,16 +32,16 @@ void main() {
 //    -1, 9, -1,
 //    -1, -1, -1
 //  );
-//  float kernel[9] = float[] (
-//                             1.0f / 16, 2.0f / 16, 1.0f / 16,
-//                             2.0f / 16, 4.0f / 16, 2.0f / 16,
-//                             1.0f / 16, 2.0f / 16, 1.0f / 16
-//                             );
   float kernel[9] = float[] (
-                             1.0f, 1.0f, 1.0f,
-                             1.0f, -8.0f, 1.0f,
-                             1.0f, 1.0f, 1.0f
+                             1.0f / 16, 2.0f / 16, 1.0f / 16,
+                             2.0f / 16, 4.0f / 16, 2.0f / 16,
+                             1.0f / 16, 2.0f / 16, 1.0f / 16
                              );
+//  float kernel[9] = float[] (
+//                             1.0f, 1.0f, 1.0f,
+  //                           1.0f, -8.0f, 1.0f,
+    //                         1.0f, 1.0f, 1.0f
+      //                       );
   vec3 sampleTex[9];
   for (int i = 0; i < 9; i++) {
     sampleTex[i] = vec3(texture(tex, TexCoords.st + offsets[i]));
