@@ -46,6 +46,7 @@ glm::mat4 Camera::lookAt(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp
 
 glm::mat4 Camera::getViewMatrix() {
 //  return this->lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
+//  std::cout << "Looking at " << (this->m_front + this->m_position).x << "\t" << (this->m_front + this->m_position).y << "\t" << (this->m_front + this->m_position).z << std::endl;
   return glm::lookAt(this->m_position, this->m_front + this->m_position, this->m_up);
 }
 
@@ -113,6 +114,19 @@ glm::vec3 Camera::getDirection() {
   return this->m_front;
 }
 
+void Camera::setYaw(GLfloat yaw) {
+  this->m_yaw = yaw;
+}
+GLfloat Camera::getYaw() {
+  return this->m_yaw;
+}
+void Camera::setPitch(GLfloat pitch) {
+  this->m_pitch = pitch;
+}
+GLfloat Camera::getPitch() {
+  return this->m_pitch;
+}
+
 void Camera::m_updateCameraVectors() {
   glm::vec3 front;
   front.x = cos(glm::radians(this->m_pitch)) * cos(glm::radians(this->m_yaw));
@@ -121,5 +135,8 @@ void Camera::m_updateCameraVectors() {
   this->m_front = glm::normalize(front);
   this->m_right = glm::normalize(glm::cross(this->m_front, this->m_worldUp));
   this->m_up = glm::normalize(glm::cross(this->m_right, this->m_front));
+//  std::cout << "============" << std::endl;
   std::cout << "front:  " << m_front.x << " " << m_front.y << " " << m_front.z << std::endl;
+//  std::cout << "Yaw:" << this->m_yaw << " Pitch:" << this->m_pitch << std::endl;
+//  std::cout << "Right:  " << m_right.x << " " << m_right.y << " " << m_right.z << std::endl;
 }

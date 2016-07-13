@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>29</integer>
 		</dict>
+		<key>EX_AO_FB_1.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>30</integer>
+		</dict>
 		<key>EX_GS_CS_3.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -293,6 +298,11 @@
 			<true/>
 		</dict>
 		<key>3CE394F21D3155A30050486D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CE3951F1D36653D0050486D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

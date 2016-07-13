@@ -31,8 +31,6 @@ class Camera {
   glm::vec3 m_front;
   glm::vec3 m_up;
   glm::vec3 m_right;
-  GLfloat m_yaw;
-  GLfloat m_pitch;
   GLfloat m_movementSpeed;
   GLfloat m_mouseSensitivity;
   GLfloat m_zoom;
@@ -41,6 +39,8 @@ class Camera {
   void m_updateCameraVectors();
   
 public:
+  GLfloat m_yaw;
+  GLfloat m_pitch;
   enum Camera_Movement {
     FORWARD,
     BACKWARD,
@@ -60,6 +60,10 @@ public:
   glm::vec3 getPosition();
   glm::vec3 getDirection();
   glm::mat4 lookAt(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp);
+  void setYaw(GLfloat yaw);
+  GLfloat getYaw();
+  void setPitch(GLfloat pitch);
+  GLfloat getPitch();
 };
 
 #endif /* Camera_hpp */

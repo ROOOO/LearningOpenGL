@@ -1,4 +1,4 @@
-﻿#include "CommonSettings.hpp"
+#include "CommonSettings.hpp"
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -133,13 +133,13 @@ int main(int argc, const char * argv[]) {
   };
   GLfloat quadVertices[] = {   // Vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
     // Positions   // TexCoords
-    -1.0f, 1.0f, 0.0f, 1.0f,
-    -1.0f, -1.0f, 0.0f, 0.0f,
-    1.0f, -1.0f, 1.0f, 0.0f,
+    -0.3f, 1.0f, 0.0f, 1.0f,
+    0.3f, 1.0f, 1.0f, 1.0f,
+    0.3f, 0.7f, 1.0f, 0.0f,
 
-    -1.0f, 1.0f, 0.0f, 1.0f,
-    1.0f, -1.0f, 1.0f, 0.0f,
-    1.0f, 1.0f, 1.0f, 1.0f
+    -0.3f, 1.0f, 0.0f, 1.0f,
+    0.3f, 0.7f, 1.0f, 0.0f,
+    -0.3f, 0.7f, 0.0f, 0.0f
   };
 
   GLuint cubeVAO, cubeVBO;
@@ -245,6 +245,8 @@ int main(int argc, const char * argv[]) {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    cam.setYaw(cam.getYaw() + 180.0f);
+    cam.processMouseMovement(0, 0, false);
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
 
@@ -275,9 +277,44 @@ int main(int argc, const char * argv[]) {
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    cam.setYaw(cam.getYaw() - 180.0f);
+//    cam.setPitch(cam.getPitch() - 180.0f);
+    cam.processMouseMovement(0, 0);
+
+    viewMat = cam.getViewMatrix();
+//    projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
+    
+    shader.Use();
+    glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+//    glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    
+    glBindVertexArray(cubeVAO);
+    glBindTexture(GL_TEXTURE_2D, cubeTexture);
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.01f, 0.0f));
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glBindTexture(GL_TEXTURE_2D, planeTexture);
+    glBindVertexArray(planeVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
     glDisable(GL_DEPTH_TEST);
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
     screenShader.Use();
     glBindVertexArray(quadVAO);
     glBindTexture(GL_TEXTURE_2D, fbTexture);
