@@ -39,8 +39,14 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
-##### Jul 11, 2016, Mon.
+##### Jul 13, 2016, Wed.
  - 
+
+##### Jul 12, 2016, Tue.
+ - Chapter Framebuffers.
+
+##### Jul 11, 2016, Mon.
+ - Chapter Framebuffers.
 
 ##### Jul 10, 2016, Sun.
  - Chapter Depth testing.
