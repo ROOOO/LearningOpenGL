@@ -12,10 +12,37 @@
 // test4 Blending Windows
 // test5 Face culling
 // test6 Framebuffers
+// test7 Skybox
+// test8 Reflection
 
-#define advancedtest 6
+#define advancedtest 8
 
 #include "CommonSettings.hpp"
+
+GLuint loadCubemap(vector<const GLchar*> faces)
+{
+  GLuint textureID;
+  glGenTextures(1, &textureID);
+  
+  int width,height;
+  unsigned char* image;
+  
+  glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+  for(GLuint i = 0; i < faces.size(); i++)
+  {
+    image = SOIL_load_image(faces[i], &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+    SOIL_free_image_data(image);
+  }
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+  glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+  
+  return textureID;
+}
 
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
@@ -94,7 +121,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest != 5
+#if advancedtest != 5 && advancedtest != 8
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -139,6 +166,7 @@ int main(int argc, const char * argv[]) {
     -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
   };
+#if advancedtest < 7
   GLfloat planeVertices[] = {
     // Positions            // Texture Coords (note we set these higher than 1 that together with GL_REPEAT as texture wrapping mode will cause the floor texture to repeat)
     5.0f,  -0.5f,  5.0f,  2.0f, 0.0f,
@@ -149,7 +177,8 @@ int main(int argc, const char * argv[]) {
     -5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
     5.0f,  -0.5f, -5.0f,  2.0f, 2.0f
   };
-#else
+#endif
+#elif advancedtest == 5
   GLfloat cubeVertices[] = {
     // Back face
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, // Bottom-left
@@ -194,6 +223,51 @@ int main(int argc, const char * argv[]) {
     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
     -0.5f,  0.5f,  0.5f,  0.0f, 0.0f  // bottom-left
   };
+#elif advancedtest == 8
+  GLfloat cubeVertices[] = {
+    // Positions          // Normals
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+    0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+    0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+    0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+    0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+    
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+    0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+    0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+    
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+    0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+  };
 #endif
 #if advancedtest == 3 || advancedtest == 4
   GLfloat vegetationVertices[] = {
@@ -217,6 +291,52 @@ int main(int argc, const char * argv[]) {
     1.0f,  1.0f,  1.0f, 1.0f
   };
 #endif
+#if advancedtest == 7 || advancedtest == 8
+  GLfloat skyboxVertices[] = {
+    // Positions
+    -1.0f,  1.0f, -1.0f,
+    -1.0f, -1.0f, -1.0f,
+    1.0f, -1.0f, -1.0f,
+    1.0f, -1.0f, -1.0f,
+    1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+    
+    -1.0f, -1.0f,  1.0f,
+    -1.0f, -1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f,  1.0f,
+    -1.0f, -1.0f,  1.0f,
+    
+    1.0f, -1.0f, -1.0f,
+    1.0f, -1.0f,  1.0f,
+    1.0f,  1.0f,  1.0f,
+    1.0f,  1.0f,  1.0f,
+    1.0f,  1.0f, -1.0f,
+    1.0f, -1.0f, -1.0f,
+    
+    -1.0f, -1.0f,  1.0f,
+    -1.0f,  1.0f,  1.0f,
+    1.0f,  1.0f,  1.0f,
+    1.0f,  1.0f,  1.0f,
+    1.0f, -1.0f,  1.0f,
+    -1.0f, -1.0f,  1.0f,
+    
+    -1.0f,  1.0f, -1.0f,
+    1.0f,  1.0f, -1.0f,
+    1.0f,  1.0f,  1.0f,
+    1.0f,  1.0f,  1.0f,
+    -1.0f,  1.0f,  1.0f,
+    -1.0f,  1.0f, -1.0f,
+    
+    -1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f,  1.0f,
+    1.0f, -1.0f, -1.0f,
+    1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f,  1.0f,
+    1.0f, -1.0f,  1.0f
+  };
+#endif
   
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
@@ -224,14 +344,22 @@ int main(int argc, const char * argv[]) {
   glBindVertexArray(cubeVAO);
   glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+#if advancedtest != 8
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+#else
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+#endif
   glEnableVertexAttribArray(0);
+#if advancedtest != 8
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+#else
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+#endif
   glEnableVertexAttribArray(1);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
-#if advancedtest != 5
+#if advancedtest != 5 && advancedtest < 7
   GLuint planeVAO, planeVBO;
   glGenVertexArrays(1, &planeVAO);
   glGenBuffers(1, &planeVBO);
@@ -283,15 +411,47 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
 #endif
-
-#if advancedtest != 6
-  TextureReader cubeTex(Settings.CCResourcesPath("marble.jpg").c_str());
-#elif advancedtest == 6
-  TextureReader cubeTex(Settings.CCResourcesPath("container.jpg").c_str());
+  
+#if advancedtest == 7 || advancedtest == 8
+  GLuint skyboxVAO, skyboxVBO;
+  glGenVertexArrays(1, &skyboxVAO);
+  glGenBuffers(1, &skyboxVBO);
+  glBindVertexArray(skyboxVAO);
+  glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), skyboxVertices, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
 #endif
-  TextureReader planeTex(Settings.CCResourcesPath("metal.png").c_str());
+
+#if advancedtest < 6
+  TextureReader cubeTex(Settings.CCResourcesPath("marble.jpg").c_str());
+#elif advancedtest == 6 || advancedtest == 7
+  TextureReader cubeTex(Settings.CCResourcesPath("container.jpg").c_str());
   GLuint cubeTexture = cubeTex.getTexture();
+#endif
+#if advancedtest < 7
+  TextureReader planeTex(Settings.CCResourcesPath("metal.png").c_str());
   GLuint planeTexture = planeTex.getTexture();
+#elif advancedtest == 7 || advancedtest == 8
+#ifdef __APPLE__
+  string path = "skybox/";
+#else
+  string path = "skybox\\"
+#endif
+  vector<string> faces;
+  faces.push_back(Settings.CCResourcesPath(path + "right.jpg"));
+  faces.push_back(Settings.CCResourcesPath(path + "left.jpg"));
+  faces.push_back(Settings.CCResourcesPath(path + "top.jpg"));
+  faces.push_back(Settings.CCResourcesPath(path + "bottom.jpg"));
+  faces.push_back(Settings.CCResourcesPath(path + "back.jpg"));
+  faces.push_back(Settings.CCResourcesPath(path + "front.jpg"));
+  
+  TextureReader skyboxTex(faces);
+  GLuint skyboxTexture = skyboxTex.getCubeMap();
+//  GLuint skyboxTexture = loadCubemap(faces);
+#endif
 
 #if advancedtest == 3
   TextureReader vegetationTex(Settings.CCResourcesPath("grass.png").c_str(), true);
@@ -313,10 +473,13 @@ int main(int argc, const char * argv[]) {
   windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
 #endif
 
-#if advancedtest != 5
+#if advancedtest != 5 && advancedtest != 8
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #elif advancedtest == 5
   ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
+#elif advancedtest == 8
+  ShaderReader shader(Settings.CCShadersPath("test8.vert").c_str(), Settings.CCShadersPath("test8.frag").c_str());
+  GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -338,6 +501,12 @@ int main(int argc, const char * argv[]) {
   GLint windowsProjMatLoc = glGetUniformLocation(windowsShader.GetProgram(), "projMat");
 #elif advancedtest == 6
   ShaderReader screenShader(Settings.CCShadersPath("test6.vert").c_str(), Settings.CCShadersPath("test6.frag").c_str());
+#elif advancedtest == 7 || advancedtest == 8
+  ShaderReader skyboxShader(Settings.CCShadersPath("test7.vert").c_str(), Settings.CCShadersPath("test7.frag").c_str());
+//  GLint skyboxModelMatLoc = glGetUniformLocation(skyboxShader.GetProgram(), "modelMat");
+  GLint skyboxViewMatLoc = glGetUniformLocation(skyboxShader.GetProgram(), "viewMat");
+  GLint skyboxProjMatLoc = glGetUniformLocation(skyboxShader.GetProgram(), "projMat");
+//  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 #endif
   
   glm::mat4 modelMat;
@@ -398,6 +567,10 @@ int main(int argc, const char * argv[]) {
 //  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 #endif
   
+#if advancedtest == 7 || advancedtest == 8
+  glDepthFunc(GL_LEQUAL);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -410,8 +583,9 @@ int main(int argc, const char * argv[]) {
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
     glEnable(GL_DEPTH_TEST);
 #endif
+
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 5 || advancedtest == 6
+#if advancedtest != 2
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 #elif advancedtest == 2
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -419,7 +593,7 @@ int main(int argc, const char * argv[]) {
     
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
-
+    
     shader.Use();
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
@@ -436,10 +610,18 @@ int main(int argc, const char * argv[]) {
     glUniformMatrix4fv(windowsViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(windowsProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 #endif
+#if advancedtest == 8
+    glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+#endif
 
-#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8
+    shader.Use();
     glBindVertexArray(cubeVAO);
+#if advancedtest != 8
     glBindTexture(GL_TEXTURE_2D, cubeTexture);
+#else
+    glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+#endif
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
@@ -451,6 +633,7 @@ int main(int argc, const char * argv[]) {
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
     
+#if advancedtest < 7
     modelMat = glm::mat4();
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glBindTexture(GL_TEXTURE_2D, planeTexture);
@@ -458,6 +641,7 @@ int main(int argc, const char * argv[]) {
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+#endif
     
 #if advancedtest == 3 || advancedtest == 4
 #if advancedtest == 3
@@ -564,6 +748,21 @@ int main(int argc, const char * argv[]) {
     glBindVertexArray(0);
 #endif
     
+#if advancedtest == 7 || advancedtest == 8
+    //    glDepthMask(GL_FALSE);
+    skyboxShader.Use();
+    viewMat = glm::mat4(glm::mat3(cam.getViewMatrix()));
+    glUniformMatrix4fv(skyboxViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(skyboxProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    
+    glBindVertexArray(skyboxVAO);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+    glUniform1i(glGetUniformLocation(skyboxShader.GetProgram(), "tex"), 0);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    //    glDepthMask(GL_TRUE);
+#endif
     glfwSwapBuffers(window);
   }
 

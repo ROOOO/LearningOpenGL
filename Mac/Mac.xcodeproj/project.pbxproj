@@ -728,8 +728,8 @@
 		3CC16AAA1D12F9570080F62C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/1/main.cpp"; sourceTree = SOURCE_ROOT; };
 		3CC700B21D14149F00A21FAC /* EX_GS_HT_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_HT_3; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC700B91D14153B00A21FAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "../Files/Exercises/Getting Start/Hello_Triangle/3/main.cpp"; sourceTree = SOURCE_ROOT; };
-		3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderReader.cpp; path = ../Files/Classes/ShaderReader.cpp; sourceTree = "<group>"; };
-		3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShaderReader.hpp; path = ../Files/Classes/ShaderReader.hpp; sourceTree = "<group>"; };
+		3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderReader.cpp; path = ../Files/Classes/ShaderReader.cpp; sourceTree = SOURCE_ROOT; };
+		3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShaderReader.hpp; path = ../Files/Classes/ShaderReader.hpp; sourceTree = SOURCE_ROOT; };
 		3CC700CC1D1506E200A21FAC /* shader_test7.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test7.vs; path = "../Files/Getting Start/Shaders/shader_test7.vs"; sourceTree = "<group>"; };
 		3CC700CD1D15070000A21FAC /* shader_test7.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test7.frag; path = "../Files/Getting Start/Shaders/shader_test7.frag"; sourceTree = "<group>"; };
 		3CC700D31D152E4100A21FAC /* EX_GS_S_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_S_1; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -750,6 +750,15 @@
 		3CC701421D168FA800A21FAC /* shader_test9.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.frag; path = "../Files/Getting Start/Shaders/shader_test9.frag"; sourceTree = "<group>"; };
 		3CC701431D168FA800A21FAC /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = container.jpg; path = "../Files/Getting Start/Resources/container.jpg"; sourceTree = "<group>"; };
 		3CC701441D168FA800A21FAC /* shader_test9.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test9.vs; path = "../Files/Getting Start/Shaders/shader_test9.vs"; sourceTree = "<group>"; };
+		3CDACC481D37C154004DE0D1 /* test7.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test7.vert; sourceTree = "<group>"; };
+		3CDACC4A1D37C1DF004DE0D1 /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
+		3CDACC4B1D37C1DF004DE0D1 /* bottom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bottom.jpg; sourceTree = "<group>"; };
+		3CDACC4C1D37C1DF004DE0D1 /* front.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = front.jpg; sourceTree = "<group>"; };
+		3CDACC4D1D37C1DF004DE0D1 /* left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = left.jpg; sourceTree = "<group>"; };
+		3CDACC4E1D37C1DF004DE0D1 /* right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right.jpg; sourceTree = "<group>"; };
+		3CDACC4F1D37C1DF004DE0D1 /* top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = top.jpg; sourceTree = "<group>"; };
+		3CDACC501D3802AF004DE0D1 /* test8.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test8.frag; sourceTree = "<group>"; };
+		3CDACC511D3802AF004DE0D1 /* test8.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test8.vert; sourceTree = "<group>"; };
 		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
 		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
 		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
@@ -884,8 +893,8 @@
 		3CE3952B1D3665C50050486D /* EX_AO_FB_1.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_AO_FB_1.vert; sourceTree = "<group>"; };
 		3CF99DB41D1AE2D00028100C /* EX_GS_Tex_3_Vertex.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Vertex.shader; sourceTree = "<group>"; };
 		3CF99DB51D1AE2D00028100C /* EX_GS_Tex_3_Fragment.shader */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = EX_GS_Tex_3_Fragment.shader; sourceTree = "<group>"; };
-		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = "<group>"; };
-		3CF99DB71D1D5D6D0028100C /* TextureReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextureReader.hpp; path = ../Files/Classes/TextureReader.hpp; sourceTree = "<group>"; };
+		3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureReader.cpp; path = ../Files/Classes/TextureReader.cpp; sourceTree = SOURCE_ROOT; };
+		3CF99DB71D1D5D6D0028100C /* TextureReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TextureReader.hpp; path = ../Files/Classes/TextureReader.hpp; sourceTree = SOURCE_ROOT; };
 		3CF99DC81D1D62090028100C /* EX_GS_T_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_T_1; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF99DD31D1D62150028100C /* EX_GS_T_2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EX_GS_T_2; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF99DF11D1D63C50028100C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -1412,16 +1421,18 @@
 		3C45E5371D182E62007007DA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3CE394A61D2FFA4C0050486D /* Model.cpp */,
-				3CE394A71D2FFA4C0050486D /* Model.hpp */,
-				3CE3949F1D2FF5A80050486D /* Mesh.cpp */,
-				3CE394A01D2FF5A80050486D /* Mesh.hpp */,
-				3CE3934C1D23DF020050486D /* CommonSettings.cpp */,
-				3CE3934D1D23DF020050486D /* CommonSettings.hpp */,
-				3CF99DC31D1D60B10028100C /* Texture Class */,
-				3CC700C41D14DCFD00A21FAC /* Shader Class */,
 				3CE392F01D1F97510050486D /* Camera.cpp */,
 				3CE392F11D1F97510050486D /* Camera.hpp */,
+				3CE3934C1D23DF020050486D /* CommonSettings.cpp */,
+				3CE3934D1D23DF020050486D /* CommonSettings.hpp */,
+				3CE3949F1D2FF5A80050486D /* Mesh.cpp */,
+				3CE394A01D2FF5A80050486D /* Mesh.hpp */,
+				3CE394A61D2FFA4C0050486D /* Model.cpp */,
+				3CE394A71D2FFA4C0050486D /* Model.hpp */,
+				3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */,
+				3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */,
+				3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */,
+				3CF99DB71D1D5D6D0028100C /* TextureReader.hpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1547,15 +1558,6 @@
 			path = "../Files/Exercises/Getting Start/Hello_Triangle/3";
 			sourceTree = "<group>";
 		};
-		3CC700C41D14DCFD00A21FAC /* Shader Class */ = {
-			isa = PBXGroup;
-			children = (
-				3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */,
-				3CC700C61D14DD4200A21FAC /* ShaderReader.hpp */,
-			);
-			name = "Shader Class";
-			sourceTree = "<group>";
-		};
 		3CC700D41D152E4100A21FAC /* EX_GS_S_1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1616,6 +1618,19 @@
 				3CE392D71D1E5DE50050486D /* shader_test13.vs */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		3CDACC491D37C1DF004DE0D1 /* skybox */ = {
+			isa = PBXGroup;
+			children = (
+				3CDACC4A1D37C1DF004DE0D1 /* back.jpg */,
+				3CDACC4B1D37C1DF004DE0D1 /* bottom.jpg */,
+				3CDACC4C1D37C1DF004DE0D1 /* front.jpg */,
+				3CDACC4D1D37C1DF004DE0D1 /* left.jpg */,
+				3CDACC4E1D37C1DF004DE0D1 /* right.jpg */,
+				3CDACC4F1D37C1DF004DE0D1 /* top.jpg */,
+			);
+			path = skybox;
 			sourceTree = "<group>";
 		};
 		3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */ = {
@@ -1852,8 +1867,8 @@
 		3CE394F41D3155A30050486D /* Advanced OpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				3CE395271D36654D0050486D /* EX */,
 				3CE394F51D3155A30050486D /* main.cpp */,
+				3CE395271D36654D0050486D /* EX */,
 				3CE3950B1D31D44E0050486D /* Shaders */,
 				3CE3950E1D31D44E0050486D /* Resources */,
 			);
@@ -1877,6 +1892,9 @@
 				3CE3950C1D31D44E0050486D /* test1.frag */,
 				3CE3950D1D31D44E0050486D /* test1.vert */,
 				3CE3951B1D35255F0050486D /* test7.frag */,
+				3CDACC481D37C154004DE0D1 /* test7.vert */,
+				3CDACC501D3802AF004DE0D1 /* test8.frag */,
+				3CDACC511D3802AF004DE0D1 /* test8.vert */,
 			);
 			name = Shaders;
 			path = "../Files/Advanced OpenGL/Shaders";
@@ -1885,6 +1903,7 @@
 		3CE3950E1D31D44E0050486D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3CDACC491D37C1DF004DE0D1 /* skybox */,
 				3CE3950F1D31D44E0050486D /* marble.jpg */,
 				3CE395101D31D44E0050486D /* metal.png */,
 			);
@@ -1910,15 +1929,6 @@
 				3CE395211D36653D0050486D /* EX_AO_FB_1 */,
 			);
 			name = EX;
-			sourceTree = "<group>";
-		};
-		3CF99DC31D1D60B10028100C /* Texture Class */ = {
-			isa = PBXGroup;
-			children = (
-				3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */,
-				3CF99DB71D1D5D6D0028100C /* TextureReader.hpp */,
-			);
-			name = "Texture Class";
 			sourceTree = "<group>";
 		};
 		3CF99DC91D1D62090028100C /* EX_GS_T_1 */ = {
@@ -3730,6 +3740,7 @@
 				3CE392FD1D214AE50050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE3931C1D214BC80050486D /* Build configuration list for PBXNativeTarget "EX_GS_C_1" */ = {
 			isa = XCConfigurationList;
@@ -3738,6 +3749,7 @@
 				3CE3931E1D214BC80050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE3933A1D2184520050486D /* Build configuration list for PBXNativeTarget "Lighting" */ = {
 			isa = XCConfigurationList;
@@ -3746,6 +3758,7 @@
 				3CE3933C1D2184520050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE3936A1D23E3AE0050486D /* Build configuration list for PBXNativeTarget "EX_L_BL_1" */ = {
 			isa = XCConfigurationList;
@@ -3754,6 +3767,7 @@
 				3CE3936C1D23E3AE0050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE393751D23E3B50050486D /* Build configuration list for PBXNativeTarget "EX_L_BL_2" */ = {
 			isa = XCConfigurationList;
@@ -3762,6 +3776,7 @@
 				3CE393771D23E3B50050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE393801D23E3BB0050486D /* Build configuration list for PBXNativeTarget "EX_L_BL_3" */ = {
 			isa = XCConfigurationList;
@@ -3770,6 +3785,7 @@
 				3CE393821D23E3BB0050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE3938B1D23E3C20050486D /* Build configuration list for PBXNativeTarget "EX_L_BL_4" */ = {
 			isa = XCConfigurationList;
@@ -3778,6 +3794,7 @@
 				3CE3938D1D23E3C20050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE393D61D2561010050486D /* Build configuration list for PBXNativeTarget "EX_L_M" */ = {
 			isa = XCConfigurationList;
@@ -3786,6 +3803,7 @@
 				3CE393D81D2561010050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE393F11D281D4D0050486D /* Build configuration list for PBXNativeTarget "EX_L_LM_2" */ = {
 			isa = XCConfigurationList;
@@ -3794,6 +3812,7 @@
 				3CE393F31D281D4D0050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE394101D290E910050486D /* Build configuration list for PBXNativeTarget "EX_L_LM_3" */ = {
 			isa = XCConfigurationList;
@@ -3802,6 +3821,7 @@
 				3CE394121D290E910050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE394361D296FA00050486D /* Build configuration list for PBXNativeTarget "EX_L_LM_4" */ = {
 			isa = XCConfigurationList;
@@ -3810,6 +3830,7 @@
 				3CE394381D296FA00050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE394541D2D20000050486D /* Build configuration list for PBXNativeTarget "EX_L_ML_1" */ = {
 			isa = XCConfigurationList;
@@ -3818,6 +3839,7 @@
 				3CE394561D2D20000050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE3946F1D2E6C6A0050486D /* Build configuration list for PBXNativeTarget "EX_L_ML_2" */ = {
 			isa = XCConfigurationList;
@@ -3826,6 +3848,7 @@
 				3CE394711D2E6C6A0050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE394911D2EAED70050486D /* Build configuration list for PBXNativeTarget "Model Loading" */ = {
 			isa = XCConfigurationList;
@@ -3834,6 +3857,7 @@
 				3CE394931D2EAED70050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE394D81D3128A90050486D /* Build configuration list for PBXNativeTarget "EX_ML_M" */ = {
 			isa = XCConfigurationList;
@@ -3842,6 +3866,7 @@
 				3CE394DA1D3128A90050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE394F71D3155A30050486D /* Build configuration list for PBXNativeTarget "Advanced OpenGL" */ = {
 			isa = XCConfigurationList;
@@ -3850,6 +3875,7 @@
 				3CE394F91D3155A30050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE395241D36653D0050486D /* Build configuration list for PBXNativeTarget "EX_AO_FB_1" */ = {
 			isa = XCConfigurationList;
@@ -3858,6 +3884,7 @@
 				3CE395261D36653D0050486D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CF99DCC1D1D62090028100C /* Build configuration list for PBXNativeTarget "EX_GS_T_1" */ = {
 			isa = XCConfigurationList;

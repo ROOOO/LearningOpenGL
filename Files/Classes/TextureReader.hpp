@@ -14,14 +14,18 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SOIL/SOIL.h>
+#include <vector>
+#include <iostream>
 
 class TextureReader {
   GLuint m_texture;
   
 public:
+  TextureReader(std::vector<std::string> faces);
   TextureReader(const GLchar* path, GLboolean isAlphaTexture = false);
   ~TextureReader();
   GLuint getTexture();
+  GLuint getCubeMap();
 };
 
 #endif /* TextureReader_hpp */

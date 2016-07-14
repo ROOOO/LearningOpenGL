@@ -1,7 +1,8 @@
 #version 330 core
 out vec4 color;
-in vec2 TexCoords;
-uniform sampler2D tex;
+in vec3 TexCoords;
+uniform samplerCube tex;
 void main() {
-  color = vec4(vec3(1.0 - texture(tex, TexCoords)), 1.0f);
+  color = texture(tex, TexCoords);
+//  color = vec4(1.0f);
 }
