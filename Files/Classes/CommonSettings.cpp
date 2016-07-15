@@ -33,6 +33,7 @@ CommonSettings::CommonSettings() {
   m_ResourcesPath = "Advanced OpenGL/Resources/";
   m_FilesPath = "Advanced OpenGL/";
   m_ExercisesPath = "Exercises/Advanced OpenGL/";
+  m_ModelsPath = "Model Loading/Models/";
 #endif
 #else
 #if test == 1
@@ -56,6 +57,7 @@ CommonSettings::CommonSettings() {
   m_ResourcesPath = "Advanced OpenGL\\Resources\\";
   m_FilesPath = "Advanced OpenGL\\";
   m_ExercisesPath = "Exercises\\Advanced OpenGL\\";
+  m_ModelsPath = "Model Loading\\Models\\";
 #endif
 #endif
 }

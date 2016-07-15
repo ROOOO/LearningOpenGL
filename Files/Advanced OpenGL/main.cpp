@@ -353,7 +353,7 @@ int main(int argc, const char * argv[]) {
 #if advancedtest != 8
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 #else
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 #endif
   glEnableVertexAttribArray(1);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -507,6 +507,7 @@ int main(int argc, const char * argv[]) {
   GLint skyboxViewMatLoc = glGetUniformLocation(skyboxShader.GetProgram(), "viewMat");
   GLint skyboxProjMatLoc = glGetUniformLocation(skyboxShader.GetProgram(), "projMat");
 //  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
 #endif
   
   glm::mat4 modelMat;
@@ -621,6 +622,8 @@ int main(int argc, const char * argv[]) {
     glBindTexture(GL_TEXTURE_2D, cubeTexture);
 #else
     glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+    model.Draw(shader);
+
 #endif
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
@@ -758,7 +761,7 @@ int main(int argc, const char * argv[]) {
     glBindVertexArray(skyboxVAO);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
-    glUniform1i(glGetUniformLocation(skyboxShader.GetProgram(), "tex"), 0);
+//    glUniform1i(glGetUniformLocation(skyboxShader.GetProgram(), "tex"), 0);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
     //    glDepthMask(GL_TRUE);
