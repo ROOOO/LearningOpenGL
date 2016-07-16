@@ -40,6 +40,7 @@ void Mesh::m_setupMesh() {
 void Mesh::Draw(ShaderReader shader) {
   GLuint diffuseNr = 1;
   GLuint specularNr = 1;
+  GLuint reflectionNr = 1;
   for (GLuint i = 0; i < this->textures.size(); i++) {
     glActiveTexture(GL_TEXTURE0 + i);
     stringstream ss;
@@ -49,6 +50,8 @@ void Mesh::Draw(ShaderReader shader) {
       ss << diffuseNr++;
     } else if (name == "texture_specular") {
       ss << specularNr++;
+    } else if (name == "texture_reflection") {
+      ss << reflectionNr++;
     }
     number = ss.str();
     glUniform1f(glGetUniformLocation(shader.GetProgram(), ("material." + name + number).c_str()), i);

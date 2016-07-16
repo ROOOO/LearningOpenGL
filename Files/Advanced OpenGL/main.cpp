@@ -19,31 +19,6 @@
 
 #include "CommonSettings.hpp"
 
-GLuint loadCubemap(vector<const GLchar*> faces)
-{
-  GLuint textureID;
-  glGenTextures(1, &textureID);
-  
-  int width,height;
-  unsigned char* image;
-  
-  glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-  for(GLuint i = 0; i < faces.size(); i++)
-  {
-    image = SOIL_load_image(faces[i], &width, &height, 0, SOIL_LOAD_RGB);
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-    SOIL_free_image_data(image);
-  }
-  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-  glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
-  
-  return textureID;
-}
-
 Camera cam(glm::vec3(0.0f, 0.0f, 5.0f));
 GLboolean keys[1024];
 GLfloat deltaTime = 0.0f;
@@ -568,7 +543,7 @@ int main(int argc, const char * argv[]) {
 //  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 #endif
   
-#if advancedtest == 7 || advancedtest == 8
+#if advancedtest == 7
   glDepthFunc(GL_LEQUAL);
 #endif
   
@@ -753,6 +728,7 @@ int main(int argc, const char * argv[]) {
     
 #if advancedtest == 7 || advancedtest == 8
     //    glDepthMask(GL_FALSE);
+    glDepthFunc(GL_LEQUAL);
     skyboxShader.Use();
     viewMat = glm::mat4(glm::mat3(cam.getViewMatrix()));
     glUniformMatrix4fv(skyboxViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
@@ -765,6 +741,7 @@ int main(int argc, const char * argv[]) {
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
     //    glDepthMask(GL_TRUE);
+    glDepthFunc(GL_LESS);
 #endif
     glfwSwapBuffers(window);
   }
