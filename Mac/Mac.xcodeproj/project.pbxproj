@@ -794,6 +794,11 @@
 		3CDACC711D39C645004DE0D1 /* EX_AO_CM_skybox.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EX_AO_CM_skybox.vert; sourceTree = "<group>"; };
 		3CDACC721D3B23A0004DE0D1 /* test9.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test9.frag; sourceTree = "<group>"; };
 		3CDACC731D3B23A0004DE0D1 /* test9.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test9.vert; sourceTree = "<group>"; };
+		3CDACC741D3BEB28004DE0D1 /* test10_blue.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10_blue.frag; sourceTree = "<group>"; };
+		3CDACC751D3BEB28004DE0D1 /* test10_green.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10_green.frag; sourceTree = "<group>"; };
+		3CDACC761D3BEB28004DE0D1 /* test10_red.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10_red.frag; sourceTree = "<group>"; };
+		3CDACC771D3BEB28004DE0D1 /* test10_yellow.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10_yellow.frag; sourceTree = "<group>"; };
+		3CDACC781D3BEB28004DE0D1 /* test10.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10.vert; sourceTree = "<group>"; };
 		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
 		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
 		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
@@ -1963,6 +1968,11 @@
 				3CDACC501D3802AF004DE0D1 /* test8.frag */,
 				3CDACC511D3802AF004DE0D1 /* test8.vert */,
 				3CDACC721D3B23A0004DE0D1 /* test9.frag */,
+				3CDACC741D3BEB28004DE0D1 /* test10_blue.frag */,
+				3CDACC751D3BEB28004DE0D1 /* test10_green.frag */,
+				3CDACC761D3BEB28004DE0D1 /* test10_red.frag */,
+				3CDACC771D3BEB28004DE0D1 /* test10_yellow.frag */,
+				3CDACC781D3BEB28004DE0D1 /* test10.vert */,
 				3CDACC731D3B23A0004DE0D1 /* test9.vert */,
 			);
 			name = Shaders;

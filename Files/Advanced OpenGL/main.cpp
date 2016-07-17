@@ -15,8 +15,9 @@
 // test7 Skybox
 // test8 Reflection
 // test9 Advanced GLSL
+// test10 Uniform buffer
 
-#define advancedtest 9
+#define advancedtest 10
 
 #include "CommonSettings.hpp"
 
@@ -449,7 +450,7 @@ int main(int argc, const char * argv[]) {
   windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
 #endif
 
-#if advancedtest != 5 && advancedtest != 8 && advancedtest != 9
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 9 && advancedtest != 10
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #elif advancedtest == 5
   ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
@@ -458,6 +459,11 @@ int main(int argc, const char * argv[]) {
   GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
 #elif advancedtest == 9
   ShaderReader shader(Settings.CCShadersPath("test9.vert").c_str(), Settings.CCShadersPath("test9.frag").c_str());
+#elif advancedtest == 10
+  ShaderReader redShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_red.frag").c_str());
+  ShaderReader greenShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_green.frag").c_str());
+  ShaderReader blueShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_blue.frag").c_str());
+  ShaderReader yellowShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_yellow.frag").c_str());
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -492,10 +498,14 @@ int main(int argc, const char * argv[]) {
   glm::mat4 viewMat;
   glm::mat4 projMat;
   
+#if advancedtest != 10
   shader.Use();
   GLint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
+#elif advancedtest == 10
+  
+#endif
   
   glDepthFunc(GL_LESS);
   
@@ -577,6 +587,7 @@ int main(int argc, const char * argv[]) {
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
     
+#if advancedtest != 10
     shader.Use();
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
@@ -595,6 +606,7 @@ int main(int argc, const char * argv[]) {
 #endif
 #if advancedtest == 8
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+#endif
 #endif
 
 #if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8 || advancedtest == 9
