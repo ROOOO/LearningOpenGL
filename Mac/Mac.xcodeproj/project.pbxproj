@@ -792,6 +792,8 @@
 		3CDACC6F1D39C1AC004DE0D1 /* EX_AO_CM.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = EX_AO_CM.vert; sourceTree = "<group>"; };
 		3CDACC701D39C645004DE0D1 /* EX_AO_CM_skybox.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EX_AO_CM_skybox.frag; sourceTree = "<group>"; };
 		3CDACC711D39C645004DE0D1 /* EX_AO_CM_skybox.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EX_AO_CM_skybox.vert; sourceTree = "<group>"; };
+		3CDACC721D3B23A0004DE0D1 /* test9.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test9.frag; sourceTree = "<group>"; };
+		3CDACC731D3B23A0004DE0D1 /* test9.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test9.vert; sourceTree = "<group>"; };
 		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
 		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
 		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
@@ -1960,6 +1962,8 @@
 				3CDACC481D37C154004DE0D1 /* test7.vert */,
 				3CDACC501D3802AF004DE0D1 /* test8.frag */,
 				3CDACC511D3802AF004DE0D1 /* test8.vert */,
+				3CDACC721D3B23A0004DE0D1 /* test9.frag */,
+				3CDACC731D3B23A0004DE0D1 /* test9.vert */,
 			);
 			name = Shaders;
 			path = "../Files/Advanced OpenGL/Shaders";

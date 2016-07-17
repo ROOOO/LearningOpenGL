@@ -14,8 +14,9 @@
 // test6 Framebuffers
 // test7 Skybox
 // test8 Reflection
+// test9 Advanced GLSL
 
-#define advancedtest 8
+#define advancedtest 9
 
 #include "CommonSettings.hpp"
 
@@ -448,13 +449,15 @@ int main(int argc, const char * argv[]) {
   windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
 #endif
 
-#if advancedtest != 5 && advancedtest != 8
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 9
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #elif advancedtest == 5
   ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
 #elif advancedtest == 8
   ShaderReader shader(Settings.CCShadersPath("test8.vert").c_str(), Settings.CCShadersPath("test8.frag").c_str());
   GLint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
+#elif advancedtest == 9
+  ShaderReader shader(Settings.CCShadersPath("test9.vert").c_str(), Settings.CCShadersPath("test9.frag").c_str());
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -547,6 +550,10 @@ int main(int argc, const char * argv[]) {
   glDepthFunc(GL_LEQUAL);
 #endif
   
+#if advancedtest == 9
+  glEnable(GL_PROGRAM_POINT_SIZE);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -590,12 +597,12 @@ int main(int argc, const char * argv[]) {
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
 #endif
 
-#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8
+#if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8 || advancedtest == 9
     shader.Use();
     glBindVertexArray(cubeVAO);
-#if advancedtest != 8
+#if advancedtest != 8 && advancedtest != 9
     glBindTexture(GL_TEXTURE_2D, cubeTexture);
-#else
+#elif advancedtest == 7
     glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
     model.Draw(shader);
 
@@ -603,11 +610,16 @@ int main(int argc, const char * argv[]) {
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.01f, -1.0f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+#if advancedtest != 9
     glDrawArrays(GL_TRIANGLES, 0, 36);
     modelMat = glm::mat4();
     modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.01f, 0.0f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glDrawArrays(GL_TRIANGLES, 0, 36);
+#elif advancedtest == 9
+//    glDrawArrays(GL_POINTS, 0, 36);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+#endif
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
     
