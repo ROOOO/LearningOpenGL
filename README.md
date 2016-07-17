@@ -39,8 +39,24 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
-##### Jul 13, 2016, Wed.
+##### Jul 17, 2016, Sun.
  - 
+
+##### Jul 16, 2016, Sat.
+ - Exercise of Cubemaps.
+ - Chapter Advanced Data.
+
+##### Jul 15, 2016, Fri.
+ - Chapter Cubemaps.
+ - Exercise of Cubemaps.
+
+##### Jul 14, 2016, Thur.
+ - Exercise of Framebuffers.
+ - Chapter Cubemaps.
+
+##### Jul 13, 2016, Wed.
+ - Chapter Framebuffers.
+ - Exercise of Framebuffers.
 
 ##### Jul 12, 2016, Tue.
  - Chapter Framebuffers.
