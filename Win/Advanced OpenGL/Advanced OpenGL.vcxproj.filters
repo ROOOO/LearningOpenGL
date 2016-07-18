@@ -71,6 +71,36 @@
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test7.frag">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test7.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test8.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test8.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test9.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test9.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_blue.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_green.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_red.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_yellow.frag">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Files\Advanced OpenGL\Resources\container.jpg">

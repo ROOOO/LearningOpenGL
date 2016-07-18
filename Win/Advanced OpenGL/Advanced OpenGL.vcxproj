@@ -38,8 +38,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>D:\Projects\OpenGL\LearningOpenGL\Libs\Includes;D:\Projects\OpenGL\LearningOpenGL\Files\Classes;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -50,7 +49,8 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation><AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -77,6 +77,11 @@
   <ItemGroup>
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test1.frag" />
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test1.vert" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10.vert" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_blue.frag" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_green.frag" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_red.frag" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test10_yellow.frag" />
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test2.frag" />
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test2.vert" />
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test3.frag" />
@@ -88,6 +93,11 @@
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test6.frag" />
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test6.vert" />
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test7.frag" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test7.vert" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test8.frag" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test8.vert" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test9.frag" />
+    <None Include="..\..\Files\Advanced OpenGL\Shaders\test9.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Files\Advanced OpenGL\Resources\container.jpg" />
