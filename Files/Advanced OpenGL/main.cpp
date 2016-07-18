@@ -564,6 +564,30 @@ int main(int argc, const char * argv[]) {
   glEnable(GL_PROGRAM_POINT_SIZE);
 #endif
   
+#if advancedtest == 10
+  GLuint uniformBlockIndexRed = glGetUniformBlockIndex(redShader.GetProgram(), "Matrices");
+  GLuint uniformBlockIndexGreen = glGetUniformBlockIndex(greenShader.GetProgram(), "Matrices");
+  GLuint uniformBlockIndexBlue = glGetUniformBlockIndex(blueShader.GetProgram(), "Matrices");
+  GLuint uniformBlockIndexYellow = glGetUniformBlockIndex(yellowShader.GetProgram(), "Matrices");
+  
+  glUniformBlockBinding(redShader.GetProgram(), uniformBlockIndexRed, 0);
+  glUniformBlockBinding(greenShader.GetProgram(), uniformBlockIndexGreen, 0);
+  glUniformBlockBinding(blueShader.GetProgram(), uniformBlockIndexBlue, 0);
+  glUniformBlockBinding(yellowShader.GetProgram(), uniformBlockIndexYellow, 0);
+  
+  GLuint UBO;
+  glGenBuffers(1, &UBO);
+  glBindBuffer(GL_UNIFORM_BUFFER, UBO);
+  glBufferData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), nullptr, GL_STATIC_DRAW);
+  glBindBuffer(GL_UNIFORM_BUFFER, 0);
+  glBindBufferRange(GL_UNIFORM_BUFFER, 0, UBO, 0, 2 * sizeof(glm::mat4));
+  
+  projMat = glm::perspective(glm::radians(45.0f), (GLfloat)width / height, 0.1f, 100.0f);
+  glBindBuffer(GL_UNIFORM_BUFFER, UBO);
+  glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(projMat));
+  glBindBuffer(GL_UNIFORM_BUFFER, 0);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -607,6 +631,9 @@ int main(int argc, const char * argv[]) {
 #if advancedtest == 8
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
 #endif
+#endif
+#if advancedtest == 10
+    
 #endif
 
 #if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8 || advancedtest == 9
@@ -767,6 +794,40 @@ int main(int argc, const char * argv[]) {
     //    glDepthMask(GL_TRUE);
     glDepthFunc(GL_LESS);
 #endif
+    
+#if advancedtest == 10
+    viewMat = cam.getViewMatrix();
+    glBindBuffer(GL_UNIFORM_BUFFER, UBO);
+    glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(viewMat));
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+    
+    glBindVertexArray(cubeVAO);
+    redShader.Use();
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(-0.75, 0.75, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(redShader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    greenShader.Use();
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(0.75, 0.75, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(greenShader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    blueShader.Use();
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(-0.75, -0.75, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(blueShader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    yellowShader.Use();
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(0.75, -0.75, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(yellowShader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+#endif
+    
     glfwSwapBuffers(window);
   }
 
