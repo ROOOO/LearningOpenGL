@@ -39,8 +39,15 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
-##### Jul 17, 2016, Sun.
+##### Jul 19, 2016, Tue.
  - 
+
+##### Jul 18, 2016, Mon.
+ - Chapter Advanced GLSL.
+ - Chapter Geometry Shader.
+
+##### Jul 17, 2016, Sun.
+ - Chapter Advanced GLSL.
 
 ##### Jul 16, 2016, Sat.
  - Exercise of Cubemaps.
