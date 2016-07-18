@@ -21,8 +21,10 @@ using namespace std;
 
 class ShaderReader {
   GLuint m_shaderProgram;
+  
 public:
   ShaderReader(const GLchar* vertexShaderPath, const GLchar* fragmentShaderPath);
+  ShaderReader(string vertexShaderPath, string fragmentShaderPath, string geometryShaderPath);
   GLuint GetProgram();
   void Use();
 };

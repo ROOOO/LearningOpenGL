@@ -799,6 +799,9 @@
 		3CDACC761D3BEB28004DE0D1 /* test10_red.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10_red.frag; sourceTree = "<group>"; };
 		3CDACC771D3BEB28004DE0D1 /* test10_yellow.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10_yellow.frag; sourceTree = "<group>"; };
 		3CDACC781D3BEB28004DE0D1 /* test10.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test10.vert; sourceTree = "<group>"; };
+		3CDACC791D3D248D004DE0D1 /* test11.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test11.frag; sourceTree = "<group>"; };
+		3CDACC7A1D3D248D004DE0D1 /* test11.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test11.geom; sourceTree = "<group>"; };
+		3CDACC7B1D3D248D004DE0D1 /* test11.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test11.vert; sourceTree = "<group>"; };
 		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
 		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
 		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
@@ -1974,6 +1977,9 @@
 				3CDACC771D3BEB28004DE0D1 /* test10_yellow.frag */,
 				3CDACC781D3BEB28004DE0D1 /* test10.vert */,
 				3CDACC731D3B23A0004DE0D1 /* test9.vert */,
+				3CDACC791D3D248D004DE0D1 /* test11.frag */,
+				3CDACC7A1D3D248D004DE0D1 /* test11.geom */,
+				3CDACC7B1D3D248D004DE0D1 /* test11.vert */,
 			);
 			name = Shaders;
 			path = "../Files/Advanced OpenGL/Shaders";

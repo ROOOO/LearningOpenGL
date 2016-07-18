@@ -16,8 +16,9 @@
 // test8 Reflection
 // test9 Advanced GLSL
 // test10 Uniform buffer
+// test11 Geometry Shader
 
-#define advancedtest 10
+#define advancedtest 11
 
 #include "CommonSettings.hpp"
 
@@ -98,7 +99,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest != 5 && advancedtest != 8
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -314,7 +315,16 @@ int main(int argc, const char * argv[]) {
     1.0f, -1.0f,  1.0f
   };
 #endif
+#if advancedtest == 11
+  GLfloat points[] = {
+    -0.5f, 0.5f,
+    0.5f, 0.5f,
+    0.5f, -0.5f,
+    -0.5f, -0.5f,
+  };
+#endif
   
+#if advancedtest != 11
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
   glGenBuffers(1, &cubeVBO);
@@ -335,6 +345,20 @@ int main(int argc, const char * argv[]) {
   glEnableVertexAttribArray(1);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+#endif
+  
+#if advancedtest == 11
+  GLuint pointsVAO, pointsVBO;
+  glGenVertexArrays(1, &pointsVAO);
+  glGenBuffers(1, &pointsVBO);
+  glBindVertexArray(pointsVAO);
+  glBindBuffer(GL_ARRAY_BUFFER, pointsVBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
+#endif
   
 #if advancedtest != 5 && advancedtest < 7
   GLuint planeVAO, planeVBO;
@@ -450,7 +474,7 @@ int main(int argc, const char * argv[]) {
   windows.push_back(glm::vec3( 0.5f,  0.0f, -0.6f));
 #endif
 
-#if advancedtest != 5 && advancedtest != 8 && advancedtest != 9 && advancedtest != 10
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 9 && advancedtest != 10 && advancedtest != 11
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #elif advancedtest == 5
   ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
@@ -464,6 +488,8 @@ int main(int argc, const char * argv[]) {
   ShaderReader greenShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_green.frag").c_str());
   ShaderReader blueShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_blue.frag").c_str());
   ShaderReader yellowShader(Settings.CCShadersPath("test10.vert").c_str(), Settings.CCShadersPath("test10_yellow.frag").c_str());
+#elif advancedtest == 11
+  ShaderReader shader(Settings.CCShadersPath("test11.vert"), Settings.CCShadersPath("test11.frag"), Settings.CCShadersPath("test11.geom"));
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -503,8 +529,6 @@ int main(int argc, const char * argv[]) {
   GLint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
   GLint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
-#elif advancedtest == 10
-  
 #endif
   
   glDepthFunc(GL_LESS);
@@ -822,6 +846,13 @@ int main(int argc, const char * argv[]) {
     modelMat = glm::translate(modelMat, glm::vec3(0.75, -0.75, 0.0f));
     glUniformMatrix4fv(glGetUniformLocation(yellowShader.GetProgram(), "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
     glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+#endif
+    
+#if advancedtest == 11
+    shader.Use();
+    glBindVertexArray(pointsVAO);
+    glDrawArrays(GL_POINTS, 0, 4);
     glBindVertexArray(0);
 #endif
     
