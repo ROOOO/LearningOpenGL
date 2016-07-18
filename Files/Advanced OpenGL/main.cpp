@@ -415,7 +415,7 @@ int main(int argc, const char * argv[]) {
 #ifdef __APPLE__
   string path = "skybox/";
 #else
-  string path = "skybox\\"
+  string path = "skybox\\";
 #endif
   vector<string> faces;
   faces.push_back(Settings.CCResourcesPath(path + "right.jpg"));
