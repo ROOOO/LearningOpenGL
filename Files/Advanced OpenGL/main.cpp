@@ -18,8 +18,9 @@
 // test10 Uniform buffer
 // test11 Geometry Shader
 // test12 Exploding Objects
+// test13 Visualizing normal vectors
 
-#define advancedtest 12
+#define advancedtest 13
 
 #include "CommonSettings.hpp"
 
@@ -100,7 +101,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -325,7 +326,7 @@ int main(int argc, const char * argv[]) {
   };
 #endif
   
-#if advancedtest != 11 && advancedtest != 12
+#if advancedtest != 11 && advancedtest != 12 && advancedtest != 13
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
   glGenBuffers(1, &cubeVBO);
@@ -495,7 +496,11 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("test11.vert"), Settings.CCShadersPath("test11.frag"), Settings.CCShadersPath("test11.geom"));
 #elif advancedtest == 12
   ShaderReader shader(Settings.CCShadersPath("test12.vert"), Settings.CCShadersPath("test12.frag"), Settings.CCShadersPath("test12.geom"));
-//  ShaderReader shader(Settings.CCShadersPath("test12.vert").c_str(), Settings.CCShadersPath("test12.frag").c_str());
+  //  ShaderReader shader(Settings.CCShadersPath("test12.vert").c_str(), Settings.CCShadersPath("test12.frag").c_str());
+  Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
+#elif advancedtest == 13
+  ShaderReader shader(Settings.CCShadersPath("test13.vert"), Settings.CCShadersPath("test13.frag"), Settings.CCShadersPath("test13.geom"));
+  ShaderReader modelShader(Settings.CCShadersPath("test13_model.vert").c_str(), Settings.CCShadersPath("test13_model.frag").c_str());
   Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
 #endif
 #if advancedtest == 2
@@ -619,6 +624,13 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_UNIFORM_BUFFER, 0);
 #endif
   
+#if advancedtest == 13
+  modelShader.Use();
+  GLint modelModelMatLoc = glGetUniformLocation(modelShader.GetProgram(), "modelMat");
+  GLint modelViewMatLoc = glGetUniformLocation(modelShader.GetProgram(), "viewMat");
+  GLint modelProjMatLoc = glGetUniformLocation(modelShader.GetProgram(), "projMat");
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -663,8 +675,10 @@ int main(int argc, const char * argv[]) {
     glUniform3f(viewPosLoc, cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
 #endif
 #endif
-#if advancedtest == 10
-    
+#if advancedtest == 13
+    modelShader.Use();
+    glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(modelProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
 #endif
 
 #if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8 || advancedtest == 9
@@ -868,6 +882,18 @@ int main(int argc, const char * argv[]) {
     modelMat = glm::scale(modelMat, glm::vec3(0.2f));
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     glUniform1f(glGetUniformLocation(shader.GetProgram(), "time"), glfwGetTime());
+    model.Draw(shader);
+#endif
+    
+#if advancedtest == 13
+    modelShader.Use();
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    model.Draw(modelShader);
+    
+    shader.Use();
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     model.Draw(shader);
 #endif
     
