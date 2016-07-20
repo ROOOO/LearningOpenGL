@@ -39,8 +39,15 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
-##### Jul 19, 2016, Tue.
+##### Jul 21, 2016, Thur.
  - 
+
+##### Jul 20, 2016, Wed.
+ - Chapter Geometry Shader.
+ - Chapter Instancing.
+
+##### Jul 19, 2016, Tue.
+ - Chapter Geometry Shader.
 
 ##### Jul 18, 2016, Mon.
  - Chapter Advanced GLSL.
