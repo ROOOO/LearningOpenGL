@@ -19,8 +19,10 @@
 // test11 Geometry Shader
 // test12 Exploding Objects
 // test13 Visualizing normal vectors
+// test14 Instancing
+// test15 An asteroid field
 
-#define advancedtest 13
+#define advancedtest 14
 
 #include "CommonSettings.hpp"
 
@@ -101,7 +103,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -325,8 +327,19 @@ int main(int argc, const char * argv[]) {
     -0.5f, -0.5f, 1.0f, 1.0f, 0.0f,
   };
 #endif
+#if advancedtest == 14
+  GLfloat quadVertices[] = {
+    -0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
+    0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
+    -0.05f, -0.05f,  0.0f, 0.0f, 1.0f,
+    
+    -0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
+    0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
+    0.05f,  0.05f,  0.0f, 1.0f, 1.0f,
+  };
+#endif
   
-#if advancedtest != 11 && advancedtest != 12 && advancedtest != 13
+#if advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
   glGenBuffers(1, &cubeVBO);
@@ -402,17 +415,51 @@ int main(int argc, const char * argv[]) {
   glBindVertexArray(0);
 #endif
   
-#if advancedtest == 6
+#if advancedtest == 14
+  glm::vec2 translations[100];
+  GLuint index = 0;
+  GLfloat offset = 0.1f;
+  for (GLfloat y = -10; y < 10; y += 2) {
+    for (GLfloat x = -10; x < 10; x += 2) {
+      glm::vec2 translation;
+      translation.x = (GLfloat)x / 10.0f + offset;
+      translation.y = (GLfloat)y / 10.0f + offset;
+      translations[index++] = translation;
+    }
+  }
+
+  GLuint instanceVBO;
+  glGenBuffers(1, &instanceVBO);
+  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * 100, translations, GL_STATIC_DRAW);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+#endif
+  
+#if advancedtest == 6 || advancedtest == 14
   GLuint quadVAO, quadVBO;
   glGenVertexArrays(1, &quadVAO);
   glGenBuffers(1, &quadVBO);
   glBindVertexArray(quadVAO);
   glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+#if advancedtest == 6
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+#else
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+#endif
   glEnableVertexAttribArray(0);
+#if advancedtest == 6
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+#else
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+#endif
   glEnableVertexAttribArray(1);
+#if advancedtest == 14
+  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+  glEnableVertexAttribArray(2);
+  glVertexAttribDivisor(2, 1);
+#endif
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
 #endif
@@ -501,7 +548,10 @@ int main(int argc, const char * argv[]) {
 #elif advancedtest == 13
   ShaderReader shader(Settings.CCShadersPath("test13.vert"), Settings.CCShadersPath("test13.frag"), Settings.CCShadersPath("test13.geom"));
   ShaderReader modelShader(Settings.CCShadersPath("test13_model.vert").c_str(), Settings.CCShadersPath("test13_model.frag").c_str());
-  Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
+//  Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
+  Model model(Settings.CCModelsPath("Nanosuit/nanosuit.obj").c_str());
+#elif advancedtest == 14
+  ShaderReader shader(Settings.CCShadersPath("test14.vert").c_str(), Settings.CCShadersPath("test14.frag").c_str());
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -629,6 +679,17 @@ int main(int argc, const char * argv[]) {
   GLint modelModelMatLoc = glGetUniformLocation(modelShader.GetProgram(), "modelMat");
   GLint modelViewMatLoc = glGetUniformLocation(modelShader.GetProgram(), "viewMat");
   GLint modelProjMatLoc = glGetUniformLocation(modelShader.GetProgram(), "projMat");
+#endif
+  
+#if advancedtest == 14
+//  shader.Use();
+//  for (GLuint i = 0; i < 100; i++) {
+//    stringstream ss;
+//    string index;
+//    ss << i;
+//    index = ss.str();
+//    glUniform2f(glGetUniformLocation(shader.GetProgram(), ("offsets[" + index + "]").c_str()), translations[i].x, translations[i].y);
+//  }
 #endif
   
   while (!glfwWindowShouldClose(window)) {
@@ -895,6 +956,15 @@ int main(int argc, const char * argv[]) {
     modelMat = glm::mat4();
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
     model.Draw(shader);
+#endif
+    
+#if advancedtest == 14
+    shader.Use();
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glBindVertexArray(quadVAO);
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 6, 100);
+    glBindVertexArray(0);
 #endif
     
     glfwSwapBuffers(window);
