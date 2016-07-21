@@ -44,6 +44,7 @@ Mesh Model::m_processMesh(aiMesh *mesh, const aiScene *scene) {
   vector<GLuint> indices;
   vector<Texture> textures;
   
+  std::cout << mesh->mNumVertices << std::endl;
   for (GLuint i = 0; i < mesh->mNumVertices; i++) {
     Vertex vertex;
     
@@ -114,6 +115,7 @@ vector<Texture> Model::m_loadMaterialTextures(aiMaterial *mat, aiTextureType typ
       texture.type = typeName;
       texture.path = str;
       textures.push_back(texture);
+      m_texturesLoaded.push_back(texture);
     }
   }
   
@@ -141,4 +143,12 @@ GLuint Model::m_textureFromFile(const char *path, string directory) {
   SOIL_free_image_data(image);
   
   return textureID;
+}
+
+vector<Mesh> Model::getMeshes() {
+  return this->m_meshes;
+}
+
+vector<Texture> Model::getTexturesLoaded() {
+  return this->m_texturesLoaded;
 }

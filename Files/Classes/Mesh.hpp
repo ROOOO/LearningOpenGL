@@ -42,6 +42,7 @@ public:
   vector<Texture> textures;
   Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures);
   void Draw(ShaderReader shader);
+  GLuint getVAO();
 };
 
 

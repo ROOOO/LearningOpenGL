@@ -22,7 +22,7 @@
 // test14 Instancing
 // test15 An asteroid field
 
-#define advancedtest 14
+#define advancedtest 15
 
 #include "CommonSettings.hpp"
 
@@ -103,7 +103,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14 && advancedtest == 15
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -339,7 +339,7 @@ int main(int argc, const char * argv[]) {
   };
 #endif
   
-#if advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14
+#if advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14 && advancedtest != 15
   GLuint cubeVAO, cubeVBO;
   glGenVertexArrays(1, &cubeVAO);
   glGenBuffers(1, &cubeVBO);
@@ -552,6 +552,12 @@ int main(int argc, const char * argv[]) {
   Model model(Settings.CCModelsPath("Nanosuit/nanosuit.obj").c_str());
 #elif advancedtest == 14
   ShaderReader shader(Settings.CCShadersPath("test14.vert").c_str(), Settings.CCShadersPath("test14.frag").c_str());
+#elif advancedtest == 15
+  ShaderReader shader(Settings.CCShadersPath("test15.vert").c_str(), Settings.CCShadersPath("test15.frag").c_str());
+  ShaderReader instanceShader(Settings.CCShadersPath("test15_instance.vert").c_str(), Settings.CCShadersPath("test15.frag").c_str());
+  Model planet(Settings.CCModelsPath("planet/planet.obj").c_str());
+  Model rock(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
+//  Model rock(Settings.CCModelsPath("rock/rock.obj").c_str());
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -692,6 +698,56 @@ int main(int argc, const char * argv[]) {
 //  }
 #endif
   
+#if advancedtest == 15
+  GLuint amount = 1000;
+  glm::mat4 *modelMatrices;
+  modelMatrices = new glm::mat4[amount];
+  srand(glfwGetTime());
+  GLfloat radius = 20.0f;
+  GLfloat offset = 2.5f;
+  for (GLuint i = 0; i < amount; i++) {
+    glm::mat4 model;
+    GLfloat angle = (GLfloat)i / (GLfloat)amount * 360.0f;
+    GLfloat displacement = (rand() % (GLint)(2 * offset * 100)) / 100.0f - offset;
+    GLfloat x = sin(angle) * radius + displacement;
+    displacement = (rand() % (GLint)(2 * offset * 100) / 100.0f - offset);
+    GLfloat y = displacement * 0.4f;
+    displacement = (rand() % (GLint)(2 * offset * 100) / 100.0f - offset);
+    GLfloat z = cos(angle) * radius + displacement;
+    model = glm::translate(model, glm::vec3(x, y, z));
+    GLfloat scale = (rand() % 20) / 100.0f + 0.05f;
+    model = glm::scale(model, glm::vec3(scale));
+    GLfloat rotAngle = (rand() % 360);
+    model = glm::rotate(model, glm::radians(rotAngle), glm::vec3(0.4f, 0.6f, 0.8f));
+    modelMatrices[i] = model;
+  }
+  
+  for (GLuint i = 0; i < rock.getMeshes().size(); i++) {
+    GLuint VAO = rock.getMeshes()[i].getVAO();
+    GLuint buffer;
+    glBindVertexArray(VAO);
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, amount * sizeof(glm::mat4), &modelMatrices[0], GL_STATIC_DRAW);
+    
+    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(glm::vec4), (GLvoid*)0);
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(glm::vec4), (GLvoid*)(sizeof(glm::vec4)));
+    glEnableVertexAttribArray(4);
+    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(glm::vec4), (GLvoid*)(2 * sizeof(glm::vec4)));
+    glEnableVertexAttribArray(5);
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(glm::vec4), (GLvoid*)(3 * sizeof(glm::vec4)));
+    glEnableVertexAttribArray(6);
+    
+    glVertexAttribDivisor(3, 1);
+    glVertexAttribDivisor(4, 1);
+    glVertexAttribDivisor(5, 1);
+    glVertexAttribDivisor(6, 1);
+    
+    glBindVertexArray(0);
+  }
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     do_movement();
@@ -740,6 +796,11 @@ int main(int argc, const char * argv[]) {
     modelShader.Use();
     glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(modelProjMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+#endif
+#if advancedtest == 15
+    instanceShader.Use();
+    glUniformMatrix4fv(glGetUniformLocation(instanceShader.GetProgram(), "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(glGetUniformLocation(instanceShader.GetProgram(), "projMat"), 1, GL_FALSE, glm::value_ptr(projMat));
 #endif
 
 #if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8 || advancedtest == 9
@@ -965,6 +1026,27 @@ int main(int argc, const char * argv[]) {
     glBindVertexArray(quadVAO);
     glDrawArraysInstanced(GL_TRIANGLES, 0, 6, 100);
     glBindVertexArray(0);
+#endif
+    
+#if advancedtest == 15
+    shader.Use();
+    modelMat = glm::mat4();
+    modelMat = glm::translate(modelMat, glm::vec3(0.0f, -5.0f, 0.0f));
+    modelMat = glm::scale(modelMat, glm::vec3(0.4));
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    planet.Draw(shader);
+    
+//    for (GLuint i = 0; i < amount; i++) {
+//      glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMatrices[i]));
+//      rock.Draw(shader);
+//    }
+    instanceShader.Use();
+    glBindTexture(GL_TEXTURE_2D, rock.getTexturesLoaded()[0].id);
+    for (GLuint i = 0; i < rock.getMeshes().size(); i++) {
+      glBindVertexArray(rock.getMeshes()[i].getVAO());
+      glDrawElementsInstanced(GL_TRIANGLES, rock.getMeshes()[i].vertices.size(), GL_UNSIGNED_INT, 0, amount);
+      glBindVertexArray(0);
+    }
 #endif
     
     glfwSwapBuffers(window);

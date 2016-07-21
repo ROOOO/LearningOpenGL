@@ -31,7 +31,8 @@ class Model {
 public:
   Model(const GLchar *path);
   void Draw(ShaderReader shader);
-  
+  vector<Mesh> getMeshes();
+  vector<Texture> getTexturesLoaded();
 };
 
 #endif /* Model_hpp */
