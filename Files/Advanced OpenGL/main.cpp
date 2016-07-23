@@ -21,8 +21,9 @@
 // test13 Visualizing normal vectors
 // test14 Instancing
 // test15 An asteroid field
+// test16 Anti Aliasing
 
-#define advancedtest 15
+#define advancedtest 16
 
 #include "CommonSettings.hpp"
 
@@ -103,7 +104,7 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
-#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14 && advancedtest == 15
+#if advancedtest != 5 && advancedtest != 8 && advancedtest != 11 && advancedtest != 12 && advancedtest != 13 && advancedtest != 14 && advancedtest != 15
   GLfloat cubeVertices[] = {
     // Positions          // Texture Coords
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -558,6 +559,8 @@ int main(int argc, const char * argv[]) {
   Model planet(Settings.CCModelsPath("planet/planet.obj").c_str());
   Model rock(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
 //  Model rock(Settings.CCModelsPath("rock/rock.obj").c_str());
+#elif advancedtest == 16
+  ShaderReader shader(Settings.CCShadersPath("test16.vert").c_str(), Settings.CCShadersPath("test16.frag").c_str());
 #endif
 #if advancedtest == 2
   ShaderReader shaderSingleColor(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
@@ -699,11 +702,11 @@ int main(int argc, const char * argv[]) {
 #endif
   
 #if advancedtest == 15
-  GLuint amount = 1000;
+  GLuint amount = 10000;
   glm::mat4 *modelMatrices;
   modelMatrices = new glm::mat4[amount];
   srand(glfwGetTime());
-  GLfloat radius = 20.0f;
+  GLfloat radius = 10.0f;
   GLfloat offset = 2.5f;
   for (GLuint i = 0; i < amount; i++) {
     glm::mat4 model;
@@ -746,6 +749,10 @@ int main(int argc, const char * argv[]) {
     
     glBindVertexArray(0);
   }
+#endif
+
+#if advancedtest == 16
+  glEnable(GL_MULTISAMPLE);
 #endif
   
   while (!glfwWindowShouldClose(window)) {
@@ -1047,6 +1054,15 @@ int main(int argc, const char * argv[]) {
       glDrawElementsInstanced(GL_TRIANGLES, rock.getMeshes()[i].vertices.size(), GL_UNSIGNED_INT, 0, amount);
       glBindVertexArray(0);
     }
+#endif
+    
+#if advancedtest == 16
+    shader.Use();
+    modelMat = glm::mat4();
+    glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+    glBindVertexArray(cubeVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
 #endif
     
     glfwSwapBuffers(window);
