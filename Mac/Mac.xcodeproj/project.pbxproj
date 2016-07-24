@@ -132,6 +132,24 @@
 		3CDACC6B1D39C19E004DE0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
 		3CDACC6C1D39C19E004DE0D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
 		3CDACC6D1D39C19E004DE0D1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
+		3CDACC981D44DEA4004DE0D1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CDACC971D44DEA4004DE0D1 /* main.cpp */; };
+		3CDACC9C1D44DF66004DE0D1 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392F01D1F97510050486D /* Camera.cpp */; };
+		3CDACC9D1D44DF66004DE0D1 /* CommonSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE3934C1D23DF020050486D /* CommonSettings.cpp */; };
+		3CDACC9E1D44DF66004DE0D1 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE3949F1D2FF5A80050486D /* Mesh.cpp */; };
+		3CDACC9F1D44DF66004DE0D1 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE394A61D2FFA4C0050486D /* Model.cpp */; };
+		3CDACCA01D44DF66004DE0D1 /* ShaderReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC700C51D14DD4200A21FAC /* ShaderReader.cpp */; };
+		3CDACCA11D44DF66004DE0D1 /* TextureReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CF99DB61D1D5D6D0028100C /* TextureReader.cpp */; };
+		3CDACCA21D44DF6C004DE0D1 /* libassimpd.3.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE394861D2EAEAD0050486D /* libassimpd.3.1.1.dylib */; };
+		3CDACCA31D44DF6C004DE0D1 /* libassimpd.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE394871D2EAEAD0050486D /* libassimpd.3.dylib */; };
+		3CDACCA41D44DF6C004DE0D1 /* libassimpd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE394881D2EAEAD0050486D /* libassimpd.dylib */; };
+		3CDACCA51D44DF6C004DE0D1 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
+		3CDACCA61D44DF6C004DE0D1 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
+		3CDACCA71D44DF6C004DE0D1 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E5421D182F86007007DA /* libGLEW.a */; };
+		3CDACCA81D44DF70004DE0D1 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB31D1029E400D83A25 /* GLUT.framework */; };
+		3CDACCA91D44DF70004DE0D1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDB11D1029E000D83A25 /* OpenGL.framework */; };
+		3CDACCAA1D44DF70004DE0D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAF1D1029D700D83A25 /* Cocoa.framework */; };
+		3CDACCAB1D44DF70004DE0D1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAD1D1029D000D83A25 /* IOKit.framework */; };
+		3CDACCAC1D44DF70004DE0D1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C86EDAB1D1029C800D83A25 /* CoreVideo.framework */; };
 		3CE392DF1D1ED2C10050486D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CE392DE1D1ED2C10050486D /* main.cpp */; };
 		3CE392E31D1ED3700050486D /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C45E52E1D182E04007007DA /* libSOIL.a */; };
 		3CE392E41D1ED3710050486D /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC16A871D12E0ED0080F62C /* libglfw3.a */; };
@@ -543,6 +561,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3CDACC931D44DEA4004DE0D1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3CE392DA1D1ED2C10050486D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -821,6 +848,11 @@
 		3CDACC8C1D43CDA5004DE0D1 /* test17.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test17.vert; sourceTree = "<group>"; };
 		3CDACC8F1D44828A004DE0D1 /* test18.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test18.frag; sourceTree = "<group>"; };
 		3CDACC901D44828A004DE0D1 /* test18.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test18.vert; sourceTree = "<group>"; };
+		3CDACC951D44DEA4004DE0D1 /* Advanced Lighting */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advanced Lighting"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CDACC971D44DEA4004DE0D1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3CDACCAE1D44DF89004DE0D1 /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
+		3CDACCB01D44DF89004DE0D1 /* test1.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test1.frag; sourceTree = "<group>"; };
+		3CDACCB11D44DF89004DE0D1 /* test1.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test1.vert; sourceTree = "<group>"; };
 		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
 		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
 		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
@@ -1148,6 +1180,24 @@
 				3CDACC691D39C19E004DE0D1 /* GLUT.framework in Frameworks */,
 				3CDACC6D1D39C19E004DE0D1 /* CoreVideo.framework in Frameworks */,
 				3CDACC641D39C19A004DE0D1 /* libassimpd.3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CDACC921D44DEA4004DE0D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CDACCA41D44DF6C004DE0D1 /* libassimpd.dylib in Frameworks */,
+				3CDACCA91D44DF70004DE0D1 /* OpenGL.framework in Frameworks */,
+				3CDACCA61D44DF6C004DE0D1 /* libglfw3.a in Frameworks */,
+				3CDACCAB1D44DF70004DE0D1 /* IOKit.framework in Frameworks */,
+				3CDACCA71D44DF6C004DE0D1 /* libGLEW.a in Frameworks */,
+				3CDACCA21D44DF6C004DE0D1 /* libassimpd.3.1.1.dylib in Frameworks */,
+				3CDACCAA1D44DF70004DE0D1 /* Cocoa.framework in Frameworks */,
+				3CDACCA51D44DF6C004DE0D1 /* libSOIL.a in Frameworks */,
+				3CDACCA81D44DF70004DE0D1 /* GLUT.framework in Frameworks */,
+				3CDACCAC1D44DF70004DE0D1 /* CoreVideo.framework in Frameworks */,
+				3CDACCA31D44DF6C004DE0D1 /* libassimpd.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1558,6 +1608,7 @@
 				3CE393371D2184520050486D /* Lighting */,
 				3CE3948E1D2EAED70050486D /* Model Loading */,
 				3CE394F41D3155A30050486D /* Advanced OpenGL */,
+				3CDACC961D44DEA4004DE0D1 /* Advanced Lighting */,
 				3C86ED9F1D1021CA00D83A25 /* Products */,
 				3C86EDA81D1021D500D83A25 /* Getting Start */,
 			);
@@ -1598,6 +1649,7 @@
 				3CE394F31D3155A30050486D /* Advanced OpenGL */,
 				3CE395201D36653D0050486D /* EX_AO_FB_1 */,
 				3CDACC561D39C0A1004DE0D1 /* EX_AO_CM */,
+				3CDACC951D44DEA4004DE0D1 /* Advanced Lighting */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1725,6 +1777,36 @@
 			);
 			name = EX_AO_CM;
 			path = "../Files/Exercises/Advanced OpenGL/Cubemaps/1";
+			sourceTree = SOURCE_ROOT;
+		};
+		3CDACC961D44DEA4004DE0D1 /* Advanced Lighting */ = {
+			isa = PBXGroup;
+			children = (
+				3CDACC971D44DEA4004DE0D1 /* main.cpp */,
+				3CDACCAD1D44DF88004DE0D1 /* Resources */,
+				3CDACCAF1D44DF89004DE0D1 /* Shaders */,
+			);
+			name = "Advanced Lighting";
+			path = "../Files/Advanced Lighting";
+			sourceTree = SOURCE_ROOT;
+		};
+		3CDACCAD1D44DF88004DE0D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3CDACCAE1D44DF89004DE0D1 /* wood.png */,
+			);
+			name = Resources;
+			path = "../Files/Advanced Lighting/Resources";
+			sourceTree = SOURCE_ROOT;
+		};
+		3CDACCAF1D44DF89004DE0D1 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3CDACCB01D44DF89004DE0D1 /* test1.frag */,
+				3CDACCB11D44DF89004DE0D1 /* test1.vert */,
+			);
+			name = Shaders;
+			path = "../Files/Advanced Lighting/Shaders";
 			sourceTree = SOURCE_ROOT;
 		};
 		3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */ = {
@@ -2302,6 +2384,23 @@
 			productReference = 3CDACC561D39C0A1004DE0D1 /* EX_AO_CM */;
 			productType = "com.apple.product-type.tool";
 		};
+		3CDACC941D44DEA4004DE0D1 /* Advanced Lighting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CDACC991D44DEA4004DE0D1 /* Build configuration list for PBXNativeTarget "Advanced Lighting" */;
+			buildPhases = (
+				3CDACC911D44DEA4004DE0D1 /* Sources */,
+				3CDACC921D44DEA4004DE0D1 /* Frameworks */,
+				3CDACC931D44DEA4004DE0D1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Advanced Lighting";
+			productName = "Advanced Lighting";
+			productReference = 3CDACC951D44DEA4004DE0D1 /* Advanced Lighting */;
+			productType = "com.apple.product-type.tool";
+		};
 		3CE392DB1D1ED2C10050486D /* EX_GS_CS_3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CE392E01D1ED2C10050486D /* Build configuration list for PBXNativeTarget "EX_GS_CS_3" */;
@@ -2687,6 +2786,9 @@
 					3CDACC551D39C0A1004DE0D1 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					3CDACC941D44DEA4004DE0D1 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					3CE392DB1D1ED2C10050486D = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -2793,6 +2895,7 @@
 				3CE394F21D3155A30050486D /* Advanced OpenGL */,
 				3CE3951F1D36653D0050486D /* EX_AO_FB_1 */,
 				3CDACC551D39C0A1004DE0D1 /* EX_AO_CM */,
+				3CDACC941D44DEA4004DE0D1 /* Advanced Lighting */,
 			);
 		};
 /* End PBXProject section */
@@ -2928,6 +3031,20 @@
 				3CDACC611D39C195004DE0D1 /* ShaderReader.cpp in Sources */,
 				3CDACC5F1D39C195004DE0D1 /* Mesh.cpp in Sources */,
 				3CDACC591D39C0A1004DE0D1 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CDACC911D44DEA4004DE0D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CDACCA11D44DF66004DE0D1 /* TextureReader.cpp in Sources */,
+				3CDACC9D1D44DF66004DE0D1 /* CommonSettings.cpp in Sources */,
+				3CDACC9C1D44DF66004DE0D1 /* Camera.cpp in Sources */,
+				3CDACC9F1D44DF66004DE0D1 /* Model.cpp in Sources */,
+				3CDACCA01D44DF66004DE0D1 /* ShaderReader.cpp in Sources */,
+				3CDACC9E1D44DF66004DE0D1 /* Mesh.cpp in Sources */,
+				3CDACC981D44DEA4004DE0D1 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3468,6 +3585,22 @@
 			};
 			name = Release;
 		};
+		3CDACC9A1D44DEA4004DE0D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CDACC9B1D44DEA4004DE0D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3CE392E11D1ED2C10050486D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3904,6 +4037,14 @@
 			buildConfigurations = (
 				3CDACC5B1D39C0A1004DE0D1 /* Debug */,
 				3CDACC5C1D39C0A1004DE0D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3CDACC991D44DEA4004DE0D1 /* Build configuration list for PBXNativeTarget "Advanced Lighting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CDACC9A1D44DEA4004DE0D1 /* Debug */,
+				3CDACC9B1D44DEA4004DE0D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

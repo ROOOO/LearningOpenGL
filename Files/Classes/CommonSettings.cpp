@@ -8,7 +8,7 @@
 
 #include "CommonSettings.hpp"
 
-#define test 4
+#define test 5
 
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__
@@ -34,6 +34,12 @@ CommonSettings::CommonSettings() {
   m_FilesPath = "Advanced OpenGL/";
   m_ExercisesPath = "Exercises/Advanced OpenGL/";
   m_ModelsPath = "Model Loading/Models/";
+#elif test == 5
+  m_ShadersPath = "Advanced Lighting/Shaders/";
+  m_ResourcesPath = "Advanced Lighting/Resources/";
+  m_FilesPath = "Advanced Lighting/";
+  m_ExercisesPath = "Exercises/Advanced Lighting/";
+  m_ModelsPath = "Model Loading/Models/";
 #endif
 #else
 #if test == 1
@@ -57,6 +63,12 @@ CommonSettings::CommonSettings() {
   m_ResourcesPath = "Advanced OpenGL\\Resources\\";
   m_FilesPath = "Advanced OpenGL\\";
   m_ExercisesPath = "Exercises\\Advanced OpenGL\\";
+  m_ModelsPath = "Model Loading\\Models\\";
+#elif test == 5
+  m_ShadersPath = "Advanced Lighting\\Shaders\\";
+  m_ResourcesPath = "Advanced Lighting\\Resources\\";
+  m_FilesPath = "Advanced Lighting\\";
+  m_ExercisesPath = "Exercises\\Advanced Lighting\\";
   m_ModelsPath = "Model Loading\\Models\\";
 #endif
 #endif
