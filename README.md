@@ -39,8 +39,19 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
+##### Jul 24, 2016, Sun.
+ - Chapter Anti Aliasing.
+ - Advanced Lighting.
+
+##### Jul 23, 2016, Sat.
+ - Chapter Anti Aliasing.
+
+##### Jul 22, 2016, Fri.
+ - Chapter Instancing.
+ - Chapter Anti Aliasing.
+
 ##### Jul 21, 2016, Thur.
- - 
+ - Chapter Instancing.
 
 ##### Jul 20, 2016, Wed.
  - Chapter Geometry Shader.
