@@ -39,9 +39,15 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
+##### Jul 25, 2016, Mon.
+ - Chapter Gamma Correction.
+ 
+以后更新稍微慢一些，花些时间恶补一些基础知识。
+---
+
 ##### Jul 24, 2016, Sun.
  - Chapter Anti Aliasing.
- - Advanced Lighting.
+ - Chapter Advanced Lighting.
 
 ##### Jul 23, 2016, Sat.
  - Chapter Anti Aliasing.
