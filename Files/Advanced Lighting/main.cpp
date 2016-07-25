@@ -13,7 +13,6 @@ GLboolean keys[1024];
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 CommonSettings Settings;
-
 GLboolean blinn = true;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
@@ -76,6 +75,11 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
   cam.processMouseScroll(yOffset);
 }
 
+// test1 Blinn-Phong Lighting
+// test2 Gamma Correction
+
+#define test 2
+
 int main(int argc, const char * argv[]) {
   GLFWwindow *window = Settings.CreateWindow();
   if (window == nullptr) {
@@ -118,7 +122,11 @@ int main(int argc, const char * argv[]) {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
   
+#if test == 1
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
+#elif test == 2
+  ShaderReader shader(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
+#endif
 
   shader.Use();
   GLuint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
@@ -131,6 +139,10 @@ int main(int argc, const char * argv[]) {
   glm::mat4 modelMat;
   glm::mat4 viewMat;
   glm::mat4 projMat;
+  
+#if test == 2
+  glEnable(GL_FRAMEBUFFER_SRGB);
+#endif
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();

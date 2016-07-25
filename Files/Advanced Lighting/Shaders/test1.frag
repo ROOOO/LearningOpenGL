@@ -34,6 +34,6 @@ void main() {
   }
   vec3 specular = vec3(0.3f) * spec;
 //
-//  color = vec4(texture(tex, fs_in.texCoords));  
+//  color = vec4(texture(tex, fs_in.texCoords));
   color = vec4(ambient + diffuse + specular, 1.0f);
 }
