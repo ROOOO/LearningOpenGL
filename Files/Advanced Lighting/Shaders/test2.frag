@@ -3,8 +3,8 @@ out vec4 color;
 
 in VS_OUT {
   vec3 normal;
-  vec3 fragPos;
   vec2 texCoords;
+  vec3 fragPos;
 } fs_in;
 
 uniform sampler2D tex;
