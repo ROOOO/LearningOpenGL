@@ -141,7 +141,7 @@ int main(int argc, const char * argv[]) {
   glm::mat4 projMat;
   
 #if test == 2
-  glEnable(GL_FRAMEBUFFER_SRGB);
+  //glEnable(GL_FRAMEBUFFER_SRGB);
 #endif
   
   while (!glfwWindowShouldClose(window)) {
