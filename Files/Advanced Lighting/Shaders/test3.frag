@@ -2,7 +2,7 @@
 
 out vec4 color;
 
-out VS_OUT {
+in VS_OUT {
   vec3 normal;
   vec3 fragPos;
   vec2 texCoords;
@@ -14,5 +14,5 @@ uniform vec3 viewPos;
 uniform bool gamma;
 
 void main() {
-  
+  color = vec4(1.0f);
 }
