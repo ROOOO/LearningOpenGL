@@ -22,7 +22,7 @@ class TextureReader {
   
 public:
   TextureReader(std::vector<std::string> faces);
-  TextureReader(const GLchar* path, GLboolean isAlphaTexture = false);
+  TextureReader(const GLchar* path, GLboolean isAlphaTexture = false, GLboolean isGammaCorrection = false);
   ~TextureReader();
   GLuint getTexture();
   GLuint getCubeMap();

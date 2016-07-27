@@ -15,7 +15,7 @@ out VS_OUT {
 
 void main() {
   gl_Position = projMat * viewMat * modelMat * vec4(position, 1.0f);
-  vs_out.normal = vec3(transpose(inverse(modelMat))) * normal;
+  vs_out.normal = normal;
   vs_out.fragPos = vec3(modelMat * vec4(position, 1.0f));
   vs_out.texCoords = texCoords;
 }

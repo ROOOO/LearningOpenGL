@@ -14,6 +14,7 @@ GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 CommonSettings Settings;
 GLboolean blinn = true;
+GLboolean _gamma = true;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -24,6 +25,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
   }
   if (key == GLFW_KEY_B && action == GLFW_PRESS) {
     blinn = !blinn;
+  }
+  if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
+    _gamma = !_gamma;
   }
   if (action == GLFW_PRESS) {
     keys[key] = true;
@@ -138,6 +142,8 @@ int main(int argc, const char * argv[]) {
   
   TextureReader planeTex(Settings.CCResourcesPath("wood.png").c_str());
   GLuint planeTexture = planeTex.getTexture();
+  TextureReader gammaCorrectionplaneTex(Settings.CCResourcesPath("wood.png").c_str(), false, true);
+  GLuint gammaCorrectionplaneTexture = gammaCorrectionplaneTex.getTexture();
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
@@ -145,6 +151,21 @@ int main(int argc, const char * argv[]) {
   
 #if test == 2
   //glEnable(GL_FRAMEBUFFER_SRGB);
+#endif
+  
+#if test == 3
+  glm::vec3 lightPositions[] = {
+    glm::vec3(-3.0f, 0.0f, 0.0f),
+    glm::vec3(-1.0f, 0.0f, 0.0f),
+    glm::vec3( 1.0f, 0.0f, 0.0f),
+    glm::vec3( 3.0f, 0.0f, 0.0f)
+  };
+  glm::vec3 lightColors[] = {
+    glm::vec3(0.25),
+    glm::vec3(0.50),
+    glm::vec3(0.75),
+    glm::vec3(1.00)
+  };
 #endif
   
   while (!glfwWindowShouldClose(window)) {
@@ -163,14 +184,23 @@ int main(int argc, const char * argv[]) {
     
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
-    
-    glUniform3f(glGetUniformLocation(shader.GetProgram(), "lightPos"), lightPos.x, lightPos.y, lightPos.z);
     glUniform3f(glGetUniformLocation(shader.GetProgram(), "viewPos"), cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
+
+#if test == 1 && test == 2
+    glUniform3f(glGetUniformLocation(shader.GetProgram(), "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+#endif
+#if test == 2
     glUniform1d(glGetUniformLocation(shader.GetProgram(), "blinn"), blinn);
+#endif
+#if test == 3
+    glUniform3fv(glGetUniformLocation(shader.GetProgram(), "lightPos"), 4, &lightPositions[0][0]);
+    glUniform3fv(glGetUniformLocation(shader.GetProgram(), "lightColor"), 4, &lightColors[0][0]);
+    glUniform1d(glGetUniformLocation(shader.GetProgram(), "gamma"), _gamma);
+#endif
 
     modelMat = glm::mat4();
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
-    glBindTexture(GL_TEXTURE_2D, planeTexture);
+    glBindTexture(GL_TEXTURE_2D, _gamma ? gammaCorrectionplaneTexture : planeTexture);
     glBindVertexArray(planeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
