@@ -77,8 +77,9 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 
 // test1 Blinn-Phong Lighting
 // test2 Gamma Correction
+// test3 Gamma Attanuation
 
-#define test 2
+#define test 3
 
 int main(int argc, const char * argv[]) {
   GLFWwindow *window = Settings.CreateWindow();
@@ -126,6 +127,8 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
 #elif test == 2
   ShaderReader shader(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
+#elif test == 3
+  ShaderReader shader(Settings.CCShadersPath("test3.vert").c_str(), Settings.CCShadersPath("test3.frag").c_str());
 #endif
 
   shader.Use();
