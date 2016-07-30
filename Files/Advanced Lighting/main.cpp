@@ -82,6 +82,7 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 // test1 Blinn-Phong Lighting
 // test2 Gamma Correction
 // test3 Gamma Attanuation
+// test4 Shadow Mapping
 
 #define test 3
 
