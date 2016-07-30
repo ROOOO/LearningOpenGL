@@ -39,6 +39,18 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
+##### Jul 29, 2016, Fri.
+ - Chapter Gamma Correction.
+
+##### Jul 28, 2016, Thur.
+ - Chapter Gamma Correction.
+ 
+##### Jul 27, 2016, Wed.
+ - Chapter Gamma Correction.
+ 
+##### Jul 26, 2016, Tue.
+ - Chapter Gamma Correction.
+ 
 ##### Jul 25, 2016, Mon.
  - Chapter Gamma Correction.
  
