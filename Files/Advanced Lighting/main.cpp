@@ -84,7 +84,7 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 // test3 Gamma Attanuation
 // test4 Shadow Mapping
 
-#define test 3
+#define test 4
 
 int main(int argc, const char * argv[]) {
   GLFWwindow *window = Settings.CreateWindow();
@@ -127,6 +127,27 @@ int main(int argc, const char * argv[]) {
   glEnableVertexAttribArray(2);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+
+#if test == 4
+  GLuint depthMapFBO;
+  glGenFramebuffers(1, &depthMapFBO);
+  
+  const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+  GLuint depthMap;
+  glGenTextures(1, &depthMap);
+  glBindTexture(GL_TEXTURE_2D, depthMap);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, nullptr);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_LINEAR);
+
+  glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+  glDrawBuffer(GL_NONE);
+  glReadBuffer(GL_NONE);
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+#endif
   
 #if test == 1
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
@@ -134,6 +155,8 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("test2.vert").c_str(), Settings.CCShadersPath("test2.frag").c_str());
 #elif test == 3
   ShaderReader shader(Settings.CCShadersPath("test3.vert").c_str(), Settings.CCShadersPath("test3.frag").c_str());
+#elif test == 4
+  ShaderReader shader(Settings.CCShadersPath("test4.vert").c_str(), Settings.CCShadersPath("test4.frag").c_str());
 #endif
 
   shader.Use();

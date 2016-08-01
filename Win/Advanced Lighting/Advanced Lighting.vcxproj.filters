@@ -67,6 +67,12 @@
     <None Include="..\..\Files\Advanced Lighting\Shaders\test3.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test4.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test4.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Files\Advanced Lighting\Resources\wood.png">
