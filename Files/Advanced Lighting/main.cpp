@@ -86,6 +86,12 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 
 #define test 4
 
+#if test == 4
+void RenderScene(ShaderReader &shader);
+void RenderQuad();
+void RenderCube();
+#endif
+
 int main(int argc, const char * argv[]) {
   GLFWwindow *window = Settings.CreateWindow();
   if (window == nullptr) {
@@ -157,6 +163,9 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("test3.vert").c_str(), Settings.CCShadersPath("test3.frag").c_str());
 #elif test == 4
   ShaderReader shader(Settings.CCShadersPath("test4.vert").c_str(), Settings.CCShadersPath("test4.frag").c_str());
+  ShaderReader shaderDepthMap(Settings.CCShadersPath("test4_depth.vert").c_str(), Settings.CCShadersPath("test4_depth.frag").c_str());
+  GLuint lightSpaceMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "lightSpaceMat");
+
 #endif
 
   shader.Use();
@@ -191,6 +200,10 @@ int main(int argc, const char * argv[]) {
     glm::vec3(1.00)
   };
 #endif
+
+#if test == 4
+  lightPos = glm::vec3(-2.0f, 4.0f, -1.0f);
+#endif
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
@@ -203,6 +216,7 @@ int main(int argc, const char * argv[]) {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+#if test != 4
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
     
@@ -229,8 +243,39 @@ int main(int argc, const char * argv[]) {
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+#endif
+
+#if test == 4
+    glm::mat4 lightProjMat, lightViewMat;
+    glm::mat4 lightSpaceMat;
+    GLfloat nearPlane = 1.0f, farPlane = 7.5f;
+    lightProjMat = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, nearPlane, farPlane);
+    lightViewMat = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    lightSpaceMat = lightProjMat * lightViewMat;
+    shaderDepthMap.Use();
+    glUniformMatrix4fv(lightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
+
+    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    RenderScene(shaderDepthMap);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    glViewport(0, 0, width, height);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    shader.Use();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    RenderQuad();
+#endif
     
     glfwSwapBuffers(window);
   }
   return 0;
 }
+
+#if test == 4
+void RenderScene(ShaderReader &shader) {
+
+}
+#endif

@@ -30,12 +30,6 @@
     <ClCompile Include="..\..\Files\Classes\TextureReader.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\Classes\Mesh.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Files\Classes\Model.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Files\Advanced OpenGL\Shaders\test1.frag">
@@ -145,12 +139,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Files\Classes\TextureReader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Files\Classes\Mesh.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Files\Classes\Model.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

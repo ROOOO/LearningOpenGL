@@ -38,7 +38,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>D:\Projects\OpenGL\LearningOpenGL\Libs\Includes;D:\Projects\OpenGL\LearningOpenGL\Files\Classes;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Projects\OpenGL\LearningOpenGL\Libs\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -71,8 +71,6 @@
     <ClCompile Include="..\..\Files\Advanced OpenGL\main.cpp" />
     <ClCompile Include="..\..\Files\Classes\Camera.cpp" />
     <ClCompile Include="..\..\Files\Classes\CommonSettings.cpp" />
-    <ClCompile Include="..\..\Files\Classes\Mesh.cpp" />
-    <ClCompile Include="..\..\Files\Classes\Model.cpp" />
     <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
     <ClCompile Include="..\..\Files\Classes\TextureReader.cpp" />
   </ItemGroup>
@@ -114,8 +112,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Files\Classes\Camera.hpp" />
     <ClInclude Include="..\..\Files\Classes\CommonSettings.hpp" />
-    <ClInclude Include="..\..\Files\Classes\Mesh.hpp" />
-    <ClInclude Include="..\..\Files\Classes\Model.hpp" />
     <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
     <ClInclude Include="..\..\Files\Classes\TextureReader.hpp" />
   </ItemGroup>
