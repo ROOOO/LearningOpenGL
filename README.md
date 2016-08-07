@@ -39,6 +39,24 @@ All the resources are came from http://tf3dm.com/ and http://learnopengl.com/.
 ---
 ### Logs
 
+##### Aug 6, 2016, Sat.
+ - Chapter Shadow Mapping.
+
+##### Aug 5, 2016, Fri.
+ - Chapter Shadow Mapping.
+
+##### Aug 4, 2016, Thur.
+ - Chapter Shadow Mapping.
+
+##### Aug 3, 2016, Wed.
+ - Chapter Shadow Mapping.
+
+##### Aug 2, 2016, Tue.
+ - Chapter Shadow Mapping.
+
+##### Aug 1, 2016, Mon.
+ - Chapter Shadow Mapping.
+
 ##### Jul 31, 2016, Sun.
  - Chapter Gamma Correction.
 
