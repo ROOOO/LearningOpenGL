@@ -45,6 +45,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EX_AO_FB_1", "EX_AO_FB_1\EX
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Advanced Lighting", "Advanced Lighting\Advanced Lighting.vcxproj", "{4872DE23-F5CC-46D9-90F1-8CA252FB186B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Model Loading", "Model Loading\Model Loading.vcxproj", "{E2C84BCD-985B-4BB6-8C3F-B1D823B10E9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -135,6 +137,10 @@ Global
 		{4872DE23-F5CC-46D9-90F1-8CA252FB186B}.Debug|Win32.Build.0 = Debug|Win32
 		{4872DE23-F5CC-46D9-90F1-8CA252FB186B}.Release|Win32.ActiveCfg = Release|Win32
 		{4872DE23-F5CC-46D9-90F1-8CA252FB186B}.Release|Win32.Build.0 = Release|Win32
+		{E2C84BCD-985B-4BB6-8C3F-B1D823B10E9E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E2C84BCD-985B-4BB6-8C3F-B1D823B10E9E}.Debug|Win32.Build.0 = Debug|Win32
+		{E2C84BCD-985B-4BB6-8C3F-B1D823B10E9E}.Release|Win32.ActiveCfg = Release|Win32
+		{E2C84BCD-985B-4BB6-8C3F-B1D823B10E9E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

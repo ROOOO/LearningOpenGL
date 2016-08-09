@@ -8,7 +8,7 @@
 
 #include "CommonSettings.hpp"
 
-#define test 5
+#define test 3
 
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__

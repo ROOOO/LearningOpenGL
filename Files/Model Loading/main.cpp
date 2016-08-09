@@ -86,7 +86,11 @@ int main(int argc, const char * argv[]) {
   glfwGetFramebufferSize(window, &width, &height);
   
   ShaderReader shader(Settings.CCShadersPath("shader_test1.vert").c_str(), Settings.CCShadersPath("shader_test1.frag").c_str());
+#ifdef __APPLE__
   Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
+#else
+  Model model(Settings.CCModelsPath("Sarah\\n901.obj").c_str());
+#endif
   
   glm::mat4 modelMat;
   glm::mat4 viewMat;
@@ -97,7 +101,7 @@ int main(int argc, const char * argv[]) {
   GLint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
   
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();

@@ -33,7 +33,7 @@ class SetVS:
     file.close()
 
   def writeLink(self):
-    link = """<AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    link = """<AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;assimp-vc120-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>"""
     pattern = re.compile(r'(<Link>.*?</GenerateDebugInformation>)(\n\s+)</Link>', re.S)
     find = re.findall(pattern, self.file)
