@@ -9,8 +9,8 @@ newmtl Material__27
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka n901_02.tga
-	map_Kd n901_02.tga
+	map_Ka n901_02.png
+	map_Kd n901_02.png
 
 newmtl Material__28
 	Ns 40.0000
@@ -23,8 +23,8 @@ newmtl Material__28
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.2700 0.2700 0.2700
 	Ke 0.0000 0.0000 0.0000
-	map_Ka n901_03.tga
-	map_Kd n901_03.tga
+	map_Ka n901_03.png
+	map_Kd n901_03.png
 
 newmtl Material__25
 	Ns 10.0000
@@ -37,8 +37,8 @@ newmtl Material__25
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka n901_00.tga
-	map_Kd n901_00.tga
+	map_Ka n901_00.png
+	map_Kd n901_00.png
 
 newmtl Material__26
 	Ns 10.0000
@@ -51,8 +51,8 @@ newmtl Material__26
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka n901_01.tga
-	map_Kd n901_01.tga
+	map_Ka n901_01.png
+	map_Kd n901_01.png
 
 newmtl Material__29
 	Ns 10.0000
@@ -65,5 +65,5 @@ newmtl Material__29
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka n901_04.tga
-	map_Kd n901_04.tga
+	map_Ka n901_04.png
+	map_Kd n901_04.png
