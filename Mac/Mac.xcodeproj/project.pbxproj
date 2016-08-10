@@ -741,6 +741,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C0874BC1D5B8C18006669AC /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
 		3C0C6BF41D578592001BA6C4 /* glew32s.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glew32s.lib; path = ../Libs/glew32s.lib; sourceTree = SOURCE_ROOT; };
 		3C0C6BF71D578646001BA6C4 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../Libs/libz.1.dylib; sourceTree = SOURCE_ROOT; };
 		3C0C6BFA1D578684001BA6C4 /* libassimp.3.1.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.3.1.1.a; path = ../Libs/libassimp.3.1.1.a; sourceTree = "<group>"; };
@@ -842,12 +843,6 @@
 		3CDACC951D44DEA4004DE0D1 /* Advanced Lighting */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advanced Lighting"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDACC971D44DEA4004DE0D1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3CDACCAE1D44DF89004DE0D1 /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
-		3CDACCB01D44DF89004DE0D1 /* test1.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test1.frag; sourceTree = "<group>"; };
-		3CDACCB11D44DF89004DE0D1 /* test1.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = test1.vert; sourceTree = "<group>"; };
-		3CDACCB21D465EAE004DE0D1 /* test2.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test2.frag; sourceTree = "<group>"; };
-		3CDACCB31D465EAE004DE0D1 /* test2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test2.vert; sourceTree = "<group>"; };
-		3CDACCB41D478C4D004DE0D1 /* test3.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test3.frag; sourceTree = "<group>"; };
-		3CDACCB51D478C4D004DE0D1 /* test3.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = test3.vert; sourceTree = "<group>"; };
 		3CE392D21D1E54E10050486D /* shader_test11.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.frag; path = "../Files/Getting Start/Shaders/shader_test11.frag"; sourceTree = "<group>"; };
 		3CE392D31D1E54E10050486D /* shader_test11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test11.vs; path = "../Files/Getting Start/Shaders/shader_test11.vs"; sourceTree = "<group>"; };
 		3CE392D41D1E54E10050486D /* shader_test12.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = shader_test12.frag; path = "../Files/Getting Start/Shaders/shader_test12.frag"; sourceTree = "<group>"; };
@@ -1763,8 +1758,8 @@
 			isa = PBXGroup;
 			children = (
 				3CDACC971D44DEA4004DE0D1 /* main.cpp */,
+				3C0874BC1D5B8C18006669AC /* Shaders */,
 				3CDACCAD1D44DF88004DE0D1 /* Resources */,
-				3CDACCAF1D44DF89004DE0D1 /* Shaders */,
 			);
 			name = "Advanced Lighting";
 			path = "../Files/Advanced Lighting";
@@ -1777,20 +1772,6 @@
 			);
 			name = Resources;
 			path = "../Files/Advanced Lighting/Resources";
-			sourceTree = SOURCE_ROOT;
-		};
-		3CDACCAF1D44DF89004DE0D1 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				3CDACCB01D44DF89004DE0D1 /* test1.frag */,
-				3CDACCB11D44DF89004DE0D1 /* test1.vert */,
-				3CDACCB21D465EAE004DE0D1 /* test2.frag */,
-				3CDACCB31D465EAE004DE0D1 /* test2.vert */,
-				3CDACCB41D478C4D004DE0D1 /* test3.frag */,
-				3CDACCB51D478C4D004DE0D1 /* test3.vert */,
-			);
-			name = Shaders;
-			path = "../Files/Advanced Lighting/Shaders";
 			sourceTree = SOURCE_ROOT;
 		};
 		3CE392DD1D1ED2C10050486D /* EX_GS_CS_3 */ = {
