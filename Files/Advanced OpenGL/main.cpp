@@ -867,7 +867,7 @@ int main(int argc, const char * argv[]) {
 #if advancedtest == 1 || advancedtest == 3 || advancedtest == 4 || advancedtest == 6 || advancedtest == 7 || advancedtest == 8 || advancedtest == 9
     shader.Use();
     glBindVertexArray(cubeVAO);
-#if advancedtest != 8 && advancedtest != 9
+#if advancedtest != 7 && advancedtest != 8 && advancedtest != 9
     glBindTexture(GL_TEXTURE_2D, cubeTexture);
 #elif advancedtest == 7
     glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);

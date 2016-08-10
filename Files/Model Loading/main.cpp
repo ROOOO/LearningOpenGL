@@ -89,7 +89,7 @@ int main(int argc, const char * argv[]) {
 #ifdef __APPLE__
   Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
 #else
-  Model model(Settings.CCModelsPath("Sarah\\n901.obj").c_str());
+  Model model(Settings.CCModelsPath("deathKnight\\deathKnight.obj").c_str());
 #endif
   
   glm::mat4 modelMat;

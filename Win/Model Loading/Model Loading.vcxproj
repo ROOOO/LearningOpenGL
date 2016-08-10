@@ -87,7 +87,6 @@
   <ItemGroup>
     <None Include="..\..\Files\Model Loading\Shaders\shader_test1.frag" />
     <None Include="..\..\Files\Model Loading\Shaders\shader_test1.vert" />
-    <None Include="Debug\assimp-vc120-mt.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

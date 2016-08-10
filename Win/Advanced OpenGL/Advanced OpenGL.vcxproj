@@ -50,7 +50,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;libassimpd.3.1.1.dylib;libassimpd.3.dylib;libassimpd.dylib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;assimp-vc120-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -71,6 +71,8 @@
     <ClCompile Include="..\..\Files\Advanced OpenGL\main.cpp" />
     <ClCompile Include="..\..\Files\Classes\Camera.cpp" />
     <ClCompile Include="..\..\Files\Classes\CommonSettings.cpp" />
+    <ClCompile Include="..\..\Files\Classes\Mesh.cpp" />
+    <ClCompile Include="..\..\Files\Classes\Model.cpp" />
     <ClCompile Include="..\..\Files\Classes\ShaderReader.cpp" />
     <ClCompile Include="..\..\Files\Classes\TextureReader.cpp" />
   </ItemGroup>
@@ -112,6 +114,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\Files\Classes\Camera.hpp" />
     <ClInclude Include="..\..\Files\Classes\CommonSettings.hpp" />
+    <ClInclude Include="..\..\Files\Classes\Mesh.hpp" />
+    <ClInclude Include="..\..\Files\Classes\Model.hpp" />
     <ClInclude Include="..\..\Files\Classes\ShaderReader.hpp" />
     <ClInclude Include="..\..\Files\Classes\TextureReader.hpp" />
   </ItemGroup>

@@ -44,7 +44,7 @@ Mesh Model::m_processMesh(aiMesh *mesh, const aiScene *scene) {
   vector<GLuint> indices;
   vector<Texture> textures;
   
-  std::cout << mesh->mNumVertices << std::endl;
+  //std::cout << mesh->mNumVertices << std::endl;
   for (GLuint i = 0; i < mesh->mNumVertices; i++) {
     Vertex vertex;
     

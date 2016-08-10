@@ -64,8 +64,5 @@
     <None Include="..\..\Files\Model Loading\Shaders\shader_test1.vert">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Debug\assimp-vc120-mt.dll">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
 </Project>
