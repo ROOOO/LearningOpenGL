@@ -87,7 +87,7 @@ int main(int argc, const char * argv[]) {
   
   ShaderReader shader(Settings.CCShadersPath("shader_test1.vert").c_str(), Settings.CCShadersPath("shader_test1.frag").c_str());
 #ifdef __APPLE__
-  Model model(Settings.CCModelsPath("deathKnight/deathKnight.obj").c_str());
+  Model model(Settings.CCModelsPath("Sarah/n901.obj").c_str());
 #else
   Model model(Settings.CCModelsPath("deathKnight\\deathKnight.obj").c_str());
 #endif
