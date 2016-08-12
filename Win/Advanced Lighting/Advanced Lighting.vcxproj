@@ -93,6 +93,8 @@
     <None Include="..\..\Files\Advanced Lighting\Shaders\test3.vert" />
     <None Include="..\..\Files\Advanced Lighting\Shaders\test4.frag" />
     <None Include="..\..\Files\Advanced Lighting\Shaders\test4.vert" />
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test4_depth.frag" />
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test4_depth.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Files\Advanced Lighting\Resources\wood.png" />

@@ -90,6 +90,8 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 void RenderScene(ShaderReader &shader);
 void RenderQuad();
 void RenderCube();
+GLuint ligthModelMatLoc;
+GLuint planeVAO;
 #endif
 
 int main(int argc, const char * argv[]) {
@@ -165,6 +167,7 @@ int main(int argc, const char * argv[]) {
   ShaderReader shader(Settings.CCShadersPath("test4.vert").c_str(), Settings.CCShadersPath("test4.frag").c_str());
   ShaderReader shaderDepthMap(Settings.CCShadersPath("test4_depth.vert").c_str(), Settings.CCShadersPath("test4_depth.frag").c_str());
   GLuint lightSpaceMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "lightSpaceMat");
+  ligthModelMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "modelMat");
 
 #endif
 
@@ -252,6 +255,7 @@ int main(int argc, const char * argv[]) {
     lightProjMat = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, nearPlane, farPlane);
     lightViewMat = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     lightSpaceMat = lightProjMat * lightViewMat;
+
     shaderDepthMap.Use();
     glUniformMatrix4fv(lightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
 
@@ -276,6 +280,24 @@ int main(int argc, const char * argv[]) {
 
 #if test == 4
 void RenderScene(ShaderReader &shader) {
+  glm::mat4 modelMat;
+  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  glBindVertexArray(planeVAO);
+  glDrawArrays(GL_TRIANGLES, 0, 6);
+  glBindVertexArray(0);
 
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(0.0f, 1.0f, 0.0f));
+  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.0f, 1.0f));
+  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.0f, 2.0f));
+  modelMat = glm::scale(modelMat, glm::vec3(0.5f));
+  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
 }
 #endif
