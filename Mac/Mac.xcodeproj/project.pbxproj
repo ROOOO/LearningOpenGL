@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0874BD1D5EB97F006669AC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF71D578646001BA6C4 /* libz.1.dylib */; };
+		3C0874BE1D5EB981006669AC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF71D578646001BA6C4 /* libz.1.dylib */; };
+		3C0874BF1D5EB982006669AC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF71D578646001BA6C4 /* libz.1.dylib */; };
+		3C0874C01D5EB983006669AC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF71D578646001BA6C4 /* libz.1.dylib */; };
+		3C0874C11D5EB984006669AC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF71D578646001BA6C4 /* libz.1.dylib */; };
+		3C0874C21D5EB9FF006669AC /* libassimp.3.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BFA1D578684001BA6C4 /* libassimp.3.1.1.a */; };
+		3C0874C31D5EB9FF006669AC /* libassimp.3.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BFA1D578684001BA6C4 /* libassimp.3.1.1.a */; };
+		3C0874C41D5EBA00006669AC /* libassimp.3.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BFA1D578684001BA6C4 /* libassimp.3.1.1.a */; };
+		3C0874C51D5EBA01006669AC /* libassimp.3.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BFA1D578684001BA6C4 /* libassimp.3.1.1.a */; };
+		3C0874C61D5EBA02006669AC /* libassimp.3.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BFA1D578684001BA6C4 /* libassimp.3.1.1.a */; };
 		3C0C6BF51D578592001BA6C4 /* glew32s.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF41D578592001BA6C4 /* glew32s.lib */; };
 		3C0C6BF61D578592001BA6C4 /* glew32s.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF41D578592001BA6C4 /* glew32s.lib */; };
 		3C0C6BF81D578646001BA6C4 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0C6BF71D578646001BA6C4 /* libz.1.dylib */; };
@@ -1160,12 +1170,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CDACC6A1D39C19E004DE0D1 /* OpenGL.framework in Frameworks */,
+				3C0874C31D5EB9FF006669AC /* libassimp.3.1.1.a in Frameworks */,
 				3CDACC671D39C19A004DE0D1 /* libglfw3.a in Frameworks */,
 				3CDACC6C1D39C19E004DE0D1 /* IOKit.framework in Frameworks */,
 				3CDACC681D39C19A004DE0D1 /* libGLEW.a in Frameworks */,
 				3CDACC6B1D39C19E004DE0D1 /* Cocoa.framework in Frameworks */,
 				3CDACC661D39C19A004DE0D1 /* libSOIL.a in Frameworks */,
 				3CDACC691D39C19E004DE0D1 /* GLUT.framework in Frameworks */,
+				3C0874BE1D5EB981006669AC /* libz.1.dylib in Frameworks */,
 				3CDACC6D1D39C19E004DE0D1 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,12 +1187,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CDACCA91D44DF70004DE0D1 /* OpenGL.framework in Frameworks */,
+				3C0874C21D5EB9FF006669AC /* libassimp.3.1.1.a in Frameworks */,
 				3CDACCA61D44DF6C004DE0D1 /* libglfw3.a in Frameworks */,
 				3CDACCAB1D44DF70004DE0D1 /* IOKit.framework in Frameworks */,
 				3CDACCA71D44DF6C004DE0D1 /* libGLEW.a in Frameworks */,
 				3CDACCAA1D44DF70004DE0D1 /* Cocoa.framework in Frameworks */,
 				3CDACCA51D44DF6C004DE0D1 /* libSOIL.a in Frameworks */,
 				3CDACCA81D44DF70004DE0D1 /* GLUT.framework in Frameworks */,
+				3C0874BD1D5EB97F006669AC /* libz.1.dylib in Frameworks */,
 				3CDACCAC1D44DF70004DE0D1 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1418,12 +1432,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE394E31D3129450050486D /* OpenGL.framework in Frameworks */,
+				3C0874C61D5EBA02006669AC /* libassimp.3.1.1.a in Frameworks */,
 				3CE394E01D3129410050486D /* libglfw3.a in Frameworks */,
 				3CE394E51D3129450050486D /* IOKit.framework in Frameworks */,
 				3CE394E11D3129410050486D /* libGLEW.a in Frameworks */,
 				3CE394E41D3129450050486D /* Cocoa.framework in Frameworks */,
 				3CE394DF1D3129410050486D /* libSOIL.a in Frameworks */,
 				3CE394E21D3129450050486D /* GLUT.framework in Frameworks */,
+				3C0874C11D5EB984006669AC /* libz.1.dylib in Frameworks */,
 				3CE394E61D3129450050486D /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1433,12 +1449,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE395011D3155F30050486D /* OpenGL.framework in Frameworks */,
+				3C0874C51D5EBA01006669AC /* libassimp.3.1.1.a in Frameworks */,
 				3CE394FE1D3155EF0050486D /* libglfw3.a in Frameworks */,
 				3CE395031D3155F30050486D /* IOKit.framework in Frameworks */,
 				3CE394FF1D3155EF0050486D /* libGLEW.a in Frameworks */,
 				3CE395021D3155F30050486D /* Cocoa.framework in Frameworks */,
 				3CE394FD1D3155EF0050486D /* libSOIL.a in Frameworks */,
 				3CE395001D3155F30050486D /* GLUT.framework in Frameworks */,
+				3C0874C01D5EB983006669AC /* libz.1.dylib in Frameworks */,
 				3CE395041D3155F30050486D /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1448,12 +1466,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE395331D3665D70050486D /* OpenGL.framework in Frameworks */,
+				3C0874C41D5EBA00006669AC /* libassimp.3.1.1.a in Frameworks */,
 				3CE395301D3665D30050486D /* libglfw3.a in Frameworks */,
 				3CE395351D3665D70050486D /* IOKit.framework in Frameworks */,
 				3CE395311D3665D30050486D /* libGLEW.a in Frameworks */,
 				3CE395341D3665D70050486D /* Cocoa.framework in Frameworks */,
 				3CE3952F1D3665D30050486D /* libSOIL.a in Frameworks */,
 				3CE395321D3665D70050486D /* GLUT.framework in Frameworks */,
+				3C0874BF1D5EB982006669AC /* libz.1.dylib in Frameworks */,
 				3CE395361D3665D70050486D /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
