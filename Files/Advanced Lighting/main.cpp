@@ -168,7 +168,8 @@ int main(int argc, const char * argv[]) {
   ShaderReader shaderDepthMap(Settings.CCShadersPath("test4_depth.vert").c_str(), Settings.CCShadersPath("test4_depth.frag").c_str());
   GLuint lightSpaceMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "lightSpaceMatrix");
   ligthModelMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "modelMat");
-
+  GLuint farPlaneLoc = glGetUniformLocation(shader.GetProgram(), "farPlane");
+  GLuint nearPlaneLoc = glGetUniformLocation(shader.GetProgram(), "nearPlane");
 #endif
 
   shader.Use();
@@ -271,6 +272,8 @@ int main(int argc, const char * argv[]) {
     glViewport(0, 0, width, height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     shader.Use();
+    glUniform1f(farPlaneLoc, farPlane);
+    glUniform1f(nearPlaneLoc, nearPlane);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, depthMap);
     RenderQuad();
