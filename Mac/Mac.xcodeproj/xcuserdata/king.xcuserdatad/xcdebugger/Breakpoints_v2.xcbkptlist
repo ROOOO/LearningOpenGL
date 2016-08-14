@@ -898,11 +898,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Files/Advanced Lighting/main.cpp"
-            timestampString = "492747026.343877"
+            timestampString = "492883182.002493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -914,27 +914,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Files/Advanced Lighting/main.cpp"
-            timestampString = "492747038.077437"
+            timestampString = "492883182.002493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "main(int argc, const char * argv[])"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Files/Advanced Lighting/main.cpp"
-            timestampString = "492747057.656805"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>

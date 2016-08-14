@@ -90,7 +90,6 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 void RenderScene(ShaderReader &shader);
 void RenderQuad();
 void RenderCube();
-GLuint ligthModelMatLoc;
 GLuint planeVAO;
 #endif
 
@@ -121,7 +120,7 @@ int main(int argc, const char * argv[]) {
   };
   glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
   
-  GLuint planeVAO, planeVBO;
+  GLuint planeVBO;
   glGenVertexArrays(1, &planeVAO);
   glGenBuffers(1, &planeVBO);
   glBindVertexArray(planeVAO);
@@ -164,18 +163,22 @@ int main(int argc, const char * argv[]) {
 #elif test == 3
   ShaderReader shader(Settings.CCShadersPath("test3.vert").c_str(), Settings.CCShadersPath("test3.frag").c_str());
 #elif test == 4
+  ShaderReader shaderQuad(Settings.CCShadersPath("test4_quad.vert").c_str(), Settings.CCShadersPath("test4_quad.frag").c_str());
   ShaderReader shader(Settings.CCShadersPath("test4.vert").c_str(), Settings.CCShadersPath("test4.frag").c_str());
   ShaderReader shaderDepthMap(Settings.CCShadersPath("test4_depth.vert").c_str(), Settings.CCShadersPath("test4_depth.frag").c_str());
-  GLuint lightSpaceMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "lightSpaceMatrix");
-  ligthModelMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "modelMat");
-  GLuint farPlaneLoc = glGetUniformLocation(shader.GetProgram(), "farPlane");
-  GLuint nearPlaneLoc = glGetUniformLocation(shader.GetProgram(), "nearPlane");
+  GLuint lightLightSpaceMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "lightSpaceMatrix");
+  GLuint farPlaneLoc = glGetUniformLocation(shaderQuad.GetProgram(), "farPlane");
+  GLuint nearPlaneLoc = glGetUniformLocation(shaderQuad.GetProgram(), "nearPlane");
 #endif
 
   shader.Use();
-  GLuint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
+  GLuint lightSpaceMatLoc = glGetUniformLocation(shader.GetProgram(), "lightSpaceMatrix");
   GLuint viewMatLoc = glGetUniformLocation(shader.GetProgram(), "viewMat");
   GLuint projMatLoc = glGetUniformLocation(shader.GetProgram(), "projMat");
+  GLuint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
+  GLuint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
+  glUniform1i(glGetUniformLocation(shader.GetProgram(), "diffuseTexture"), 0);
+  glUniform1i(glGetUniformLocation(shader.GetProgram(), "shadowMap"), 1);
   
   TextureReader planeTex(Settings.CCResourcesPath("wood.png").c_str());
   GLuint planeTexture = planeTex.getTexture();
@@ -223,10 +226,10 @@ int main(int argc, const char * argv[]) {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-#if test != 4
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
     
+#if test != 4
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
     glUniform3f(glGetUniformLocation(shader.GetProgram(), "viewPos"), cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
@@ -245,7 +248,11 @@ int main(int argc, const char * argv[]) {
 
     modelMat = glm::mat4();
     glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+#if test == 3
     glBindTexture(GL_TEXTURE_2D, _gamma ? gammaCorrectionplaneTexture : planeTexture);
+#else
+    glBindTexture(GL_TEXTURE_2D, planeTexture);
+#endif
     glBindVertexArray(planeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
@@ -261,7 +268,7 @@ int main(int argc, const char * argv[]) {
     lightSpaceMat = lightProjMat * lightViewMat;
 
     shaderDepthMap.Use();
-    glUniformMatrix4fv(lightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
+    glUniformMatrix4fv(lightLightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
 
     glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
@@ -271,12 +278,25 @@ int main(int argc, const char * argv[]) {
 
     glViewport(0, 0, width, height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
     shader.Use();
+    glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(lightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
+    glUniform3fv(lightPosLoc, 1, glm::value_ptr(lightPos));
+    glUniform3fv(viewPosLoc, 1, glm::value_ptr(cam.getPosition()));
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, planeTexture);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    RenderScene(shader);
+    
+    shaderQuad.Use();
     glUniform1f(farPlaneLoc, farPlane);
     glUniform1f(nearPlaneLoc, nearPlane);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, depthMap);
-    RenderQuad();
+//    RenderQuad();
 #endif
     
     glfwSwapBuffers(window);
@@ -287,24 +307,25 @@ int main(int argc, const char * argv[]) {
 #if test == 4
 void RenderScene(ShaderReader &shader) {
   glm::mat4 modelMat;
-  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  GLuint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   glBindVertexArray(planeVAO);
   glDrawArrays(GL_TRIANGLES, 0, 6);
   glBindVertexArray(0);
 
   modelMat = glm::mat4();
   modelMat = glm::translate(modelMat, glm::vec3(0.0f, 1.5f, 0.0f));
-  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   RenderCube();
   modelMat = glm::mat4();
   modelMat = glm::translate(modelMat, glm::vec3(2.0f, 0.0f, 1.0f));
-  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   RenderCube();
   modelMat = glm::mat4();
   modelMat = glm::translate(modelMat, glm::vec3(-1.0f, 0.0f, 2.0f));
   modelMat = glm::rotate(modelMat, glm::radians(60.0f), glm::normalize(glm::vec3(1.0f, 0.0f, 1.0f)));
   modelMat = glm::scale(modelMat, glm::vec3(0.5f));
-  glUniformMatrix4fv(ligthModelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   RenderCube();
 }
 
