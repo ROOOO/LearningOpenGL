@@ -146,8 +146,8 @@ int main(int argc, const char * argv[]) {
   glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, nullptr);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 
   glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
@@ -260,6 +260,7 @@ int main(int argc, const char * argv[]) {
 #endif
 
 #if test == 4
+    lightPos.z = cos(glfwGetTime()) * 2.0f;
     glm::mat4 lightProjMat, lightViewMat;
     glm::mat4 lightSpaceMat;
     GLfloat nearPlane = 1.0f, farPlane = 7.5f;
@@ -279,24 +280,24 @@ int main(int argc, const char * argv[]) {
     glViewport(0, 0, width, height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    shader.Use();
-    glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
-    glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
-    glUniformMatrix4fv(lightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
-    glUniform3fv(lightPosLoc, 1, glm::value_ptr(lightPos));
-    glUniform3fv(viewPosLoc, 1, glm::value_ptr(cam.getPosition()));
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, planeTexture);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, depthMap);
-    RenderScene(shader);
-    
+//    shader.Use();
+//    glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+//    glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+//    glUniformMatrix4fv(lightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
+//    glUniform3fv(lightPosLoc, 1, glm::value_ptr(lightPos));
+//    glUniform3fv(viewPosLoc, 1, glm::value_ptr(cam.getPosition()));
+//    glActiveTexture(GL_TEXTURE0);
+//    glBindTexture(GL_TEXTURE_2D, planeTexture);
+//    glActiveTexture(GL_TEXTURE1);
+//    glBindTexture(GL_TEXTURE_2D, depthMap);
+//    RenderScene(shader);
+//    
     shaderQuad.Use();
     glUniform1f(farPlaneLoc, farPlane);
     glUniform1f(nearPlaneLoc, nearPlane);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, depthMap);
-//    RenderQuad();
+    RenderQuad();
 #endif
     
     glfwSwapBuffers(window);
