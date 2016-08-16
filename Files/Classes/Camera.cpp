@@ -61,9 +61,13 @@ void Camera::processKeyBoard(Camera::Camera_Movement direction, GLfloat deltaTim
   } else if (direction == RIGHT) {
     this->m_position += this->m_right * velocity;
   } else if (direction == UP) {
-    this->m_position.y += velocity;
+    this->m_position.x += m_up.x * velocity;
+    this->m_position.y += m_up.y * velocity;
+    this->m_position.z += m_up.z * velocity;
   } else if (direction == DOWN) {
-    this->m_position.y -= velocity;
+    this->m_position.x -= m_up.x * velocity;
+    this->m_position.y -= m_up.y * velocity;
+    this->m_position.z -= m_up.z * velocity;
   }
   if (this->m_isFPS) {
     this->m_position.y = 0;
