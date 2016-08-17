@@ -268,6 +268,7 @@ int main(int argc, const char * argv[]) {
     lightViewMat = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     lightSpaceMat = lightProjMat * lightViewMat;
 
+    glCullFace(GL_FRONT);
     shaderDepthMap.Use();
     glUniformMatrix4fv(lightLightSpaceMatLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMat));
 
@@ -276,6 +277,7 @@ int main(int argc, const char * argv[]) {
     glClear(GL_DEPTH_BUFFER_BIT);
     RenderScene(shaderDepthMap);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glCullFace(GL_BACK);
 
     glViewport(0, 0, width, height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
