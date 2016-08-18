@@ -15,6 +15,7 @@ GLfloat lastFrame = 0.0f;
 CommonSettings Settings;
 GLboolean blinn = true;
 GLboolean _gamma = true;
+GLboolean _pcf = true;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -28,6 +29,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
   }
   if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
     _gamma = !_gamma;
+  }
+  if (key == GLFW_KEY_P && action == GLFW_PRESS) {
+    _pcf = !_pcf;
   }
   if (action == GLFW_PRESS) {
     keys[key] = true;
@@ -148,6 +152,8 @@ int main(int argc, const char * argv[]) {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+  GLfloat borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+  glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 
   glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
@@ -179,7 +185,7 @@ int main(int argc, const char * argv[]) {
   GLuint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
   glUniform1i(glGetUniformLocation(shader.GetProgram(), "diffuseTexture"), 0);
   glUniform1i(glGetUniformLocation(shader.GetProgram(), "shadowMap"), 1);
-  
+
   TextureReader planeTex(Settings.CCResourcesPath("wood.png").c_str());
   GLuint planeTexture = planeTex.getTexture();
   
@@ -293,7 +299,8 @@ int main(int argc, const char * argv[]) {
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, depthMap);
     RenderScene(shader);
-    
+    glUniform1i(glGetUniformLocation(shader.GetProgram(), "pcf"), _pcf);
+
     shaderQuad.Use();
     glUniform1f(farPlaneLoc, farPlane);
     glUniform1f(nearPlaneLoc, nearPlane);
