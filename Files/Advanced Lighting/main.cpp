@@ -87,14 +87,15 @@ void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 // test2 Gamma Correction
 // test3 Gamma Attanuation
 // test4 Shadow Mapping
+// test5 Point Shadows
 
-#define test 4
+#define test 5
 
-#if test == 4
+GLuint planeVAO;
+#if test == 4 || test == 5
 void RenderScene(ShaderReader &shader);
 void RenderQuad();
 void RenderCube();
-GLuint planeVAO;
 #endif
 
 int main(int argc, const char * argv[]) {
@@ -161,6 +162,32 @@ int main(int argc, const char * argv[]) {
   glReadBuffer(GL_NONE);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 #endif
+#if test == 5
+  GLuint depthMapFBO;
+  glGenFramebuffers(1, &depthMapFBO);
+  
+  GLuint depthCubeMap;
+  glGenTextures(1, &depthCubeMap);
+  const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+  glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubeMap);
+  for (GLint i = 0; i < 6; i++) {
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, nullptr);
+  }
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+  
+  glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+  glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthCubeMap, 0);
+  glDrawBuffer(GL_NONE);
+  glReadBuffer(GL_NONE);
+  if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    std::cout << "Framebuffer not complete" << std::endl;
+  }
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+#endif
   
 #if test == 1
   ShaderReader shader(Settings.CCShadersPath("test1.vert").c_str(), Settings.CCShadersPath("test1.frag").c_str());
@@ -175,6 +202,11 @@ int main(int argc, const char * argv[]) {
   GLuint lightLightSpaceMatLoc = glGetUniformLocation(shaderDepthMap.GetProgram(), "lightSpaceMatrix");
   GLuint farPlaneLoc = glGetUniformLocation(shaderQuad.GetProgram(), "farPlane");
   GLuint nearPlaneLoc = glGetUniformLocation(shaderQuad.GetProgram(), "nearPlane");
+#elif test == 5
+  ShaderReader shader(Settings.CCShadersPath("test5.vert").c_str(), Settings.CCShadersPath("test5.frag").c_str());
+  ShaderReader shaderDepthMap(Settings.CCShadersPath("test5_depth.vert").c_str(), Settings.CCShadersPath("test5_depth.frag").c_str(), Settings.CCShadersPath("test5_depth.geom").c_str());
+  shader.Use();
+  GLuint farPlaneLoc = glGetUniformLocation(shader.GetProgram(), "farPlane");
 #endif
 
   shader.Use();
@@ -184,7 +216,7 @@ int main(int argc, const char * argv[]) {
   GLuint lightPosLoc = glGetUniformLocation(shader.GetProgram(), "lightPos");
   GLuint viewPosLoc = glGetUniformLocation(shader.GetProgram(), "viewPos");
   glUniform1i(glGetUniformLocation(shader.GetProgram(), "diffuseTexture"), 0);
-  glUniform1i(glGetUniformLocation(shader.GetProgram(), "shadowMap"), 1);
+  glUniform1i(glGetUniformLocation(shader.GetProgram(), "depthMap"), 1);
 
   TextureReader planeTex(Settings.CCResourcesPath("wood.png").c_str());
   GLuint planeTexture = planeTex.getTexture();
@@ -221,6 +253,29 @@ int main(int argc, const char * argv[]) {
   lightPos = glm::vec3(-2.0f, 4.0f, -1.0f);
 #endif
   
+#if test == 5
+  GLfloat aspect = (GLfloat)SHADOW_WIDTH / (GLfloat)SHADOW_HEIGHT;
+  GLfloat near = 1.0f, far = 25.0f;
+  glm::mat4 shadowProj = glm::perspective(90.0f, aspect, near, far);
+  
+  std::vector<glm::mat4> shadowTransforms;
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0f, -1.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)));
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
+
+  shaderDepthMap.Use();
+  GLuint shadowMatrixLocs[6];
+  for (GLint i = 0; i < 6; ++i) {
+    shadowMatrixLocs[i] = glGetUniformLocation(shaderDepthMap.GetProgram(), ("shadowMatrices[" + std::to_string(i) + "]").c_str());
+    glUniformMatrix4fv(shadowMatrixLocs[i], 1, GL_FALSE, glm::value_ptr(shadowTransforms[i]));
+  }
+  glUniform3fv(glGetUniformLocation(shaderDepthMap.GetProgram(), "lightPos"), 1, &lightPos[0]);
+  glUniform1f(glGetUniformLocation(shaderDepthMap.GetProgram(), "farPlane"), far);
+#endif
+  
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
     
@@ -235,7 +290,7 @@ int main(int argc, const char * argv[]) {
     viewMat = cam.getViewMatrix();
     projMat = glm::perspective(cam.getZoom(), (GLfloat)width / height, 0.1f, 100.0f);
     
-#if test != 4
+#if test != 4 && test != 5
     glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
     glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
     glUniform3f(glGetUniformLocation(shader.GetProgram(), "viewPos"), cam.getPosition().x, cam.getPosition().y, cam.getPosition().z);
@@ -309,15 +364,42 @@ int main(int argc, const char * argv[]) {
 //    RenderQuad();
 #endif
     
+#if test == 5
+    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    shaderDepthMap.Use();
+    RenderScene(shaderDepthMap);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+    glViewport(0, 0, width, height);
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+    
+    shader.Use();
+    glUniformMatrix4fv(viewMatLoc, 1, GL_FALSE, glm::value_ptr(viewMat));
+    glUniformMatrix4fv(projMatLoc, 1, GL_FALSE, glm::value_ptr(projMat));
+    glUniform3fv(lightPosLoc, 1, &lightPos[0]);
+    glUniform3fv(viewPosLoc, 1, &cam.getPosition()[0]);
+    glUniform1f(farPlaneLoc, far);
+    
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, planeTexture);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubeMap);
+    
+    RenderScene(shader);
+#endif
+    
     glfwSwapBuffers(window);
   }
   return 0;
 }
 
-#if test == 4
 void RenderScene(ShaderReader &shader) {
   glm::mat4 modelMat;
+  shader.Use();
   GLuint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
+#if test == 4
   glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   glBindVertexArray(planeVAO);
   glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -337,10 +419,17 @@ void RenderScene(ShaderReader &shader) {
   modelMat = glm::scale(modelMat, glm::vec3(0.5f));
   glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   RenderCube();
+#endif
+  
+#if test == 5
+  modelMat = glm::scale(modelMat, glm::vec3(10.0f));
+  
+#endif
 }
 
 GLuint cubeVAO = 0, cubeVBO = 0;
 void RenderCube() {
+#if test == 4 || test == 5
   if (cubeVAO == 0) {
     GLfloat vertices[] = {
       // Back face
@@ -405,10 +494,12 @@ void RenderCube() {
   glBindVertexArray(cubeVAO);
   glDrawArrays(GL_TRIANGLES, 0, 36);
   glBindVertexArray(0);
+#endif
 }
 
 GLuint quadVAO = 0, quadVBO = 0;
 void RenderQuad() {
+#if test == 4
   if (quadVAO == 0) {
     GLfloat quadVertices[] = {
       // Positions        // Texture Coords
@@ -434,5 +525,5 @@ void RenderQuad() {
   glBindVertexArray(quadVAO);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
   glBindVertexArray(0);
-}
 #endif
+}
