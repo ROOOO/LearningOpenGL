@@ -113,6 +113,9 @@ int main(int argc, const char * argv[]) {
   GLint width, height;
   glfwGetFramebufferSize(window, &width, &height);
   
+  glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
+
+#if test != 5 
   GLfloat planeVertices[] = {
     // Positions          // Normals         // Texture Coords
     8.0f, -0.5f,  8.0f,  0.0f, 1.0f, 0.0f,  5.0f, 0.0f,
@@ -123,7 +126,6 @@ int main(int argc, const char * argv[]) {
     -8.0f, -0.5f, -8.0f,  0.0f, 1.0f, 0.0f,  0.0f, 5.0f,
     8.0f, -0.5f, -8.0f,  0.0f, 1.0f, 0.0f,  5.0f, 5.0f
   };
-  glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
   
   GLuint planeVBO;
   glGenVertexArrays(1, &planeVAO);
@@ -139,6 +141,7 @@ int main(int argc, const char * argv[]) {
   glEnableVertexAttribArray(2);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
+#endif
 
 #if test == 4
   GLuint depthMapFBO;
@@ -163,12 +166,13 @@ int main(int argc, const char * argv[]) {
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 #endif
 #if test == 5
+  const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+
   GLuint depthMapFBO;
   glGenFramebuffers(1, &depthMapFBO);
   
   GLuint depthCubeMap;
   glGenTextures(1, &depthCubeMap);
-  const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
   glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubeMap);
   for (GLint i = 0; i < 6; i++) {
     glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, nullptr);
@@ -262,7 +266,7 @@ int main(int argc, const char * argv[]) {
   shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
   shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
   shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
-  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0f, -1.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)));
+  shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)));
   shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
   shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
 
@@ -399,6 +403,7 @@ void RenderScene(ShaderReader &shader) {
   glm::mat4 modelMat;
   shader.Use();
   GLuint modelMatLoc = glGetUniformLocation(shader.GetProgram(), "modelMat");
+  GLuint reverseLoc = glGetUniformLocation(shader.GetProgram(), "reverse_normals");
 #if test == 4
   glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
   glBindVertexArray(planeVAO);
@@ -423,7 +428,37 @@ void RenderScene(ShaderReader &shader) {
   
 #if test == 5
   modelMat = glm::scale(modelMat, glm::vec3(10.0f));
-  
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  glDisable(GL_CULL_FACE);
+  glUniform1i(reverseLoc, 1);
+  RenderCube();
+
+  glUniform1i(reverseLoc, 0);
+  glEnable(GL_CULL_FACE);
+
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(4.0f, -3.5f, 0.0));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
+  modelMat = glm::mat4();
+  modelMat = glm::scale(modelMat, glm::vec3(1.5));
+  modelMat = glm::translate(modelMat, glm::vec3(2.0f, 3.0f, 1.0));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(-3.0f, -1.0f, 0.0));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(-1.5f, 1.0f, 1.5));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
+  modelMat = glm::mat4();
+  modelMat = glm::translate(modelMat, glm::vec3(-1.5f, 2.0f, -3.0));
+  modelMat = glm::rotate(modelMat, 60.0f, glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
+  modelMat = glm::scale(modelMat, glm::vec3(1.5));
+  glUniformMatrix4fv(modelMatLoc, 1, GL_FALSE, glm::value_ptr(modelMat));
+  RenderCube();
 #endif
 }
 

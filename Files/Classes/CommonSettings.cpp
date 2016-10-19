@@ -8,33 +8,33 @@
 
 #include "CommonSettings.hpp"
 
-#define test 5
+#define COMMONSETTINGS 5
 
 CommonSettings::CommonSettings() {
 #ifdef __APPLE__
-#if test == 1
+#if COMMONSETTINGS == 1
   m_ShadersPath = "Getting Start/Shaders/";
   m_ResourcesPath = "Getting Start/Resources/";
   m_FilesPath = "Getting Start/";
   m_ExercisesPath = "Exercises/Getting Start/";
-#elif test == 2
+#elif COMMONSETTINGS == 2
   m_ShadersPath = "Lighting/Shaders/";
   m_ResourcesPath = "Lighting/Resources/";
   m_FilesPath = "Lighting/";
   m_ExercisesPath = "Exercises/Lighting/";
-#elif test == 3
+#elif COMMONSETTINGS == 3
   m_ShadersPath = "Model Loading/Shaders/";
   m_ResourcesPath = "Model Loading/Resources/";
   m_FilesPath = "Model Loading/";
   m_ExercisesPath = "Exercises/Model Loading/";
   m_ModelsPath = "Model Loading/Models/";
-#elif test == 4
+#elif COMMONSETTINGS == 4
   m_ShadersPath = "Advanced OpenGL/Shaders/";
   m_ResourcesPath = "Advanced OpenGL/Resources/";
   m_FilesPath = "Advanced OpenGL/";
   m_ExercisesPath = "Exercises/Advanced OpenGL/";
   m_ModelsPath = "Model Loading/Models/";
-#elif test == 5
+#elif COMMONSETTINGS == 5
   m_ShadersPath = "Advanced Lighting/Shaders/";
   m_ResourcesPath = "Advanced Lighting/Resources/";
   m_FilesPath = "Advanced Lighting/";
@@ -42,29 +42,29 @@ CommonSettings::CommonSettings() {
   m_ModelsPath = "Model Loading/Models/";
 #endif
 #else
-#if test == 1
+#if COMMONSETTINGS == 1
   m_ShadersPath = "Getting Start\\Shaders\\";
   m_ResourcesPath = "Getting Start\\Resources\\";
   m_FilesPath = "Getting Start\\";
   m_ExercisesPath = "Exercises\\Getting Start\\";
-#elif test == 2
+#elif COMMONSETTINGS == 2
   m_ShadersPath = "Lighting\\Shaders\\";
   m_ResourcesPath = "Lighting\\Resources\\";
   m_FilesPath = "Lighting\\";
   m_ExercisesPath = "Exercises\\Lighting\\";
-#elif test == 3
+#elif COMMONSETTINGS == 3
   m_ShadersPath = "Model Loading\\Shaders\\";
   m_ResourcesPath = "Model Loading\\Resources\\";
   m_FilesPath = "Model Loading\\";
   m_ExercisesPath = "Exercises\\Model Loading\\";
   m_ModelsPath = "Model Loading\\Models\\";
-#elif test == 4
+#elif COMMONSETTINGS == 4
   m_ShadersPath = "Advanced OpenGL\\Shaders\\";
   m_ResourcesPath = "Advanced OpenGL\\Resources\\";
   m_FilesPath = "Advanced OpenGL\\";
   m_ExercisesPath = "Exercises\\Advanced OpenGL\\";
   m_ModelsPath = "Model Loading\\Models\\";
-#elif test == 5
+#elif COMMONSETTINGS == 5
   m_ShadersPath = "Advanced Lighting\\Shaders\\";
   m_ResourcesPath = "Advanced Lighting\\Resources\\";
   m_FilesPath = "Advanced Lighting\\";

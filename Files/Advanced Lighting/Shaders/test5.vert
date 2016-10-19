@@ -12,10 +12,15 @@ out VS_OUT {
 uniform mat4 modelMat;
 uniform mat4 viewMat;
 uniform mat4 projMat;
+uniform bool reverse_normals;
 
 void main() {
   gl_Position = projMat * viewMat * modelMat * vec4(position, 1.0f);
   vs_out.fragPos = vec3(modelMat * vec4(position, 1.0f));
-  vs_out.normal = transpose(inverse(mat3(modelMat))) * normal;
+  // if (reverse_normals) {
+  //   vs_out.normal = transpose(inverse(mat3(modelMat))) * (-1.0f * normal);    
+  // } else {
+    vs_out.normal = transpose(inverse(mat3(modelMat))) * normal;    
+  // }
   vs_out.texCoords = texCoords;
 }

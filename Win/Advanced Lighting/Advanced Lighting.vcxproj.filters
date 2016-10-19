@@ -97,6 +97,21 @@
     <None Include="..\..\Files\Advanced Lighting\Shaders\test4_quad.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test5.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test5.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test5_depth.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test5_depth.geom">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Files\Advanced Lighting\Shaders\test5_depth.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Files\Advanced Lighting\Resources\wood.png">
