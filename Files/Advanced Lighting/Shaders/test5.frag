@@ -22,7 +22,7 @@ float ShadowCalculation(vec3 fragPos) {
 
   float currentDepth = length(fragToLight);
   float bias = 0.05f;
-//  return closestDepth;
+  fragColor = vec4(vec3(closestDepth / farPlane), 1.0f);
   return currentDepth - bias > closestDepth ? 1.0f : 0.0f;
 }
 
@@ -46,5 +46,5 @@ void main() {
   // float shadow = 0.0f;
   vec3 lighting = ambient + ((1 - shadow) * (diffuse + specular)) * color;
   
-  fragColor = vec4(lighting, 1.0f);
+//  fragColor = vec4(lighting, 1.0f);
 }
